@@ -31,46 +31,60 @@ const ToolContainer = ({
 
   return (
     <div>
-      <div className="selectedToolContainer">
-        <div className="selectedToolTitle">Selected Tool</div>
-        <div
-          className="selectedTool"
-          style={{
-            backgroundImage: selectedImage,
-            backgroundSize: "contain",
-          }}
-        />
-      </div>
-      <div className="form">
-        <form
-          onChange={(e) => onLayerSelect(e.target.value)}
-          defaultValue={selectedLayer}
-        >
-          <input
-            className="formInput"
-            type="radio"
-            id="layer1"
-            value="1"
-            name="layer"
+      <div className="headerToolContainer">
+        <div className="selectedToolContainer">
+          <div className="selectedToolTitle">Tool</div>
+          <div
+            className="selectedTool"
+            style={{
+              backgroundImage: selectedImage,
+              backgroundSize: "contain",
+            }}
           />
-          <label for="layer1">Layer 1</label>
-          <input
-            className="formInput"
-            type="radio"
-            id="layer2"
-            value="2"
-            name="layer"
-          />
-          <label for="layer2">Layer 2</label>
-          <input
-            className="formInput"
-            type="radio"
-            id="layer3"
-            value="3"
-            name="layer"
-          />
-          <label for="layer3">Layer 3</label>
-        </form>
+        </div>
+        <div className="selectedToolContainer">
+          <div className="selectedToolTitle">Layer</div>
+          <div className="selectedLayer">
+            <div>
+              <form
+                onChange={(e) => onLayerSelect(e.target.value)}
+                defaultValue={selectedLayer}
+                className="form"
+              >
+                <input
+                  className="formInput"
+                  type="radio"
+                  id="layer1"
+                  value="1"
+                  name="layer"
+                />
+                <label className="formInputTitle" for="layer1">
+                  Layer 1
+                </label>
+                <input
+                  className="formInput"
+                  type="radio"
+                  id="layer2"
+                  value="2"
+                  name="layer"
+                />
+                <label className="formInputTitle" for="layer2">
+                  Layer 2
+                </label>
+                <input
+                  className="formInput"
+                  type="radio"
+                  id="layer3"
+                  value="3"
+                  name="layer"
+                />
+                <label className="formInputTitle" for="layer3">
+                  Layer 3
+                </label>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
       <ChangePageButtons setImages={handleSelect} themes={listaTemas} />
       <div className="toolsContainerDad">
