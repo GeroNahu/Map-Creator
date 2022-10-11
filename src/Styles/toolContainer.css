@@ -1,0 +1,47 @@
+.toolsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 400px;
+  height: 400px;
+}
+.tools {
+  display: flex;
+  background-color: transparent;
+  grid-area: auto;
+}
+.selectedToolContainer {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 400px;
+  align-items: center;
+  justify-content: center;
+}
+.selectedTool {
+  border: solid black 3px;
+  display: flex;
+  width: 160px;
+  height: 160px;
+}
+.selectedToolTitle {
+  display: flex;
+  padding-bottom: 20%;
+  color: black;
+  font-size: large;
+  font-weight: bolder;
+  font-size: 30px;
+  font-family: "Arial Narrow Bold", sans-serif;
+}
+.toolsContainerDad {
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.form {
+  display: grid;
+  grid-template-columns: 1, 1fr;
+  grid-template-rows: auto;
+}
