@@ -40,8 +40,11 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
-.formImput {
+.form {
   display: grid;
-  grid-template-columns: 1, 1fr;
+  grid-template-columns: repeat(1);
   grid-template-rows: auto;
+}
+.formImput {
+  grid-area: auto;
 }
