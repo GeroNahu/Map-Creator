@@ -1,3 +1,9 @@
+.toolsContainerDad {
+  border: solid black 3px;
+  height: max(400px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 .toolsContainer {
   display: grid;
   grid-template-columns: repeat(3, minmax(134px, 1fr));
@@ -6,7 +12,6 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   width: 400px;
-  height: 400px;
 }
 .tools {
   display: flex;
@@ -43,11 +48,6 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 30px;
-}
-.toolsContainerDad {
-  max-height: 300px;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 .form {
   display: grid;
