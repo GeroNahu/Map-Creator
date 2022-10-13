@@ -1,7 +1,8 @@
 .toolsContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(134px, 1fr));
+  grid-template-rows: repeat(3, minmax(134px, 1fr));
+  grid-auto-rows: minmax(134px, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   width: 400px;
