@@ -1,4 +1,5 @@
 .backgroundMap {
+  border: solid 1px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -11,10 +12,10 @@
   display: flex;
   grid-area: auto;
   border: solid 1px;
+  box-sizing: border-box;
 }
 .layer {
   display: grid;
-  background-color: red;
   grid-area: 1 / 1 / 2 / 2;
   position: absolute;
   width: 132px;
