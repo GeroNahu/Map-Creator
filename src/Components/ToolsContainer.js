@@ -2,6 +2,7 @@ import React from "react";
 import { themes } from "../constants/themes";
 import ChangePageButtons from "./ChangePageButtons";
 import "../Styles/toolContainer.css";
+import "../Styles/globalStyles.css";
 
 const ToolContainer = ({
   onImageSelect,
@@ -33,7 +34,7 @@ const ToolContainer = ({
     <div>
       <div className="headerToolContainer">
         <div className="selectedToolContainer">
-          <div className="selectedToolTitle">Tool</div>
+          <h2 className="h2">Tool</h2>
           <div
             className="selectedTool"
             style={{
@@ -43,7 +44,7 @@ const ToolContainer = ({
           />
         </div>
         <div className="selectedToolContainer">
-          <div className="selectedToolTitle">Layer</div>
+          <h2 className="h2">Layer</h2>
           <div className="selectedLayer">
             <div>
               <form
@@ -58,7 +59,7 @@ const ToolContainer = ({
                   value="1"
                   name="layer"
                 />
-                <label className="formInputTitle" for="layer1">
+                <label className="formInputTitle" htmlFor="layer1">
                   Layer 1
                 </label>
                 <input
@@ -68,7 +69,7 @@ const ToolContainer = ({
                   value="2"
                   name="layer"
                 />
-                <label className="formInputTitle" for="layer2">
+                <label className="formInputTitle" htmlFor="layer2">
                   Layer 2
                 </label>
                 <input
@@ -78,7 +79,7 @@ const ToolContainer = ({
                   value="3"
                   name="layer"
                 />
-                <label className="formInputTitle" for="layer3">
+                <label className="formInputTitle" htmlFor="layer3">
                   Layer 3
                 </label>
               </form>
