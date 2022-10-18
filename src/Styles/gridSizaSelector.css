@@ -1,0 +1,31 @@
+.formContainer {
+  display: flex;
+}
+.girdSizaSelectorInput {
+  align-items: center;
+  background-color: rgb(151, 172, 172);
+  justify-content: right;
+  margin: 5px;
+  width: 30px;
+}
+.girdSizaSelectorInput:focus {
+  background-color: rgb(127, 154, 154);
+  margin: 5px;
+  width: 30px;
+  border-radius: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.gridSizaForm {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  grid-template-rows: auto;
+}
+.gridSizaFormInputTitle {
+  font-family: cursive;
+  margin: 2px 2px 5px 10px;
+  justify-self: left;
+}
