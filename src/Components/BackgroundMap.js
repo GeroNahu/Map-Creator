@@ -9,10 +9,15 @@ const BackgroundMap = ({ selected, selectedLayer, width, height }) => {
   React.useEffect(() => {
     const newMap = [];
     for (let i = 0; i < width * height; i++) {
+      const x = i + 1 - Math.floor(i / width) * width;
+      const y = Math.ceil((i + 1) / width);
+      const layers = mapa.find((tile) => {
+        return tile.x === x && tile.y === y;
+      })?.layers;
       newMap.push({
-        x: i + 1 - Math.floor(i / width) * width,
-        y: Math.ceil((i + 1) / width),
-        layers: ["", "", ""],
+        x,
+        y,
+        layers: layers || ["", "", ""],
       });
     }
     setMapa(newMap);
