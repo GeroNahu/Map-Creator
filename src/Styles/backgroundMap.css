@@ -1,18 +1,28 @@
+.backgroundMapContainer {
+  position: relative;
+  border: solid black 3px;
+  height: max(70vh);
+  width: max(70vw);
+  overflow-y: auto;
+  overflow-x: auto;
+}
 .backgroundMap {
-  border: solid 1px;
+  border: solid black 1px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  width: 400px;
-  height: 400px;
+  width: fit-content;
 }
 .tile {
   display: flex;
   grid-area: auto;
   border: solid 1px;
   box-sizing: border-box;
+  width: 134px;
+}
+.tile:hover {
+  opacity: 45%;
+  transition: 300ms;
 }
 .layer {
   display: grid;
