@@ -1,11 +1,20 @@
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 420px;
   flex-direction: row;
-  margin: 5px;
+  padding: 5px;
+  width: 100vw;
+  box-sizing: border-box;
 }
 .divToolsContainer {
-  margin: 30px;
+  padding: 30px;
+  box-sizing: border-box;
 }
 .divBackgorundMapContainer {
-  margin: 30px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: gray;
 }
