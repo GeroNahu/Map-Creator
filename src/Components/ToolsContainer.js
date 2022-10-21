@@ -31,7 +31,7 @@ const ToolContainer = ({
   ));
 
   return (
-    <div>
+    <>
       <div className="headerToolContainer">
         <div className="selectedToolContainer">
           <h2 className="h2">Tool</h2>
@@ -43,6 +43,12 @@ const ToolContainer = ({
             }}
           />
         </div>
+        {/* <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        > */}
         <div className="selectedToolContainer">
           <h2 className="h2">Layer</h2>
           <div className="selectedLayer">
@@ -87,11 +93,13 @@ const ToolContainer = ({
           </div>
         </div>
       </div>
-      <ChangePageButtons setImages={handleSelect} themes={listaTemas} />
-      <div className="toolsContainerDad">
-        <div className="toolsContainer">{tool}</div>
+      <div className="buttosAndTools">
+        <ChangePageButtons setImages={handleSelect} themes={listaTemas} />
+        <div className="toolsContainerDad">
+          <div className="toolsContainer">{tool}</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
