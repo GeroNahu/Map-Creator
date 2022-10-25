@@ -9,21 +9,17 @@ const SectionContainer = () => {
 
   return (
     <div className="container">
-      <div className="divBackgorundMapContainer">
-        <MapSection
-          selected={selectedImage}
-          selectedLayer={selectedLayer}
-          setSelectedLayer={setSelectedLayer}
-        />
-      </div>
-      <div className="divToolsContainer">
-        <ToolContainer
-          onImageSelect={setSelectedImage}
-          selectedImage={selectedImage}
-          onLayerSelect={setSelectedLayer}
-          selectedLayer={selectedLayer}
-        />
-      </div>
+      <MapSection
+        selected={selectedImage}
+        selectedLayer={selectedLayer}
+        setSelectedLayer={setSelectedLayer}
+      />
+      <ToolContainer
+        onImageSelect={setSelectedImage}
+        selectedImage={selectedImage}
+        onLayerSelect={setSelectedLayer}
+        selectedLayer={selectedLayer}
+      />
     </div>
   );
 };
