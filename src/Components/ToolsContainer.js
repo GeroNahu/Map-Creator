@@ -31,7 +31,7 @@ const ToolContainer = ({
   ));
 
   return (
-    <>
+    <section className="divToolsContainer">
       <div className="headerToolContainer">
         <div className="selectedToolContainer">
           <h2 className="h2">Tool</h2>
@@ -43,53 +43,45 @@ const ToolContainer = ({
             }}
           />
         </div>
-        {/* <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        > */}
-        <div className="selectedToolContainer">
+        <div className="selectedLayerContainer">
           <h2 className="h2">Layer</h2>
-          <div className="selectedLayer">
-            <div>
-              <form
-                onChange={(e) => onLayerSelect(e.target.value)}
-                defaultValue={selectedLayer}
-                className="form"
-              >
-                <input
-                  className="formInput"
-                  type="radio"
-                  id="layer1"
-                  value="1"
-                  name="layer"
-                />
-                <label className="formInputTitle" htmlFor="layer1">
-                  Layer 1
-                </label>
-                <input
-                  className="formInput"
-                  type="radio"
-                  id="layer2"
-                  value="2"
-                  name="layer"
-                />
-                <label className="formInputTitle" htmlFor="layer2">
-                  Layer 2
-                </label>
-                <input
-                  className="formInput"
-                  type="radio"
-                  id="layer3"
-                  value="3"
-                  name="layer"
-                />
-                <label className="formInputTitle" htmlFor="layer3">
-                  Layer 3
-                </label>
-              </form>
-            </div>
+          <div>
+            <form
+              onChange={(e) => onLayerSelect(e.target.value)}
+              defaultValue={selectedLayer}
+              className="form"
+            >
+              <input
+                className="formInput"
+                type="radio"
+                id="layer1"
+                value="1"
+                name="layer"
+              />
+              <label className="formInputTitle" htmlFor="layer1">
+                Layer 1
+              </label>
+              <input
+                className="formInput"
+                type="radio"
+                id="layer2"
+                value="2"
+                name="layer"
+              />
+              <label className="formInputTitle" htmlFor="layer2">
+                Layer 2
+              </label>
+              <input
+                className="formInput"
+                type="radio"
+                id="layer3"
+                value="3"
+                name="layer"
+              />
+              <label className="formInputTitle" htmlFor="layer3">
+                Layer 3
+              </label>
+            </form>
           </div>
         </div>
       </div>
@@ -99,7 +91,7 @@ const ToolContainer = ({
           <div className="toolsContainer">{tool}</div>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 
