@@ -2,17 +2,23 @@
   display: grid;
   grid-template-columns: 1fr 420px;
   flex-direction: row;
-  padding: 5px;
   width: 100vw;
+  height: calc(100vh - 115px);
+  max-height: calc(100vh - 115px);
   box-sizing: border-box;
+  overflow: hidden;
 }
 .divToolsContainer {
-  padding: 30px;
+  display: grid;
+  grid-template-rows: 210px minmax(10px, 1fr);
   box-sizing: border-box;
+  max-height: calc(100vh - 115px);
 }
 .divBackgorundMapContainer {
-  padding: 30px;
+  display: grid;
+  grid-template-rows: 210px 1fr;
   box-sizing: border-box;
+  max-height: calc(100vh - 115px);
 }
 
 body {
