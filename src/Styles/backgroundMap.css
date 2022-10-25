@@ -1,15 +1,18 @@
 .backgroundMapContainer {
-  position: relative;
   border: solid black 3px;
-  height: max(60vh);
   overflow-y: auto;
   overflow-x: auto;
+  margin: 16px;
+}
+
+.mapCanvas {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
 }
 .backgroundMap {
   border: solid black 1px;
   display: grid;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
   width: fit-content;
 }
 .tile {
