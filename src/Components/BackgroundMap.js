@@ -37,23 +37,25 @@ const BackgroundMap = ({ selected, selectedLayer, width, height }) => {
 
   return (
     <div className="backgroundMapContainer">
-      <div
-        className="backgroundMap"
-        style={{
-          gridTemplateColumns: `repeat(${width}, minmax(134px, 1fr))`,
-          gridTemplateRows: `repeat(${height}, minmax(134px, 1fr))`,
-          gridAutoRows: "minmax(134px, 1fr)",
-        }}
-      >
-        {mapa.map((tile) => {
-          return (
-            <Tile
-              {...tile}
-              key={`tile_${tile.x}_${tile.y}`}
-              onClick={() => handleClick(tile.x, tile.y)}
-            />
-          );
-        })}
+      <div className="mapCanvas">
+        <div
+          className="backgroundMap"
+          style={{
+            gridTemplateColumns: `repeat(${width}, minmax(134px, 1fr))`,
+            gridTemplateRows: `repeat(${height}, minmax(134px, 1fr))`,
+            gridAutoRows: "minmax(134px, 1fr)",
+          }}
+        >
+          {mapa.map((tile) => {
+            return (
+              <Tile
+                {...tile}
+                key={`tile_${tile.x}_${tile.y}`}
+                onClick={() => handleClick(tile.x, tile.y)}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
