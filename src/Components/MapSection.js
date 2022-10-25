@@ -1,5 +1,6 @@
 import React from "react";
 import BackgroundMap from "./BackgroundMap";
+import ZoomSelector from "./ZoomSelector";
 import GridSizeSelector from "./GridSizeSelector";
 import "../Styles/globalStyles.css";
 import "../Styles/mapSection.css";
@@ -9,16 +10,21 @@ const MapSection = ({ selected, selectedLayer, setSelectedLayer, layer }) => {
   const [height, setHeight] = React.useState(1);
 
   return (
-    <>
-      <div className="titleContainer">
-        <h2 className="h2">Map</h2>
+    <section className="divBackgorundMapContainer">
+      <div className="mapHeader">
+        <div className="titleContainer">
+          <h2 className="h2">Map</h2>
+        </div>
+        <div className="mapHeaderSelectors">
+          <GridSizeSelector
+            width={width}
+            height={height}
+            setWidth={setWidth}
+            setHeight={setHeight}
+          />
+          <ZoomSelector />
+        </div>
       </div>
-      <GridSizeSelector
-        width={width}
-        height={height}
-        setWidth={setWidth}
-        setHeight={setHeight}
-      />
       <BackgroundMap
         selected={selected}
         setSelectedLayer={setSelectedLayer}
@@ -27,7 +33,7 @@ const MapSection = ({ selected, selectedLayer, setSelectedLayer, layer }) => {
         width={width}
         height={height}
       />
-    </>
+    </section>
   );
 };
 
