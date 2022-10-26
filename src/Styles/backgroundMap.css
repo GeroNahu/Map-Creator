@@ -21,8 +21,8 @@
   border: solid 1px;
   box-sizing: border-box;
   position: relative;
-  width: 134px;
 }
+
 .tile:hover {
   opacity: 45%;
   transition: 300ms;
