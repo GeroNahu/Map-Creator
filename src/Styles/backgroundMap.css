@@ -11,14 +11,13 @@
   box-sizing: border-box;
 }
 .backgroundMap {
-  border: solid black 1px;
   display: grid;
   width: fit-content;
 }
 .tile {
   display: flex;
   grid-area: auto;
-  border: solid 1px;
+  outline: solid black 1px;
   box-sizing: border-box;
   position: relative;
 }
