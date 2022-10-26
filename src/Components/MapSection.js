@@ -34,6 +34,7 @@ const MapSection = ({ selected, selectedLayer, setSelectedLayer, layer }) => {
         width={width}
         height={height}
         mapSize={mapSize}
+        tileSize={100}
       />
     </section>
   );
