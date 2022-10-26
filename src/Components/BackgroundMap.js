@@ -4,7 +4,7 @@ import Tile from "./Tile";
 
 import "../Styles/backgroundMap.css";
 
-const BackgroundMap = ({ selected, selectedLayer, width, height }) => {
+const BackgroundMap = ({ selected, selectedLayer, width, height, mapSize }) => {
   const [mapa, setMapa] = React.useState([{}]);
   React.useEffect(() => {
     const newMap = [];
@@ -41,9 +41,9 @@ const BackgroundMap = ({ selected, selectedLayer, width, height }) => {
         <div
           className="backgroundMap"
           style={{
-            gridTemplateColumns: `repeat(${width}, minmax(134px, 1fr))`,
-            gridTemplateRows: `repeat(${height}, minmax(134px, 1fr))`,
-            gridAutoRows: "minmax(134px, 1fr)",
+            gridTemplateColumns: `repeat(${width}, ${mapSize}px`,
+            gridTemplateRows: `repeat(${height}, ${mapSize}px`,
+            gridAutoRows: `${mapSize}px`,
           }}
         >
           {mapa.map((tile) => {
