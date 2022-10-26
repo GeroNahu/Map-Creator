@@ -8,6 +8,7 @@ import "../Styles/mapSection.css";
 const MapSection = ({ selected, selectedLayer, setSelectedLayer, layer }) => {
   const [width, setWidth] = React.useState(1);
   const [height, setHeight] = React.useState(1);
+  const [mapSize, setMapSize] = React.useState(100);
 
   return (
     <section className="divBackgorundMapContainer">
@@ -22,7 +23,7 @@ const MapSection = ({ selected, selectedLayer, setSelectedLayer, layer }) => {
             setWidth={setWidth}
             setHeight={setHeight}
           />
-          <ZoomSelector />
+          <ZoomSelector setMapSize={setMapSize} />
         </div>
       </div>
       <BackgroundMap
@@ -32,6 +33,7 @@ const MapSection = ({ selected, selectedLayer, setSelectedLayer, layer }) => {
         layer={layer}
         width={width}
         height={height}
+        mapSize={mapSize}
       />
     </section>
   );
