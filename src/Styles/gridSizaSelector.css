@@ -1,5 +1,6 @@
 .formContainer {
   display: flex;
+  justify-content: center;
 }
 .girdSizaSelectorInput {
   align-items: center;
