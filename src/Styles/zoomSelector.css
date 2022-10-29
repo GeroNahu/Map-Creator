@@ -1,0 +1,18 @@
+.zoomSelectorsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  max-width: 80px;
+}
+.zoomInputRange {
+  padding: 2px;
+}
+.zoomSelector {
+  background-color: rgb(159, 158, 158);
+  border-radius: 10%;
+  border: solid rgb(59, 58, 58) 1px;
+}
+.zoomSelector:hover {
+  background-color: rgb(39 39 39);
+  color: white;
+}
