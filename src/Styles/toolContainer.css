@@ -69,3 +69,17 @@
   overflow-y: auto;
   overflow-x: auto;
 }
+
+@media only screen and (max-width: 800px) {
+  .divToolContainer {
+    min-width: max-content;
+  }
+  .shown {
+    position: fixed;
+    right: 0;
+  }
+  .hidden {
+    position: fixed;
+    left: 98%;
+  }
+}
