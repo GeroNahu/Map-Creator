@@ -1,6 +1,9 @@
 import React from "react";
+
 import { themes } from "../constants/themes";
 import ChangePageButtons from "./ChangePageButtons";
+import NavButton from "./NavButton";
+
 import "../Styles/toolContainer.css";
 import "../Styles/globalStyles.css";
 
@@ -11,6 +14,7 @@ const ToolContainer = ({
   selectedLayer,
 }) => {
   const [images, setImages] = React.useState(themes.medieval || []);
+  const [visibility, setVisibility] = React.useState(false);
 
   const handleSelect = (theme) => {
     setImages(themes[theme]);
@@ -30,8 +34,15 @@ const ToolContainer = ({
     />
   ));
 
+  let showHideClass;
+  if (visibility) {
+    showHideClass = "shown";
+  } else showHideClass = "hidden";
+  console.log(showHideClass);
+
   return (
-    <section className="divToolsContainer">
+    <section className={`divToolsContainer  ${showHideClass}`}>
+      <NavButton visibility={visibility} setVisibility={setVisibility} />
       <div className="headerToolContainer">
         <div className="selectedToolContainer">
           <h2 className="h2">Tool</h2>
