@@ -38,7 +38,6 @@ const ToolContainer = ({
   if (visibility) {
     showHideClass = "shown";
   } else showHideClass = "hidden";
-  console.log(showHideClass);
 
   return (
     <section className={`divToolsContainer  ${showHideClass}`}>

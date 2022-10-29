@@ -20,7 +20,6 @@ const NavButton = ({
     <button
       className="navButton"
       onClick={() => {
-        console.log(visibility);
         return toggleMenu();
       }}
     >
