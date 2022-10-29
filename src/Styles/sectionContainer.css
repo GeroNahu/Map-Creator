@@ -24,3 +24,11 @@
 body {
   background-color: gray;
 }
+@media only screen and (max-width: 800px) {
+  .container {
+    grid-template-columns: 0.9fr;
+  }
+  .divToolsContainer {
+    width: max-content;
+  }
+}
