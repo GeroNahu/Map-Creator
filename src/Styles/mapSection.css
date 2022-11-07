@@ -5,8 +5,9 @@
 .mapHeader {
   padding: 16px;
 }
-.mapHeaderSelectors {
+.mapSelectorsContainer {
   align-items: center;
+  border: solid 3px;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }

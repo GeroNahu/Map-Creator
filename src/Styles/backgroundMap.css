@@ -1,5 +1,4 @@
 .backgroundMapContainer {
-  border: solid black 3px;
   overflow-y: auto;
   overflow-x: auto;
   margin: 16px;
@@ -17,7 +16,6 @@
 .tile {
   display: flex;
   grid-area: auto;
-  outline: solid black 1px;
   box-sizing: border-box;
   position: relative;
 }
