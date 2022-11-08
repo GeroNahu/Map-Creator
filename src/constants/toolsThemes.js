@@ -1,4 +1,4 @@
-export const themes = {
+export const toolsThemes = {
   medieval: [
     `url(${require(`../Images/Medievales/0.jpg`)})`,
     `url(${require(`../Images/Medievales/1.jpg`)})`,
