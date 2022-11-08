@@ -1,7 +1,12 @@
 import React from "react";
+
+import ThemesContext from "../constants/ThemesContext";
+
 import "../Styles/gridSizaSelector.css";
 
 const GridSizeSelector = ({ setWidth, setHeight }) => {
+  const { theme } = React.useContext(ThemesContext);
+
   return (
     <div className="formContainer">
       <form className="gridSizaForm">
@@ -13,7 +18,13 @@ const GridSizeSelector = ({ setWidth, setHeight }) => {
           defaultValue={1}
           onChange={(e) => setWidth(e.target.value)}
         ></input>
-        <label className="gridSizaFormInputTitle" htmlFor="gridSizeInputWidth">
+        <label
+          className="gridSizaFormInputTitle"
+          htmlFor="gridSizeInputWidth"
+          style={{
+            color: theme.TEXT_PRIMARY,
+          }}
+        >
           Columns
         </label>
         <input
@@ -24,7 +35,13 @@ const GridSizeSelector = ({ setWidth, setHeight }) => {
           defaultValue={1}
           onChange={(e) => setHeight(e.target.value)}
         ></input>
-        <label className="gridSizaFormInputTitle" htmlFor="gridSizeInputHeight">
+        <label
+          className="gridSizaFormInputTitle"
+          htmlFor="gridSizeInputHeight"
+          style={{
+            color: theme.TEXT_PRIMARY,
+          }}
+        >
           Rows
         </label>
       </form>
