@@ -1,5 +1,4 @@
 .toolsContainerDad {
-  border: solid black 3px;
   box-sizing: border-box;
   height: -webkit-fill-available;
   justify-self: center;
@@ -35,7 +34,6 @@
   justify-content: space-between;
 }
 .selectedTool {
-  border: solid black 3px;
   display: flex;
   height: 100px;
   width: 100px;
@@ -49,8 +47,9 @@
 }
 .form {
   display: grid;
-  grid-template-columns: 20px 1fr;
+  grid-template-columns: 24px 1fr;
   grid-template-rows: auto;
+  padding: 5px;
 }
 .formInput {
   margin: 2px 2px 3px 2px;
@@ -80,6 +79,6 @@
   }
   .hidden {
     position: fixed;
-    left: 98%;
+    left: 100%;
   }
 }
