@@ -1,6 +1,9 @@
 import React from "react";
+
 import MapSection from "./MapSection";
 import ToolContainer from "./ToolsContainer";
+import HandleTheme from "./HandleTheme";
+
 import "../Styles/sectionContainer.css";
 
 const SectionContainer = () => {
@@ -14,6 +17,7 @@ const SectionContainer = () => {
         selectedLayer={selectedLayer}
         setSelectedLayer={setSelectedLayer}
       />
+      <HandleTheme />
       <ToolContainer
         onImageSelect={setSelectedImage}
         selectedImage={selectedImage}
