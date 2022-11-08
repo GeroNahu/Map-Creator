@@ -3,6 +3,7 @@ import React from "react";
 import Tile from "./Tile";
 
 import "../Styles/backgroundMap.css";
+import ThemesContext from "../constants/ThemesContext";
 
 const BackgroundMap = ({
   selected,
@@ -13,6 +14,7 @@ const BackgroundMap = ({
   tileSize,
 }) => {
   const [mapa, setMapa] = React.useState([{}]);
+  const { theme } = React.useContext(ThemesContext);
   React.useEffect(() => {
     const newMap = [];
     for (let i = 0; i < width * height; i++) {
@@ -43,7 +45,13 @@ const BackgroundMap = ({
   };
 
   return (
-    <div className="backgroundMapContainer">
+    <div
+      className="backgroundMapContainer"
+      style={{
+        backgroundColor: theme.MAP_BACKGROUND,
+        border: `solid ${theme.MAP_BORDER} 3px`,
+      }}
+    >
       <div className="mapCanvas">
         <div
           className="backgroundMap"
