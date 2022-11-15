@@ -2,20 +2,9 @@ import React from "react";
 
 import "../Styles/navButton.css";
 
-const NavButton = ({
-  visibility,
-  setVisibility,
-  // showHideClass = "hidden",
-  // setShowHideClass,
-}) => {
+const NavButton = ({ visibility, setVisibility }) => {
   const toggleMenu = () => setVisibility(!visibility);
 
-  // if (visibility) {
-  //   setShowHideClass("shown");
-  // } else setShowHideClass("hidden");
-  // if (visibility) {
-  //   showHideClass = "shown";
-  // } else showHideClass = "hidden";
   return (
     <button
       className="navButton"
