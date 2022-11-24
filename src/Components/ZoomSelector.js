@@ -13,6 +13,7 @@ const ZoomSelector = ({ setMapSize }) => {
         onChange={(e) => setMapSize(e.target.value)}
       />
       <select
+        defaultValue={"100"}
         className="zoomSelector"
         name="selector"
         onChange={(e) => setMapSize(e.target.value)}
@@ -20,9 +21,7 @@ const ZoomSelector = ({ setMapSize }) => {
         <option value="25">25 %</option>
         <option value="50">50 %</option>
         <option value="75">75 %</option>
-        <option value="100" selected>
-          100 %
-        </option>
+        <option value="100">100 %</option>
         <option value="200">200 %</option>
         <option value="300">300 %</option>
         <option value="400">400 %</option>
