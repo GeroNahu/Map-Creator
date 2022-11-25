@@ -111,7 +111,7 @@ const ToolContainer = ({
                 className="formInput"
                 type="radio"
                 id="layer1"
-                value="1"
+                value="0"
                 name="layer"
               />
               <label
@@ -125,7 +125,7 @@ const ToolContainer = ({
                 className="formInput"
                 type="radio"
                 id="layer2"
-                value="2"
+                value="1"
                 name="layer"
               />
               <label
@@ -139,7 +139,7 @@ const ToolContainer = ({
                 className="formInput"
                 type="radio"
                 id="layer3"
-                value="3"
+                value="2"
                 name="layer"
               />
               <label
