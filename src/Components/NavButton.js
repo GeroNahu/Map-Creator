@@ -2,7 +2,7 @@ import React from "react";
 
 import "../Styles/navButton.css";
 
-const NavButton = ({ visibility, setVisibility }) => {
+const NavButton = ({ visibility, setVisibility, platform }) => {
   const toggleMenu = () => setVisibility(!visibility);
 
   return (
@@ -10,6 +10,9 @@ const NavButton = ({ visibility, setVisibility }) => {
       className="navButton"
       onClick={() => {
         return toggleMenu();
+      }}
+      style={{
+        display: platform === "Windows" ? "fixed" : "none",
       }}
     >
       <span className="hamburguerMenuIcon" />
