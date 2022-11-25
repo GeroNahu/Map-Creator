@@ -70,15 +70,14 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .divToolContainer {
+  .divToolsContainer {
+    position: fixed;
     min-width: max-content;
   }
   .shown {
-    position: fixed;
     right: 0;
   }
   .hidden {
-    position: fixed;
-    left: 100%;
+    right: -100%;
   }
 }
