@@ -34,7 +34,7 @@
   rotate: 45deg;
   width: 15px;
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1200px) {
   .drawerIcon1,
   .drawerIcon2 {
     display: flex;

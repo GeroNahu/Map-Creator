@@ -69,7 +69,7 @@
   overflow-x: auto;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1200px) {
   .divToolsContainer {
     position: fixed;
     min-width: max-content;
