@@ -3,10 +3,13 @@ import React from "react";
 import { toolsThemes } from "../constants/toolsThemes";
 import ChangePageButtons from "./ChangePageButtons";
 import NavButton from "./NavButton";
+import Drawer from "./Drawer";
 import ThemeContext from "../constants/ThemesContext";
 
 import "../Styles/toolContainer.css";
 import "../Styles/globalStyles.css";
+
+const platform = navigator.userAgentData.platform;
 
 const ToolContainer = ({
   onImageSelect,
@@ -14,10 +17,15 @@ const ToolContainer = ({
   onLayerSelect,
   selectedLayer,
 }) => {
+  const ref = React.useRef(null);
+
   const [images, setImages] = React.useState(toolsThemes.medieval || []);
   const [visibility, setVisibility] = React.useState(false);
-
+  const [drawerPosition, setDrawerPosition] = React.useState(0);
   const { theme } = React.useContext(ThemeContext);
+
+  const divToolsContainerWidth = ref.current?.clientWidth;
+  const [transition, setTransition] = React.useState(true);
 
   const handleSelect = (theme) => {
     setImages(toolsThemes[theme]);
@@ -43,15 +51,33 @@ const ToolContainer = ({
     showHideClass = "shown";
   } else showHideClass = "hidden";
 
+  const transitionPosition = `calc(100% - ${drawerPosition}px)`;
+
   return (
     <section
       className={`divToolsContainer  ${showHideClass}`}
+      id="divToolsContainer"
+      ref={ref}
       style={{
         backgroundColor: theme.TOOLS_SECTION_BACKGROUND,
         border: `solid ${theme.TOOLS_SECTION_BORDER} 3px`,
+        left: platform === "Android" ? transitionPosition : `${null}`,
+        transition: transition ? "400ms linear" : "none",
       }}
     >
-      <NavButton visibility={visibility} setVisibility={setVisibility} />
+      <NavButton
+        platform={platform}
+        visibility={visibility}
+        setVisibility={setVisibility}
+      />
+      <Drawer
+        drawerPosition={drawerPosition}
+        setDrawerPosition={setDrawerPosition}
+        platform={platform}
+        divToolsContainerWidth={divToolsContainerWidth}
+        transition={transition}
+        setTransition={setTransition}
+      />
       <div className="headerToolContainer">
         <div className="selectedToolContainer">
           <h2 className="h2" style={{ color: theme.TITLES }}>
