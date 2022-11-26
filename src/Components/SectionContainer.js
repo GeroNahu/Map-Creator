@@ -8,7 +8,7 @@ import "../Styles/sectionContainer.css";
 
 const SectionContainer = () => {
   const [selectedImage, setSelectedImage] = React.useState("");
-  const [selectedLayer, setSelectedLayer] = React.useState(1);
+  const [selectedLayer, setSelectedLayer] = React.useState(0);
 
   return (
     <div className="container">
