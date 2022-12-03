@@ -7,13 +7,24 @@ import ThemesContext from "../constants/ThemesContext";
 
 import "../Styles/globalStyles.css";
 import "../Styles/mapSection.css";
+import VisibilityLayers from "./VisibilityLayers";
 
-const MapSection = ({ selected, selectedLayer, setSelectedLayer, layer }) => {
+const MapSection = ({ selected, selectedLayer, setSelectedLayer }) => {
   const [width, setWidth] = React.useState(1);
   const [height, setHeight] = React.useState(1);
   const [mapSize, setMapSize] = React.useState(100);
   const { theme } = React.useContext(ThemesContext);
-
+  const [visibleLayers, setVisibleLayers] = React.useState([
+    true,
+    true,
+    true,
+    true,
+  ]);
+  const handleSetVisibleLayers = (layer, value) => {
+    const newState = [...visibleLayers];
+    newState[layer] = value;
+    setVisibleLayers(newState);
+  };
   return (
     <section
       className="divBackgorundMapContainer"
@@ -46,17 +57,21 @@ const MapSection = ({ selected, selectedLayer, setSelectedLayer, layer }) => {
             setHeight={setHeight}
           />
           <ZoomSelector setMapSize={setMapSize} />
+          <VisibilityLayers
+            visibleLayers={visibleLayers}
+            handleSetVisibleLayers={handleSetVisibleLayers}
+          />
         </div>
       </div>
       <BackgroundMap
         selected={selected}
         setSelectedLayer={setSelectedLayer}
         selectedLayer={selectedLayer}
-        layer={layer}
         width={width}
         height={height}
         mapSize={mapSize}
         tileSize={100}
+        visibleLayers={visibleLayers}
       />
     </section>
   );
