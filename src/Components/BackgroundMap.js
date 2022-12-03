@@ -12,6 +12,7 @@ const BackgroundMap = ({
   height,
   mapSize,
   tileSize,
+  visibleLayers,
 }) => {
   const [mapa, setMapa] = React.useState([{}]);
   const { theme } = React.useContext(ThemesContext);
@@ -71,6 +72,7 @@ const BackgroundMap = ({
                 {...tile}
                 key={`tile_${tile.x}_${tile.y}`}
                 onClick={() => handleClick(tile.x, tile.y)}
+                visibleLayers={visibleLayers}
               />
             );
           })}
