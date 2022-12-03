@@ -1,0 +1,11 @@
+.visibleHiddenLayers {
+  display: grid;
+  grid-template-columns: 25px 1fr;
+  grid-template-rows: auto;
+  justify-self: center;
+}
+.visibleLayerLabel {
+  font-family: cursive;
+  margin: 2px 0 0 8px;
+  justify-self: left;
+}
