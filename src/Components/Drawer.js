@@ -6,7 +6,7 @@ const Drawer = ({
   drawerPosition,
   setDrawerPosition,
   platform,
-  divToolsContainerWidth,
+  divTilesContainerWidth,
   transition,
   setTransition,
 }) => {
@@ -14,7 +14,7 @@ const Drawer = ({
     const coord = e.changedTouches?.[0]?.clientX || e.clientX;
     if (coord !== 0)
       setDrawerPosition(
-        Math.max(Math.min(divToolsContainerWidth, windowsWidth - coord), 0)
+        Math.max(Math.min(divTilesContainerWidth, windowsWidth - coord), 0)
       );
   }
   const handleTransition = () => {
@@ -27,9 +27,9 @@ const Drawer = ({
     const coord = e.changedTouches?.[0]?.clientX || e.clientX;
     setTransition(true);
     setDrawerPosition(
-      e.view.innerWidth - coord > divToolsContainerWidth / 2
-        ? Math.max(divToolsContainerWidth, 0)
-        : Math.min(divToolsContainerWidth, 0)
+      e.view.innerWidth - coord > divTilesContainerWidth / 2
+        ? Math.max(divTilesContainerWidth, 0)
+        : Math.min(divTilesContainerWidth, 0)
     );
   };
   return (
