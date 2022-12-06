@@ -10,7 +10,7 @@
 }
 .divTilesContainer {
   display: grid;
-  grid-template-rows: 210px minmax(10px, 1fr);
+  grid-template-rows: 60px 210px minmax(10px, 1fr);
   box-sizing: border-box;
   max-height: calc(100vh - 115px);
 }
