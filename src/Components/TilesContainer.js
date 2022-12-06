@@ -5,6 +5,7 @@ import ChangePageButtons from "./ChangePageButtons";
 import NavButton from "./NavButton";
 import Drawer from "./Drawer";
 import ThemeContext from "../constants/ThemesContext";
+import ToolsContainer from "./ToolsContainer";
 
 import "../Styles/toolContainer.css";
 import "../Styles/globalStyles.css";
@@ -68,6 +69,7 @@ const TilesContainer = ({
         transition: transition ? "400ms linear" : "none",
       }}
     >
+      <ToolsContainer />
       <NavButton
         platform={platform}
         visibility={visibility}
