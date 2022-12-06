@@ -7,7 +7,7 @@ import Drawer from "./Drawer";
 import ThemeContext from "../constants/ThemesContext";
 import ToolsContainer from "./ToolsContainer";
 
-import "../Styles/toolContainer.css";
+import "../Styles/tilesContainer.css";
 import "../Styles/globalStyles.css";
 
 const platform = navigator.userAgentData.platform;
