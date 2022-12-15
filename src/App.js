@@ -3,13 +3,16 @@ import "./App.css";
 import SectionContainer from "./Components/SectionContainer";
 import Header from "./Components/Header";
 import { ThemesProvider } from "./constants/ThemesContext";
+import { CursorsProvider } from "./constants/CursorsContext";
 
 function App() {
   return (
     <div className="App">
       <ThemesProvider>
-        <Header />
-        <SectionContainer />
+        <CursorsProvider>
+          <Header />
+          <SectionContainer />
+        </CursorsProvider>
       </ThemesProvider>
     </div>
   );
