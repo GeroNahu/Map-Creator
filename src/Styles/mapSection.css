@@ -3,6 +3,7 @@
   justify-content: center;
 }
 .mapHeader {
+  display: grid;
   padding: 16px;
 }
 .mapSelectorsContainer {
