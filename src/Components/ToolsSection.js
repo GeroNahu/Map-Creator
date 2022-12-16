@@ -1,7 +1,7 @@
 import React from "react";
 
 import { tilesThemes } from "../constants/tilesThemes";
-import ChangePageButtons from "./ChangePageButtons";
+import CategoryButtons from "./CategoryButtons";
 import NavButton from "./NavButton";
 import Drawer from "./Drawer";
 import ThemeContext from "../constants/ThemesContext";
@@ -163,7 +163,7 @@ const ToolsSection = ({
         </div>
       </div>
       <div className="buttosAndTiles">
-        <ChangePageButtons setImages={handleSelect} themes={listaTemas} />
+        <CategoryButtons setImages={handleSelect} themes={listaTemas} />
         <div
           className="tilesContainerDad"
           style={{
