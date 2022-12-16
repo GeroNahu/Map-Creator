@@ -15,8 +15,8 @@ const CategoryButton = ({
       className="categoryButtonBackground"
       style={{
         background: selectedCategory
-          ? theme.THEME_BUTTONS_BACKGROUND_ON
-          : theme.THEME_BUTTONS_BACKGROUND,
+          ? theme.BUTTONS_BACKGROUND_ON
+          : theme.BUTTONS_BACKGROUND,
       }}
     >
       <button
@@ -29,7 +29,7 @@ const CategoryButton = ({
         }}
         style={{
           backgroundColor: "transparent",
-          outline: `solid ${theme.THEME_BUTTONS_BORDER} 1px`,
+          outline: `solid ${theme.BUTTONS_BORDER} 1px`,
           color: theme.TEXT_PRIMARY,
         }}
       >
