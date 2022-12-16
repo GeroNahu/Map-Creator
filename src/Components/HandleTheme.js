@@ -16,6 +16,7 @@ const HandleTheme = () => {
         setTheme(onOff ? "light" : "dark");
       }}
       style={{
+        display: theme.SHOWN_HIDDEN_HANDLE_THEME,
         backgroundColor: theme.TOOGLE_CONTAINER_BACKGROUND,
         border: `solid ${theme.TOOGLE_CONTAINER_BORDER} 3px`,
       }}
