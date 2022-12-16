@@ -1,6 +1,5 @@
 export const tilesThemes = {
   medieval: [
-    ``,
     `url(${require(`../Images/Medievales/0.jpg`)})`,
     `url(${require(`../Images/Medievales/1.jpg`)})`,
     `url(${require(`../Images/Medievales/2.jpg`)})`,
@@ -40,14 +39,15 @@ export const tilesThemes = {
     `url(${require(`../Images/Medievales/4.png`)})`,
   ],
   futurist: [
-    `url(${require(`../Images/borrador.png`)})`,
     `url(${require(`../Images/Futuristas/0.jpg`)})`,
     `url(${require(`../Images/Futuristas/1.jpg`)})`,
     `url(${require(`../Images/Futuristas/2.jpg`)})`,
   ],
   contemporany: [
-    `url(${require(`../Images/borrador.png`)})`,
     `url(${require(`../Images/Contemporaneo/Playa0.jpg`)})`,
+    `url(${require(`../Images/Contemporaneo/mar2.jpg`)})`,
+    `url(${require(`../Images/Contemporaneo/mar0.jpg`)})`,
+    `url(${require(`../Images/Contemporaneo/mar1.jpg`)})`,
     `url(${require(`../Images/Contemporaneo/Playa1.jpg`)})`,
     `url(${require(`../Images/Contemporaneo/Playa2.jpg`)})`,
     `url(${require(`../Images/Contemporaneo/Playa3.jpg`)})`,
@@ -80,9 +80,6 @@ export const tilesThemes = {
     `url(${require(`../Images/Contemporaneo/Playa30.jpg`)})`,
     `url(${require(`../Images/Contemporaneo/Playa31.jpg`)})`,
     `url(${require(`../Images/Contemporaneo/Playa32.jpg`)})`,
-    `url(${require(`../Images/Contemporaneo/mar0.jpg`)})`,
-    `url(${require(`../Images/Contemporaneo/mar1.jpg`)})`,
-    `url(${require(`../Images/Contemporaneo/mar2.jpg`)})`,
     `url(${require(`../Images/Contemporaneo/mar3.jpg`)})`,
     `url(${require(`../Images/Contemporaneo/mar4.jpg`)})`,
     `url(${require(`../Images/Contemporaneo/mar5.jpg`)})`,
