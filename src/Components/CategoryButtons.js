@@ -1,9 +1,9 @@
 import React from "react";
-import CategoryButton from "./ChangepageButton";
+import CategoryButton from "./CategoryButton";
 
 import "../Styles/changePageButton.css";
 
-const ChangePageButtons = ({ themes, setImages }) => {
+const CategoryButtons = ({ themes, setImages }) => {
   const [selectedCategory, setSelectedCategory] = React.useState("medieval");
 
   const buttons = themes.map((theme) => (
@@ -18,4 +18,4 @@ const ChangePageButtons = ({ themes, setImages }) => {
   return <div className="categoryTilesButtonsContainer">{buttons}</div>;
 };
 
-export default ChangePageButtons;
+export default CategoryButtons;
