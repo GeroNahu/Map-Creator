@@ -15,9 +15,9 @@ const NavButton = ({ visibility, setVisibility, platform }) => {
         display: platform === "Windows" ? "fixed" : "none",
       }}
     >
-      <span className="hamburguerMenuIcon" />
-      <span className="hamburguerMenuIcon" />
-      <span className="hamburguerMenuIcon" />
+      <span className="burguerMenuIcon" />
+      <span className="burguerMenuIcon" />
+      <span className="burguerMenuIcon" />
     </button>
   );
 };

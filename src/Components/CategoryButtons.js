@@ -1,7 +1,7 @@
 import React from "react";
 import CategoryButton from "./CategoryButton";
 
-import "../Styles/changePageButton.css";
+import "../Styles/categoryButton.css";
 
 const CategoryButtons = ({ themes, setImages }) => {
   const [selectedCategory, setSelectedCategory] = React.useState("medieval");

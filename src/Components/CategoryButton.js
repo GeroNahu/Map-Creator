@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/changePageButton.css";
+import "../Styles/categoryButton.css";
 import ThemeContext from "../constants/ThemesContext";
 
 const CategoryButton = ({
@@ -12,7 +12,7 @@ const CategoryButton = ({
 
   return (
     <div
-      className="changePageButtonBackground"
+      className="categoryButtonBackground"
       style={{
         background: selectedCategory
           ? theme.THEME_BUTTONS_BACKGROUND_ON
@@ -20,8 +20,8 @@ const CategoryButton = ({
       }}
     >
       <button
-        className={`changePageButton ${
-          selectedCategory ? "changePageButtonOn" : ""
+        className={`categoryButton ${
+          selectedCategory ? "categoryButtonOn" : ""
         }`}
         onClick={() => {
           setImages(buttonLabel);
