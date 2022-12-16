@@ -12,11 +12,11 @@
   font-weight: 600;
   border-radius: 5%;
   text-transform: capitalize;
-  box-shadow: 3px 3px;
+  box-shadow: black 3px 3px;
   margin: 2px 1px;
 }
 .categoryButtonOn {
-  box-shadow: -3px -3px;
+  box-shadow: black -3px -3px;
 }
 .categoryTilesButtonsContainer {
   justify-content: center;
