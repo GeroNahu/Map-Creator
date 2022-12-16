@@ -1,0 +1,82 @@
+.tilesContainerDad {
+  box-sizing: border-box;
+  height: -webkit-fill-available;
+  justify-self: center;
+  max-width: 326px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.tilesContainer {
+  display: grid;
+  grid-auto-rows: 80px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-template-columns: repeat(4, 80px);
+  max-height: 100%;
+  min-width: 320px;
+}
+.tiles {
+  background-color: transparent;
+  display: flex;
+  grid-area: auto;
+}
+.selectedToolContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.selectedLayerContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.selectedTool {
+  display: flex;
+  height: 100px;
+  width: 100px;
+}
+.headerToolContainer {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 12px;
+  width: 100%;
+}
+.form {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  grid-template-rows: auto;
+  padding: 5px;
+}
+.formInput {
+  margin: 2px 2px 3px 2px;
+}
+.formInputTitle {
+  font-family: cursive;
+  padding: 2px 2px 5px 2px;
+}
+.buttosAndTiles {
+  align-items: center;
+  display: grid;
+  grid-template-rows: 45px 1fr;
+  padding-bottom: 16px;
+}
+.tilesCanvas {
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+@media only screen and (max-width: 1200px) {
+  .divToolsSection {
+    position: fixed;
+    min-width: max-content;
+  }
+  .shown {
+    right: 0;
+  }
+  .hidden {
+    right: -100%;
+  }
+}
