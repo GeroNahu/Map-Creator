@@ -7,16 +7,17 @@ import Drawer from "./Drawer";
 import ThemeContext from "../constants/ThemesContext";
 import ToolsContainer from "./ToolsContainer";
 
-import "../Styles/tilesContainer.css";
+import "../Styles/toolsSection.css";
 import "../Styles/globalStyles.css";
 
 const platform = navigator.userAgentData.platform;
 
-const TilesContainer = ({
+const ToolsSection = ({
   onImageSelect,
   selectedImage,
   onLayerSelect,
   selectedLayer,
+  handleToolChange,
 }) => {
   const ref = React.useRef(null);
 
@@ -25,10 +26,8 @@ const TilesContainer = ({
   const [drawerPosition, setDrawerPosition] = React.useState(0);
   const { theme } = React.useContext(ThemeContext);
 
-  const divTilesContainerWidth = ref.current?.clientWidth;
+  const divToolsSectionWidth = ref.current?.clientWidth;
   const [transition, setTransition] = React.useState(true);
-
-  const [tileImage, setTileImage] = React.useState("");
 
   const handleSelect = (theme) => {
     setImages(tilesThemes[theme]);
@@ -59,8 +58,8 @@ const TilesContainer = ({
 
   return (
     <section
-      className={`divTilesContainer  ${showHideClass}`}
-      id="divTilesContainer"
+      className={`divToolsSection  ${showHideClass}`}
+      id="divToolsSection"
       ref={ref}
       style={{
         backgroundColor: theme.TOOLS_SECTION_BACKGROUND,
@@ -69,7 +68,6 @@ const TilesContainer = ({
         transition: transition ? "400ms linear" : "none",
       }}
     >
-      <ToolsContainer />
       <NavButton
         platform={platform}
         visibility={visibility}
@@ -79,9 +77,14 @@ const TilesContainer = ({
         drawerPosition={drawerPosition}
         setDrawerPosition={setDrawerPosition}
         platform={platform}
-        divTilesContainerWidth={divTilesContainerWidth}
+        divToolsSectionWidth={divToolsSectionWidth}
         transition={transition}
         setTransition={setTransition}
+      />
+      <ToolsContainer
+        selectedImage={selectedImage}
+        onImageSelect={onImageSelect}
+        handleToolChange={handleToolChange}
       />
       <div className="headerToolContainer">
         <div className="selectedToolContainer">
@@ -93,7 +96,8 @@ const TilesContainer = ({
             style={{
               backgroundColor: theme.SELECTED_TOOL_BACKGROUND,
               backgroundImage: selectedImage,
-              backgroundSize: "contain",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
               border: `solid ${theme.SELECTED_TOOL_BORDER} 3px`,
             }}
           />
@@ -174,4 +178,4 @@ const TilesContainer = ({
   );
 };
 
-export default TilesContainer;
+export default ToolsSection;
