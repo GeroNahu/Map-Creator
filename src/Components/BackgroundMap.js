@@ -13,6 +13,7 @@ const BackgroundMap = ({
   mapSize,
   tileSize,
   visibleLayers,
+  tool,
 }) => {
   const [mapa, setMapa] = React.useState([{}]);
   const { theme } = React.useContext(ThemesContext);
@@ -33,16 +34,8 @@ const BackgroundMap = ({
     setMapa(newMap);
   }, [width, height]);
 
-  const handleClick = (x, y) => {
-    setMapa(
-      mapa.map((tile) => {
-        const newTile = { ...tile };
-        if (tile.x === x && tile.y === y) {
-          newTile.layers[selectedLayer] = selected;
-        }
-        return newTile;
-      })
-    );
+  const handleClick = (tile) => {
+    tool({ tile, setMapa, mapa, selectedLayer, selectedImage: selected });
   };
 
   return (
@@ -71,7 +64,7 @@ const BackgroundMap = ({
               <Tile
                 {...tile}
                 key={`tile_${tile.x}_${tile.y}`}
-                onClick={() => handleClick(tile.x, tile.y)}
+                onClick={() => handleClick(tile)}
                 visibleLayers={visibleLayers}
               />
             );
