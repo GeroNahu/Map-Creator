@@ -9,7 +9,7 @@ import "../Styles/globalStyles.css";
 import "../Styles/mapSection.css";
 import VisibilityLayers from "./VisibilityLayers";
 
-const MapSection = ({ selected, selectedLayer, setSelectedLayer }) => {
+const MapSection = ({ selected, selectedLayer, setSelectedLayer, tool }) => {
   const [width, setWidth] = React.useState(1);
   const [height, setHeight] = React.useState(1);
   const [mapSize, setMapSize] = React.useState(100);
@@ -72,6 +72,7 @@ const MapSection = ({ selected, selectedLayer, setSelectedLayer }) => {
         mapSize={mapSize}
         tileSize={100}
         visibleLayers={visibleLayers}
+        tool={tool}
       />
     </section>
   );
