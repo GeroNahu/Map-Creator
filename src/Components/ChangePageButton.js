@@ -2,22 +2,41 @@ import React from "react";
 import "../Styles/changePageButton.css";
 import ThemeContext from "../constants/ThemesContext";
 
-const ChangePageButton = ({ buttonLabel, setImages }) => {
+const CategoryButton = ({
+  buttonLabel,
+  setImages,
+  setSelectedCategory,
+  selectedCategory,
+}) => {
   const { theme } = React.useContext(ThemeContext);
 
   return (
-    <button
-      className="changePageButton"
-      onClick={setImages}
+    <div
+      className="changePageButtonBackground"
       style={{
-        backgroundColor: theme.THEME_BUTTONS_BACKGROUND,
-        border: `solid ${theme.THEME_BUTTONS_BORDER} 3px`,
-        color: theme.TEXT_PRIMARY,
+        background: selectedCategory
+          ? theme.THEME_BUTTONS_BACKGROUND_ON
+          : theme.THEME_BUTTONS_BACKGROUND,
       }}
     >
-      {buttonLabel}
-    </button>
+      <button
+        className={`changePageButton ${
+          selectedCategory ? "changePageButtonOn" : ""
+        }`}
+        onClick={() => {
+          setImages(buttonLabel);
+          setSelectedCategory(buttonLabel);
+        }}
+        style={{
+          backgroundColor: "transparent",
+          outline: `solid ${theme.THEME_BUTTONS_BORDER} 1px`,
+          color: theme.TEXT_PRIMARY,
+        }}
+      >
+        {buttonLabel}
+      </button>
+    </div>
   );
 };
 
-export default ChangePageButton;
+export default CategoryButton;
