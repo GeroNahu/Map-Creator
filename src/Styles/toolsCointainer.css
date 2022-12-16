@@ -1,9 +1,49 @@
 .toolsContainer {
+  display: flex;
+  flex-direction: column;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(4 60px);
+  grid-auto-rows: 60px;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+}
+.buttonsContainer {
   display: grid;
-  grid-auto-columns: 40px;
-  grid-auto-rows: 40px;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
   align-items: center;
   justify-items: center;
 }
+.backgroundButton {
+  align-items: center;
+  background: linear-gradient(125deg, #ffffff, #8c8c8c, #8c8c8c, #8c8c8c);
+  border-radius: 50%;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  margin: 15px 5px;
+  width: 50px;
+}
+.backgroundButtonOn {
+  background: linear-gradient(
+    125deg,
+    #6c6c6c,
+    #6c6c6c,
+    #6c6c6c,
+    #6c6c6c,
+    #6c6c6c,
+    #cccccc,
+    #cccccc
+  );
+}
 .toolButton {
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 3px 3px;
+  height: 45px;
+  width: 45px;
+}
+.toolButtonOn {
+  box-shadow: -3px -3px;
 }
