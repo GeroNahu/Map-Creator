@@ -61,7 +61,7 @@ const defaultThemes = {
     SELECTED_TOOL_BORDER: "#ffffff",
     LAYER_SELECTOR_BORDER: "#ffffff",
     TOOLS_CONTAINER_BORDER: "#ffffff",
-    CATEGORY_BUTTONS_BORDER: "#FFFFFF",
+    CATEGORY_BUTTONS_BORDER: "#000000",
     TILE_GRID_COLOR: "#ffffff",
     TOOLS_GRID_COLOR: "#ffffff",
   },
