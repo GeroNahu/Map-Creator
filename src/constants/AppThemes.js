@@ -15,10 +15,9 @@ const defaultThemes = {
     TOOLS_SECTION_BACKGROUND: "#B87E7E",
     SELECTED_TOOL_BACKGROUND: "#EAC1C1",
     LAYER_SELECTOR_BACKGROUND: "#EAC1C1",
-    THEME_BUTTONS_BACKGROUND_COLOR: "#8c8c8c",
-    THEME_BUTTONS_BACKGROUND:
+    CATEGORY_BUTTONS_BACKGROUND:
       "linear-gradient(155deg, #ffffff, #8e8e8e, #8e8e8e, #8c8c8c, #9c9c9c, #8c8c8c, #8c8c8c)",
-    THEME_BUTTONS_BACKGROUND_ON:
+    CATEGORY_BUTTONS_BACKGROUND_ON:
       "linear-gradient(165deg, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5e5e5e, #9c9c9c, #cccccc)",
     TOOLS_CONTAINER_BACKGROUND: "#EAC1C1",
     HEADER_BORDER: "#000000",
@@ -29,7 +28,7 @@ const defaultThemes = {
     SELECTED_TOOL_BORDER: "#000000",
     LAYER_SELECTOR_BORDER: "#000000",
     TOOLS_CONTAINER_BORDER: "#000000",
-    THEME_BUTTONS_BORDER: "#000000",
+    CATEGORY_BUTTONS_BORDER: "#000000",
     TILE_GRID_COLOR: "#000000",
     TOOLS_GRID_COLOR: "#000000",
   },
@@ -49,11 +48,10 @@ const defaultThemes = {
     TOOLS_SECTION_BACKGROUND: "#323232",
     SELECTED_TOOL_BACKGROUND: "#555555",
     LAYER_SELECTOR_BACKGROUND: "#555555",
-    THEME_BUTTONS_BACKGROUND_COLOR: "#8c8c8c",
-    THEME_BUTTONS_BACKGROUND:
-      "linear-gradient(165deg, #ffffff, #8c8c8c, #8c8c8c, #8c8c8c, #8c8c8c, #8c8c8c, #8c8c8c)",
-    THEME_BUTTONS_BACKGROUND_ON:
-      "linear-gradient(175deg, #6c6c6c, #6c6c6c, #6c6c6c, #6c6c6c, #6c6c6c, #6c6c6c, #6c6c6c, #9c9c9c, #cccccc)",
+    CATEGORY_BUTTONS_BACKGROUND:
+      "linear-gradient(155deg, #ffffff, #8e8e8e, #8e8e8e, #8c8c8c, #9c9c9c, #8c8c8c, #8c8c8c)",
+    CATEGORY_BUTTONS_BACKGROUND_ON:
+      "linear-gradient(165deg, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5e5e5e, #9c9c9c, #cccccc)",
     TOOLS_CONTAINER_BACKGROUND: "#555555",
     HEADER_BORDER: "#ffffff",
     TOOGLE_CONTAINER_BORDER: "#ffffff",
@@ -63,7 +61,7 @@ const defaultThemes = {
     SELECTED_TOOL_BORDER: "#ffffff",
     LAYER_SELECTOR_BORDER: "#ffffff",
     TOOLS_CONTAINER_BORDER: "#ffffff",
-    THEME_BUTTONS_BORDER: "#FFFFFF",
+    CATEGORY_BUTTONS_BORDER: "#FFFFFF",
     TILE_GRID_COLOR: "#ffffff",
     TOOLS_GRID_COLOR: "#ffffff",
   },
