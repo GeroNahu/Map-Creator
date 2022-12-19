@@ -10,6 +10,10 @@
 }
 .divToolsSection {
   display: grid;
+  grid-template-areas:
+    "tools selectedTile"
+    "layers layers"
+    "tilesContainer tilesContainer";
   grid-template-rows: 170px 200px minmax(10px, 1fr);
   box-sizing: border-box;
   max-height: calc(100vh - 115px);
