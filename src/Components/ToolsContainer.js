@@ -13,9 +13,6 @@ const ToolsContainer = ({ handleToolChange }) => {
 
   return (
     <section className="toolsContainer">
-      <h2 className="h2" style={{ color: theme.TITLES }}>
-        Tools
-      </h2>
       <div
         className="buttonsContainer"
         style={{
@@ -34,7 +31,7 @@ const ToolsContainer = ({ handleToolChange }) => {
             }`}
             style={{
               backgroundImage: `url(${require(`../Images/Icons/pen.png`)})`,
-              backgroundSize: "36px",
+              backgroundSize: "31px",
               backgroundPosition: "center",
             }}
             onClick={() => {
@@ -55,7 +52,7 @@ const ToolsContainer = ({ handleToolChange }) => {
             }`}
             style={{
               backgroundImage: `url(${require(`../Images/Icons/trash can.png`)})`,
-              backgroundSize: "37px",
+              backgroundSize: "32px",
               backgroundPosition: "center",
             }}
             onClick={() => {
@@ -76,7 +73,7 @@ const ToolsContainer = ({ handleToolChange }) => {
             }`}
             style={{
               backgroundImage: `url(${require(`../Images/Icons/eyedropper.png`)})`,
-              backgroundSize: "34px",
+              backgroundSize: "30px",
               backgroundPosition: "center",
             }}
             onClick={() => {
