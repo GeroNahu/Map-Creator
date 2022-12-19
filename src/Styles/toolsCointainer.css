@@ -4,7 +4,6 @@
   grid-area: tools;
   align-items: center;
   justify-content: center;
-  padding: 12px;
 }
 .buttonsContainer {
   display: grid;
