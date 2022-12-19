@@ -24,25 +24,20 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  grid-area: selectedTile;
 }
 .selectedLayerContainer {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  grid-area: layers;
 }
 .selectedTool {
   display: flex;
   height: 100px;
   width: 100px;
-}
-.headerToolContainer {
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 12px;
-  width: 100%;
 }
 .form {
   display: grid;
@@ -60,6 +55,7 @@
 .buttosAndTiles {
   align-items: center;
   display: grid;
+  grid-area: tilesContainer;
   grid-template-rows: 45px 1fr;
   padding-bottom: 16px;
 }
