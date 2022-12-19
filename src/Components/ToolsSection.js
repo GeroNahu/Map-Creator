@@ -86,80 +86,72 @@ const ToolsSection = ({
         onImageSelect={onImageSelect}
         handleToolChange={handleToolChange}
       />
-      <div className="headerToolContainer">
-        <div className="selectedToolContainer">
-          <h2 className="h2" style={{ color: theme.TITLES }}>
-            Tiles
-          </h2>
-          <div
-            className="selectedTool"
+      <div className="selectedToolContainer">
+        <div
+          className="selectedTool"
+          style={{
+            backgroundColor: theme.SELECTED_TOOL_BACKGROUND,
+            backgroundImage: selectedImage,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            border: `solid ${theme.SELECTED_TOOL_BORDER} 3px`,
+          }}
+        />
+      </div>
+      <div className="selectedLayerContainer">
+        <div>
+          <form
+            onChange={(e) => onLayerSelect(e.target.value)}
+            defaultValue={selectedLayer}
+            className="form"
             style={{
-              backgroundColor: theme.SELECTED_TOOL_BACKGROUND,
-              backgroundImage: selectedImage,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              border: `solid ${theme.SELECTED_TOOL_BORDER} 3px`,
+              backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
+              border: `solid ${theme.LAYER_SELECTOR_BORDER} 3px`,
             }}
-          />
-        </div>
-        <div className="selectedLayerContainer">
-          <h2 className="h2" style={{ color: theme.TITLES }}>
-            Layer
-          </h2>
-          <div>
-            <form
-              onChange={(e) => onLayerSelect(e.target.value)}
-              defaultValue={selectedLayer}
-              className="form"
-              style={{
-                backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
-                border: `solid ${theme.LAYER_SELECTOR_BORDER} 3px`,
-              }}
+          >
+            <input
+              className="formInput"
+              type="radio"
+              id="layer1"
+              value="0"
+              name="layer"
+            />
+            <label
+              className="formInputTitle"
+              htmlFor="layer1"
+              style={{ color: theme.TEXT_PRIMARY }}
             >
-              <input
-                className="formInput"
-                type="radio"
-                id="layer1"
-                value="0"
-                name="layer"
-              />
-              <label
-                className="formInputTitle"
-                htmlFor="layer1"
-                style={{ color: theme.TEXT_PRIMARY }}
-              >
-                Layer 1
-              </label>
-              <input
-                className="formInput"
-                type="radio"
-                id="layer2"
-                value="1"
-                name="layer"
-              />
-              <label
-                className="formInputTitle"
-                htmlFor="layer2"
-                style={{ color: theme.TEXT_PRIMARY }}
-              >
-                Layer 2
-              </label>
-              <input
-                className="formInput"
-                type="radio"
-                id="layer3"
-                value="2"
-                name="layer"
-              />
-              <label
-                className="formInputTitle"
-                htmlFor="layer3"
-                style={{ color: theme.TEXT_PRIMARY }}
-              >
-                Layer 3
-              </label>
-            </form>
-          </div>
+              Layer 1
+            </label>
+            <input
+              className="formInput"
+              type="radio"
+              id="layer2"
+              value="1"
+              name="layer"
+            />
+            <label
+              className="formInputTitle"
+              htmlFor="layer2"
+              style={{ color: theme.TEXT_PRIMARY }}
+            >
+              Layer 2
+            </label>
+            <input
+              className="formInput"
+              type="radio"
+              id="layer3"
+              value="2"
+              name="layer"
+            />
+            <label
+              className="formInputTitle"
+              htmlFor="layer3"
+              style={{ color: theme.TEXT_PRIMARY }}
+            >
+              Layer 3
+            </label>
+          </form>
         </div>
       </div>
       <div className="buttosAndTiles">
