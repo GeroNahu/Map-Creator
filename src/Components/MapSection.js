@@ -3,7 +3,7 @@ import React from "react";
 import BackgroundMap from "./BackgroundMap";
 import ZoomSelector from "./ZoomSelector";
 import GridSizeSelector from "./GridSizeSelector";
-import ThemesContext from "../constants/ThemesContext";
+import ThemesContext from "../Contexts/ThemesContext";
 
 import "../Styles/globalStyles.css";
 import "../Styles/mapSection.css";

@@ -1,6 +1,6 @@
 import React from "react";
 import "../Styles/categoryButton.css";
-import ThemeContext from "../constants/ThemesContext";
+import ThemeContext from "../Contexts/ThemesContext";
 
 const CategoryButton = ({
   buttonLabel,

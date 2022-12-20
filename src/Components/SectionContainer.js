@@ -14,7 +14,7 @@ const SectionContainer = () => {
       mapa?.map((tile) => {
         const newTile = { ...tile };
         if (tile.x === currentTile.x && tile.y === currentTile.y) {
-          newTile.layers[selectedLayer] = image;
+          newTile.layers[selectedLayer].url = image;
         }
         return newTile;
       })

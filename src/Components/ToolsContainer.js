@@ -1,7 +1,7 @@
 import React from "react";
 
-import ThemeContext from "../constants/ThemesContext";
-import CursorsContext from "../constants/CursorsContext";
+import ThemeContext from "../Contexts/ThemesContext";
+import CursorsContext from "../Contexts/CursorsContext";
 
 import "../Styles/toolsCointainer.css";
 

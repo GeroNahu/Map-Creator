@@ -3,7 +3,7 @@ import React from "react";
 import Tile from "./Tile";
 
 import "../Styles/backgroundMap.css";
-import ThemesContext from "../constants/ThemesContext";
+import ThemesContext from "../Contexts/ThemesContext";
 
 const BackgroundMap = ({
   selected,

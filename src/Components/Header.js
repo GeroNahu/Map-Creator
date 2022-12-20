@@ -1,6 +1,6 @@
 import React from "react";
 
-import ThemesContext from "../constants/ThemesContext";
+import ThemesContext from "../Contexts/ThemesContext";
 
 const Header = () => {
   const { theme } = React.useContext(ThemesContext);

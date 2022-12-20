@@ -1,6 +1,6 @@
 import React from "react";
-import ThemesContext from "../constants/ThemesContext";
-import CursorsContext from "../constants/CursorsContext";
+import ThemesContext from "../Contexts/ThemesContext";
+import CursorsContext from "../Contexts/CursorsContext";
 
 const Tile = ({ x, y, layers = [], visibleLayers, ...rest }) => {
   const { theme } = React.useContext(ThemesContext);
