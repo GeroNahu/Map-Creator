@@ -1,6 +1,6 @@
 import React from "react";
 
-import defaultThemes from "./AppThemes";
+import defaultThemes from "../constants/AppThemes";
 
 const ThemesContext = React.createContext();
 

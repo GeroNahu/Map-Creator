@@ -1,6 +1,6 @@
 import React from "react";
 
-import cursors from "./AppCursors";
+import cursors from "../constants/AppCursors";
 
 const CursorsContext = React.createContext();
 
