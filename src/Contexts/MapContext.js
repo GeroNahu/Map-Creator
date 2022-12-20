@@ -3,9 +3,9 @@ import React from "react";
 const MapContext = React.createContext();
 
 const MapProvider = ({ children }) => {
-  const [mapa, setMapa] = React.useState("");
+  const [map, setMap] = React.useState("");
 
-  const data = { mapa, setMapa };
+  const data = { map, setMap };
 
   return <MapContext.Provider value={data}>{children}</MapContext.Provider>;
 };
