@@ -18,6 +18,7 @@ const BackgroundMap = ({
 }) => {
   const { theme } = React.useContext(ThemesContext);
   const { map, setMap } = React.useContext(MapContext);
+  const [click, setClick] = React.useState(false);
 
   React.useEffect(() => {
     const newTiles = [];
@@ -47,7 +48,7 @@ const BackgroundMap = ({
         border: `solid ${theme.MAP_BORDER} 3px`,
       }}
     >
-      <div className="mapCanvas">
+      <div className="mapCanvas" onMouseLeave={() => setClick(false)}>
         <div
           className="backgroundMap"
           style={{
@@ -65,7 +66,14 @@ const BackgroundMap = ({
               <Tile
                 {...tile}
                 key={`tile_${tile.x}_${tile.y}`}
-                onClick={() => handleClick(tile)}
+                onMouseDown={() => {
+                  handleClick(tile);
+                  setClick(true);
+                }}
+                onMouseEnter={() => {
+                  if (click) handleClick(tile);
+                }}
+                onMouseUp={() => setClick(false)}
                 visibleLayers={visibleLayers}
               />
             );
