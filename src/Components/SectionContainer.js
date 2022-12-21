@@ -15,15 +15,16 @@ const SectionContainer = () => {
   const { setCursor } = React.useContext(CursorsContext);
 
   const paintTile = ({ map, setMap, tile: currentTile, image }) => {
-    setMap?.(
-      map?.map((tile) => {
+    setMap?.({
+      ...map,
+      tiles: map?.tiles?.map((tile) => {
         const newTile = { ...tile };
         if (tile.x === currentTile.x && tile.y === currentTile.y) {
           newTile.layers[selectedLayer] = image;
         }
         return newTile;
-      })
-    );
+      }),
+    });
   };
 
   const tools = {
