@@ -10,12 +10,12 @@ function App() {
   return (
     <div className="App">
       <ThemesProvider>
-        <CursorsProvider>
-          <MapProvider>
+        <MapProvider>
+          <CursorsProvider>
             <Header />
-          </MapProvider>
-          <SectionContainer />
-        </CursorsProvider>
+            <SectionContainer />
+          </CursorsProvider>
+        </MapProvider>
       </ThemesProvider>
     </div>
   );
