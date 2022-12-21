@@ -39,7 +39,6 @@ const BackgroundMap = ({
   const handleClick = (tile) => {
     tool({ tile, setMap, map, selectedLayer, selectedImage: selected });
   };
-  console.log(map);
   return (
     <div
       className="backgroundMapContainer"
