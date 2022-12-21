@@ -4,31 +4,41 @@ import MapSection from "./MapSection";
 import ToolsSection from "./ToolsSection";
 import HandleTheme from "./HandleTheme";
 
+import CursorsContext from "../Contexts/CursorsContext";
+
 import "../Styles/sectionContainer.css";
 
 const SectionContainer = () => {
   const [selectedImage, setSelectedImage] = React.useState("");
   const [selectedLayer, setSelectedLayer] = React.useState(0);
-  const paintTile = ({ mapa, setMapa, tile: currentTile, image }) => {
-    setMapa?.(
-      mapa?.map((tile) => {
+
+  const { setCursor } = React.useContext(CursorsContext);
+
+  const paintTile = ({ map, setMap, tile: currentTile, image }) => {
+    setMap?.(
+      map?.map((tile) => {
         const newTile = { ...tile };
         if (tile.x === currentTile.x && tile.y === currentTile.y) {
-          newTile.layers[selectedLayer].url = image;
+          newTile.layers[selectedLayer] = image;
         }
         return newTile;
       })
     );
   };
+
   const tools = {
-    ereaser: ({ mapa, setMapa, tile: currentTile }) => {
-      paintTile({ mapa, setMapa, tile: currentTile, image: "" });
+    pen: ({ map, setMap, tile: currentTile }) => {
+      paintTile({ map, setMap, tile: currentTile, image: selectedImage });
     },
-    pen: ({ mapa, setMapa, tile: currentTile }) => {
-      paintTile({ mapa, setMapa, tile: currentTile, image: selectedImage });
+    eraser: ({ map, setMap, tile: currentTile }) => {
+      paintTile({ map, setMap, tile: currentTile, image: "" });
     },
-    dropper: ({ tile }) => setSelectedImage(tile?.layers?.[selectedLayer]),
+    eyedropper: ({ tile }) => {
+      setSelectedImage(tile?.layers?.[selectedLayer]);
+      handleToolChange("pen");
+    },
   };
+  const toolsList = Object.keys(tools);
 
   const [tool, setTool] = React.useState("pen");
 
@@ -37,6 +47,10 @@ const SectionContainer = () => {
     selectedImage,
     selectedLayer,
   ]);
+
+  React.useEffect(() => {
+    return setCursor(tool);
+  }, [tool]);
 
   const handleToolChange = (tool) => {
     setTool(tool);
@@ -57,6 +71,8 @@ const SectionContainer = () => {
         selectedLayer={selectedLayer}
         tool={tool}
         handleToolChange={handleToolChange}
+        toolsList={toolsList}
+        selectedTool={tool}
       />
     </div>
   );
