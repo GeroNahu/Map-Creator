@@ -4,6 +4,7 @@ import Tile from "./Tile";
 
 import "../Styles/backgroundMap.css";
 import ThemesContext from "../Contexts/ThemesContext";
+import MapContext from "../Contexts/MapContext";
 
 const BackgroundMap = ({
   selected,
@@ -15,29 +16,30 @@ const BackgroundMap = ({
   visibleLayers,
   tool,
 }) => {
-  const [mapa, setMapa] = React.useState([{}]);
   const { theme } = React.useContext(ThemesContext);
+  const { map, setMap } = React.useContext(MapContext);
+
   React.useEffect(() => {
-    const newMap = [];
+    const newTiles = [];
     for (let i = 0; i < width * height; i++) {
       const x = i + 1 - Math.floor(i / width) * width;
       const y = Math.ceil((i + 1) / width);
-      const layers = mapa.find((tile) => {
+      const layers = map?.tiles?.find((tile) => {
         return tile.x === x && tile.y === y;
       })?.layers;
-      newMap.push({
+      newTiles.push({
         x,
         y,
         layers: layers || ["", "", ""],
       });
     }
-    setMapa(newMap);
+    setMap({ ...map, tiles: newTiles });
   }, [width, height]);
 
   const handleClick = (tile) => {
-    tool({ tile, setMapa, mapa, selectedLayer, selectedImage: selected });
+    tool({ tile, setMap, map, selectedLayer, selectedImage: selected });
   };
-
+  console.log(map);
   return (
     <div
       className="backgroundMapContainer"
@@ -59,7 +61,7 @@ const BackgroundMap = ({
             gridAutoRows: `${(mapSize / 100) * tileSize + 2}px`,
           }}
         >
-          {mapa.map((tile) => {
+          {map?.tiles?.map((tile) => {
             return (
               <Tile
                 {...tile}
