@@ -11,6 +11,7 @@ import "../Styles/sectionContainer.css";
 const SectionContainer = () => {
   const [selectedImage, setSelectedImage] = React.useState("");
   const [selectedLayer, setSelectedLayer] = React.useState(0);
+  const [visibleLayers, setVisibleLayers] = React.useState([true]);
 
   const { setCursor } = React.useContext(CursorsContext);
 
@@ -63,6 +64,8 @@ const SectionContainer = () => {
         selectedLayer={selectedLayer}
         setSelectedLayer={setSelectedLayer}
         tool={selectedTool}
+        visibleLayers={visibleLayers}
+        setVisibleLayers={setVisibleLayers}
       />
       <HandleTheme />
       <ToolsSection
@@ -74,6 +77,8 @@ const SectionContainer = () => {
         handleToolChange={handleToolChange}
         toolsList={toolsList}
         selectedTool={tool}
+        visibleLayers={visibleLayers}
+        setVisibleLayers={setVisibleLayers}
       />
     </div>
   );
