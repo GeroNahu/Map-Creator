@@ -21,6 +21,8 @@ const ToolsSection = ({
   handleToolChange,
   toolsList,
   selectedTool,
+  visibleLayers,
+  setVisibleLayers,
 }) => {
   const ref = React.useRef(null);
 
@@ -67,11 +69,12 @@ const ToolsSection = ({
     e.preventDefault();
   };
   const handlelayersNumber = () => {
-    const currentLayers = [...map.layers, ""];
+    const currentLayers = [...map.layers, `Layer ${map.layers.length + 1}`];
     const newTiles = map.tiles?.map((tile) => {
       return { ...tile, layers: [...tile.layers, ""] };
     });
     setMap({ ...map, layers: currentLayers, tiles: newTiles });
+    setVisibleLayers([...visibleLayers, true]);
   };
   return (
     <section
