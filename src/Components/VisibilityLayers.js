@@ -1,29 +1,37 @@
 import React from "react";
 
 import ThemesContext from "../Contexts/ThemesContext";
+import MapContext from "../Contexts/MapContext";
 
 import "../Styles/visibilityLayers.css";
 
 const VisibilityLayers = ({ visibleLayers, handleSetVisibleLayers }) => {
   const { theme } = React.useContext(ThemesContext);
+  const { map } = React.useContext(MapContext);
 
   return (
     <div className="visibleHiddenLayers" style={{ color: theme.TEXT_PRIMARY }}>
-      <input
-        type="checkbox"
-        id="layer1"
-        name="layer1"
-        className="checkBoxLayer"
-        value="true"
-        defaultChecked={`${visibleLayers[0]}`}
-        onChange={(e) => {
-          return handleSetVisibleLayers(0, e.target.checked);
-        }}
-      />
-      <label htmlFor="layer1" className="visibleLayerLabel">
-        Layer 1
-      </label>
-      <input
+      {map?.layers?.map((layer, index) => {
+        return (
+          <div>
+            <input
+              type="checkbox"
+              id={`layer ${index}`}
+              name={`layer ${index}`}
+              className="checkBoxLayer"
+              value="true"
+              defaultChecked={`${visibleLayers[index]}`}
+              onChange={(e) => {
+                return handleSetVisibleLayers(index, e.target.checked);
+              }}
+            />
+            <label htmlFor="layer1" className="visibleLayerLabel">
+              {`${layer}`}
+            </label>
+          </div>
+        );
+      })}
+      {/* <input
         name="layer2"
         className="checkBoxLayer"
         id="layer2"
@@ -50,7 +58,7 @@ const VisibilityLayers = ({ visibleLayers, handleSetVisibleLayers }) => {
       />
       <label htmlFor="layer3" className="visibleLayerLabel">
         Layer 3
-      </label>
+      </label> */}
     </div>
   );
 };
