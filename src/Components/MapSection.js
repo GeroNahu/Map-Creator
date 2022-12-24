@@ -9,17 +9,19 @@ import "../Styles/globalStyles.css";
 import "../Styles/mapSection.css";
 import VisibilityLayers from "./VisibilityLayers";
 
-const MapSection = ({ selected, selectedLayer, setSelectedLayer, tool }) => {
+const MapSection = ({
+  selected,
+  selectedLayer,
+  setSelectedLayer,
+  tool,
+  visibleLayers,
+  setVisibleLayers,
+}) => {
   const [width, setWidth] = React.useState(1);
   const [height, setHeight] = React.useState(1);
   const [mapSize, setMapSize] = React.useState(100);
   const { theme } = React.useContext(ThemesContext);
-  const [visibleLayers, setVisibleLayers] = React.useState([
-    true,
-    true,
-    true,
-    true,
-  ]);
+
   const handleSetVisibleLayers = (layer, value) => {
     const newState = [...visibleLayers];
     newState[layer] = value;
@@ -60,6 +62,7 @@ const MapSection = ({ selected, selectedLayer, setSelectedLayer, tool }) => {
           <VisibilityLayers
             visibleLayers={visibleLayers}
             handleSetVisibleLayers={handleSetVisibleLayers}
+            selectedLayer={selectedLayer}
           />
         </div>
       </div>
