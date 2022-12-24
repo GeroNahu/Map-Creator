@@ -66,19 +66,6 @@ const ToolsSection = ({
     setMap({ ...map, layers: newLayers });
     e.preventDefault();
   };
-  // const HandleLayers = () => {
-  //   map?.layers?.map(() => {
-  //     return (
-  //       <option
-  //         className="formInputTitle"
-  //         defaultValue="1"
-  //         id={1}
-  //         htmlFor="layer1"
-  //         style={{ color: theme.TEXT_PRIMARY }}
-  //       ></option>
-  //     );
-  //   });
-  // };
   const handlelayersNumber = () => {
     const currentLayers = [...map.layers, ""];
     const newTiles = map.tiles?.map((tile) => {
@@ -130,62 +117,6 @@ const ToolsSection = ({
           }}
         />
       </div>
-      {/* <div className="selectedLayerContainer">
-        <div>
-          <form
-            onChange={(e) => onLayerSelect(e.target.value)}
-            defaultValue={selectedLayer}
-            className="form"
-            style={{
-              backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
-              border: `solid ${theme.LAYER_SELECTOR_BORDER} 3px`,
-            }}
-          >
-            <input
-              className="formInput"
-              type="radio"
-              id="layer1"
-              value="0"
-              name="layer"
-            />
-            <label
-              className="formInputTitle"
-              htmlFor="layer1"
-              style={{ color: theme.TEXT_PRIMARY }}
-            >
-              Layer 1
-            </label>
-            <input
-              className="formInput"
-              type="radio"
-              id="layer2"
-              value="1"
-              name="layer"
-            />
-            <label
-              className="formInputTitle"
-              htmlFor="layer2"
-              style={{ color: theme.TEXT_PRIMARY }}
-            >
-              Layer 2
-            </label>
-            <input
-              className="formInput"
-              type="radio"
-              id="layer3"
-              value="2"
-              name="layer"
-            />
-            <label
-              className="formInputTitle"
-              htmlFor="layer3"
-              style={{ color: theme.TEXT_PRIMARY }}
-            >
-              Layer 3
-            </label>
-          </form>
-        </div>
-      </div> */}
       <div className="selectedLayerContainer">
         <select
           onChange={(e) => {
@@ -212,33 +143,6 @@ const ToolsSection = ({
             );
           })}
           ;
-          {/* <option
-            className="formInputTitle"
-            defaultValue="1"
-            id={1}
-            htmlFor="layer1"
-            style={{ color: theme.TEXT_PRIMARY }}
-          >
-            {layers}
-          </option>
-          <option
-            className="formInputTitle"
-            value="2"
-            id={2}
-            htmlFor="layer2"
-            style={{ color: theme.TEXT_PRIMARY }}
-          >
-            {layers}
-          </option>
-          <option
-            className="formInputTitle"
-            value="3"
-            id={3}
-            htmlFor="layer3"
-            style={{ color: theme.TEXT_PRIMARY }}
-          >
-            {layers}
-          </option> */}
         </select>
         <form onSubmit={(e) => handleName(e)}>
           <button
@@ -251,14 +155,7 @@ const ToolsSection = ({
           >
             +
           </button>
-          <input
-            // onChange={(e) => {
-            //   handleName(e, map.layers);
-            // }}
-            type="text"
-            className="inputRenameLayer"
-            name="layerName"
-          />
+          <input type="text" className="inputRenameLayer" name="layerName" />
           <button type="submit">Submit</button>
         </form>
       </div>
