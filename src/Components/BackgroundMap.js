@@ -31,7 +31,7 @@ const BackgroundMap = ({
       newTiles.push({
         x,
         y,
-        layers: layers || ["", "", ""],
+        layers: layers || map.layers.map(() => ""),
       });
     }
     setMap({ ...map, tiles: newTiles });
