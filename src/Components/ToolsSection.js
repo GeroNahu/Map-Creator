@@ -5,6 +5,7 @@ import CategoryButtons from "./CategoryButtons";
 import NavButton from "./NavButton";
 import Drawer from "./Drawer";
 import ThemeContext from "../Contexts/ThemesContext";
+import MapContext from "../Contexts/MapContext";
 import ToolsContainer from "./ToolsContainer";
 
 import "../Styles/toolsSection.css";
@@ -18,8 +19,6 @@ const ToolsSection = ({
   onLayerSelect,
   selectedLayer,
   handleToolChange,
-  layers,
-  setLayers,
   toolsList,
   selectedTool,
 }) => {
@@ -29,6 +28,7 @@ const ToolsSection = ({
   const [visibility, setVisibility] = React.useState(false);
   const [drawerPosition, setDrawerPosition] = React.useState(0);
   const { theme } = React.useContext(ThemeContext);
+  const { map, setMap } = React.useContext(MapContext);
 
   const divToolsSectionWidth = ref.current?.clientWidth;
   const [transition, setTransition] = React.useState(true);
@@ -61,26 +61,30 @@ const ToolsSection = ({
   const transitionPosition = `calc(100% - ${drawerPosition}px)`;
 
   const handleName = (e) => {
-    setLayers(e.target.value);
+    const newLayers = [...map.layers];
+    newLayers[selectedLayer] = e.target.layerName.value;
+    setMap({ ...map, layers: newLayers });
     e.preventDefault();
   };
-  const HandleLayers = () => {
-    layers.map(() => {
-      return (
-        <option
-          className="formInputTitle"
-          defaultValue="1"
-          id={1}
-          htmlFor="layer1"
-          style={{ color: theme.TEXT_PRIMARY }}
-        ></option>
-      );
-    });
-  };
-
+  // const HandleLayers = () => {
+  //   map?.layers?.map(() => {
+  //     return (
+  //       <option
+  //         className="formInputTitle"
+  //         defaultValue="1"
+  //         id={1}
+  //         htmlFor="layer1"
+  //         style={{ color: theme.TEXT_PRIMARY }}
+  //       ></option>
+  //     );
+  //   });
+  // };
   const handlelayersNumber = () => {
-    const currentLayers = [...layers];
-    return currentLayers?.push(""), setLayers(currentLayers);
+    const currentLayers = [...map.layers, ""];
+    const newTiles = map.tiles?.map((tile) => {
+      return { ...tile, layers: [...tile.layers, ""] };
+    });
+    setMap({ ...map, layers: currentLayers, tiles: newTiles });
   };
   return (
     <section
@@ -126,7 +130,7 @@ const ToolsSection = ({
           }}
         />
       </div>
-      <div className="selectedLayerContainer">
+      {/* <div className="selectedLayerContainer">
         <div>
           <form
             onChange={(e) => onLayerSelect(e.target.value)}
@@ -181,39 +185,41 @@ const ToolsSection = ({
             </label>
           </form>
         </div>
-      </div>
-      {/* <div className="selectedLayerContainer">
+      </div> */}
+      <div className="selectedLayerContainer">
         <select
-          onChange={(e) => onLayerSelect(e.target.value)}
-          defaultValue={selectedLayer}
+          onChange={(e) => {
+            onLayerSelect(e.target.value);
+          }}
+          defaultValue={1}
           className="form"
           id="form"
           style={{
             backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
             border: `solid ${theme.LAYER_SELECTOR_BORDER} 3px`,
           }}
-        > */}
-      {/* {layers.map((layer, index) => {
+        >
+          {map?.layers?.map((layer, index) => {
             return (
               <option
                 className="formInputTitle"
-                defaultValue={`layer ${layers[index]}`}
-                key={`layer ${layers[index]}`}
+                key={`layer ${index}`}
+                value={index}
                 style={{ color: theme.TEXT_PRIMARY }}
               >
-                {layerName || `layer ${layer}`}
+                {layer || `layer ${index}`}
               </option>
             );
           })}
-          ; */}
-      {/* <option
+          ;
+          {/* <option
             className="formInputTitle"
             defaultValue="1"
             id={1}
             htmlFor="layer1"
             style={{ color: theme.TEXT_PRIMARY }}
           >
-            {layerRename}
+            {layers}
           </option>
           <option
             className="formInputTitle"
@@ -222,7 +228,7 @@ const ToolsSection = ({
             htmlFor="layer2"
             style={{ color: theme.TEXT_PRIMARY }}
           >
-            {layerRename}
+            {layers}
           </option>
           <option
             className="formInputTitle"
@@ -231,11 +237,12 @@ const ToolsSection = ({
             htmlFor="layer3"
             style={{ color: theme.TEXT_PRIMARY }}
           >
-            {layerRename}
+            {layers}
           </option> */}
-      {/* </select>
-        <form>
+        </select>
+        <form onSubmit={(e) => handleName(e)}>
           <button
+            type="button"
             className="layersNumberButton"
             onClick={(e) => {
               e.preventDefault();
@@ -245,15 +252,16 @@ const ToolsSection = ({
             +
           </button>
           <input
-            onChange={(e) => handleName(e)}
+            // onChange={(e) => {
+            //   handleName(e, map.layers);
+            // }}
             type="text"
             className="inputRenameLayer"
+            name="layerName"
           />
-          <button type="submit" onClick={(e) => handleName(e)}>
-            Submit
-          </button>
+          <button type="submit">Submit</button>
         </form>
-      </div> */}
+      </div>
       <div className="buttosAndTiles">
         <CategoryButtons setImages={handleSelect} themes={listaTemas} />
         <div
