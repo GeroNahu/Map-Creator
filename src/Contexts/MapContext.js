@@ -6,8 +6,8 @@ const MapProvider = ({ children }) => {
   const defaultTile = { x: 0, y: 0, layers: [""] };
   const [map, setMap] = React.useState({
     title: "",
-    layers: [""],
-    Tiles: [defaultTile],
+    layers: ["Layer 1"],
+    tiles: [defaultTile],
     metaData: {},
   });
 
