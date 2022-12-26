@@ -11,6 +11,7 @@
   background-color: rgb(159, 158, 158);
   border-radius: 10%;
   border: solid rgb(59, 58, 58) 1px;
+  user-select: none;
 }
 .zoomSelector:hover {
   background-color: rgb(39 39 39);

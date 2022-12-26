@@ -43,9 +43,11 @@
 }
 .form {
   width: 320px;
-  padding: 5px;
-  font-size: 16px;
+  padding: 1px;
+  font-family: cursive;
+  font-size: 18px;
   font-weight: 600;
+  user-select: none;
 }
 .formInput {
   margin: 2px 2px 3px 2px;
@@ -68,6 +70,7 @@
   justify-content: center;
   margin-right: 10px;
   width: 26px;
+  user-select: none;
 }
 .layersNumberButtonOn {
   box-shadow: -3px -3px;
@@ -81,11 +84,12 @@
   box-shadow: 3px 3px;
   display: flex;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 600;
   height: 26px;
   justify-content: center;
   margin-left: 10px;
   width: 65px;
+  user-select: none;
 }
 .buttosAndTiles {
   align-items: center;
@@ -93,6 +97,7 @@
   grid-area: tilesContainer;
   grid-template-rows: 45px 1fr;
   padding: 16px 0;
+  user-select: none;
 }
 .tilesCanvas {
   overflow-y: auto;

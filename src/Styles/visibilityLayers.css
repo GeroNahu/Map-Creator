@@ -16,8 +16,9 @@
 }
 .visibleLayerLabel {
   font-family: cursive;
-  margin: 2px 0 0 8px;
+  margin: 2px 10px 0 8px;
   justify-self: left;
+  user-select: none;
 }
 
 @media only screen and (max-width: 1300px) {

@@ -4,6 +4,7 @@
   font-weight: bolder;
   margin: 0 0 15px 0;
   padding: 15px;
+  user-select: none;
 }
 
 .h2 {
@@ -12,8 +13,10 @@
   font-family: "Arial Narrow Bold", sans-serif;
   justify-self: right;
   margin: 15px 0;
+  user-select: none;
 }
 .h5 {
   padding: 4px;
   margin: 0;
+  user-select: none;
 }

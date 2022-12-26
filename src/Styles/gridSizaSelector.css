@@ -29,4 +29,5 @@ input[type="number"]::-webkit-outer-spin-button {
   font-family: cursive;
   margin: 2px 2px 5px 10px;
   justify-self: left;
+  user-select: none;
 }
