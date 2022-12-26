@@ -10,10 +10,13 @@ const VisibilityLayers = ({ visibleLayers, handleSetVisibleLayers }) => {
   const { map } = React.useContext(MapContext);
 
   return (
-    <div className="visibleHiddenLayers" style={{ color: theme.TEXT_PRIMARY }}>
+    <div
+      className="visibleHiddenLayersContain"
+      style={{ color: theme.TEXT_PRIMARY }}
+    >
       {map?.layers?.map((layer, index) => {
         return (
-          <div>
+          <div className="visibleHiddenLayer">
             <input
               type="checkbox"
               id={`layer ${index}`}
