@@ -34,6 +34,8 @@ const ToolsSection = ({
 
   const divToolsSectionWidth = ref.current?.clientWidth;
   const [transition, setTransition] = React.useState(true);
+  const [plusClickOn, setPlusClickOn] = React.useState(false);
+  const [submitClickOn, setSubmitClickOn] = React.useState(false);
 
   const handleSelect = (theme) => {
     setImages(tilesThemes[theme]);
@@ -120,7 +122,13 @@ const ToolsSection = ({
           }}
         />
       </div>
-      <div className="selectedLayerContainer">
+      <div
+        className="selectedLayerContainer"
+        style={{
+          backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
+          outline: `solid ${theme.LAYER_SELECTOR_BORDER} 3px`,
+        }}
+      >
         <select
           onChange={(e) => {
             onLayerSelect(e.target.value);
@@ -130,7 +138,8 @@ const ToolsSection = ({
           id="form"
           style={{
             backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
-            border: `solid ${theme.LAYER_SELECTOR_BORDER} 3px`,
+            outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
+            color: theme.TEXT_PRIMARY,
           }}
         >
           {map?.layers?.map((layer, index) => {
@@ -147,19 +156,67 @@ const ToolsSection = ({
           })}
           ;
         </select>
-        <form onSubmit={(e) => handleName(e)}>
+        <form className="handleLayers" onSubmit={(e) => handleName(e)}>
           <button
             type="button"
-            className="layersNumberButton"
+            className={`layersNumberButton ${
+              plusClickOn ? "layersNumberButtonOn" : ""
+            }`}
             onClick={(e) => {
               e.preventDefault();
               handlelayersNumber();
             }}
+            onMouseDown={() => setPlusClickOn(true)}
+            onMouseUp={() => setPlusClickOn(false)}
+            onMouseLeave={() => setPlusClickOn(false)}
+            style={{
+              background: plusClickOn
+                ? theme.CATEGORY_BUTTONS_BACKGROUND_ON
+                : theme.CATEGORY_BUTTONS_BACKGROUND,
+              outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
+              color: theme.TEXT_PRIMARY,
+            }}
           >
             +
           </button>
-          <input type="text" className="inputRenameLayer" name="layerName" />
-          <button type="submit">Submit</button>
+          <input
+            type="text"
+            className="inputRenameLayer"
+            name="layerName"
+            style={{
+              backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
+              outline: `solid ${theme.LAYER_SELECTOR_BORDER} 3px`,
+              color: theme.TEXT_PRIMARY,
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                setSubmitClickOn(true);
+              }
+            }}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") {
+                setSubmitClickOn(false);
+              }
+            }}
+          />
+          <button
+            className={`layersSubmitButton ${
+              plusClickOn ? "layersSubmitButtonOn" : ""
+            }`}
+            type="submit"
+            style={{
+              background: submitClickOn
+                ? theme.CATEGORY_BUTTONS_BACKGROUND_ON
+                : theme.CATEGORY_BUTTONS_BACKGROUND,
+              outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
+              color: theme.TEXT_PRIMARY,
+            }}
+            onMouseDown={() => setSubmitClickOn(true)}
+            onMouseUp={() => setSubmitClickOn(false)}
+            onMouseLeave={() => setSubmitClickOn(false)}
+          >
+            Submit
+          </button>
         </form>
       </div>
       <div className="buttosAndTiles">
