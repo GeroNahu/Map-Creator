@@ -27,23 +27,25 @@
   justify-content: center;
   grid-area: selectedTile;
 }
-.selectedLayerContainer {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  grid-area: layers;
-}
 .selectedTool {
   display: flex;
   height: 100px;
   width: 100px;
 }
+.selectedLayerContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  justify-content: space-between;
+  grid-area: layers;
+  width: 320px;
+}
 .form {
-  display: grid;
-  grid-template-columns: 24px 1fr;
-  grid-template-rows: auto;
+  width: 320px;
   padding: 5px;
+  font-size: 16px;
+  font-weight: 600;
 }
 .formInput {
   margin: 2px 2px 3px 2px;
@@ -52,12 +54,45 @@
   font-family: cursive;
   padding: 2px 2px 5px 2px;
 }
+.handleLayers {
+  display: flex;
+  width: 317px;
+}
+.layersNumberButton {
+  align-items: center;
+  box-shadow: 3px 3px;
+  display: flex;
+  font-size: 25px;
+  font-weight: 400;
+  height: 26px;
+  justify-content: center;
+  margin-right: 10px;
+  width: 26px;
+}
+.layersNumberButtonOn {
+  box-shadow: -3px -3px;
+}
+.inputRenameLayer {
+  width: inherit;
+  font-size: 16px;
+}
+.layersSubmitButton {
+  align-items: center;
+  box-shadow: 3px 3px;
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  height: 26px;
+  justify-content: center;
+  margin-left: 10px;
+  width: 65px;
+}
 .buttosAndTiles {
   align-items: center;
   display: grid;
   grid-area: tilesContainer;
   grid-template-rows: 45px 1fr;
-  padding-bottom: 16px;
+  padding: 16px 0;
 }
 .tilesCanvas {
   overflow-y: auto;
