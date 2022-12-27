@@ -185,7 +185,7 @@ const ToolsSection = ({
             name="layerName"
             style={{
               backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
-              outline: `solid ${theme.LAYER_SELECTOR_BORDER} 3px`,
+              outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
               color: theme.TEXT_PRIMARY,
             }}
             onKeyDown={(e) => {
