@@ -2,7 +2,7 @@
   box-sizing: border-box;
   height: -webkit-fill-available;
   justify-self: center;
-  max-width: 326px;
+  max-width: 348px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -87,7 +87,7 @@
   font-weight: 600;
   height: 26px;
   justify-content: center;
-  margin-left: 10px;
+  margin-left: 9px;
   width: 65px;
   user-select: none;
 }
