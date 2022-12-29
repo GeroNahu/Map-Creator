@@ -16,7 +16,7 @@ const VisibilityLayers = ({ visibleLayers, handleSetVisibleLayers }) => {
     >
       {map?.layers?.map((layer, index) => {
         return (
-          <div className="visibleHiddenLayer">
+          <div className="visibleHiddenLayer" key={`layer ${index}`}>
             <input
               type="checkbox"
               id={`layer ${index}`}
