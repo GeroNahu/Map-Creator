@@ -11,7 +11,7 @@ import ToolsContainer from "./ToolsContainer";
 import "../Styles/toolsSection.css";
 import "../Styles/globalStyles.css";
 
-const platform = navigator.userAgentData.platform;
+const platform = navigator?.userAgentData?.platform;
 
 const ToolsSection = ({
   onImageSelect,
