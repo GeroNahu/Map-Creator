@@ -19,8 +19,6 @@ const MapSection = ({
   move,
   firstTile,
   setFirstTile,
-  lastTile,
-  setLastTile,
 }) => {
   const [width, setWidth] = React.useState(10);
   const [height, setHeight] = React.useState(10);
@@ -84,8 +82,6 @@ const MapSection = ({
         move={move}
         firstTile={firstTile}
         setFirstTile={setFirstTile}
-        lastTile={lastTile}
-        setLastTile={setLastTile}
       />
     </section>
   );
