@@ -180,7 +180,7 @@ const ToolsSection = ({
             +
           </button>
           <input
-            defaultValue={map.layers[selectedLayer]}
+            defaultValue={map?.layers?.[selectedLayer]}
             type="text"
             className="inputRenameLayer"
             name="layerName"
