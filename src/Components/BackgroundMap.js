@@ -15,6 +15,7 @@ const BackgroundMap = ({
   tileSize,
   visibleLayers,
   tool,
+  setLastTile,
 }) => {
   const { theme } = React.useContext(ThemesContext);
   const { map, setMap } = React.useContext(MapContext);
@@ -61,19 +62,54 @@ const BackgroundMap = ({
             gridAutoRows: `${(mapSize / 100) * tileSize + 2}px`,
           }}
         >
-          {map?.tiles?.map((tile) => {
+          {map?.tiles?.map((tile, i) => {
+            const isFunctionTool = typeof tool === "function";
             return (
               <Tile
                 {...tile}
                 key={`tile_${tile.x}_${tile.y}`}
-                onMouseDown={() => {
-                  handleClick(tile);
-                  setClick(true);
-                }}
-                onMouseEnter={() => {
-                  if (click) handleClick(tile);
-                }}
-                onMouseUp={() => setClick(false)}
+                mapIndex={i}
+                onMouseDown={
+                  isFunctionTool
+                    ? () => {
+                        handleClick(tile);
+                        setClick(true);
+                      }
+                    : () => {
+                        tool.down(i);
+                        console.log("down", tile.x);
+                      }
+                }
+                onMouseEnter={
+                  isFunctionTool
+                    ? () => {
+                        if (click) handleClick(tile);
+                      }
+                    : isFunctionTool
+                    ? () => setClick(false)
+                    : () => {
+                        setLastTile(tile);
+                        tool.up(i);
+                        console.log("enter", tile.x);
+                      }
+                }
+                onMouseUp={
+                  isFunctionTool
+                    ? () => setClick(false)
+                    : () => {
+                        tool.down(tile);
+                        tool.up(tile);
+                      }
+                }
+                onDrop={
+                  isFunctionTool
+                    ? () => setClick(false)
+                    : () => {
+                        tool.down(tile);
+                        tool.up(tile);
+                      }
+                }
+                draggable={!isFunctionTool}
                 visibleLayers={visibleLayers}
               />
             );
