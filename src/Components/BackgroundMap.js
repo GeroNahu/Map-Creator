@@ -7,19 +7,15 @@ import ThemesContext from "../Contexts/ThemesContext";
 import MapContext from "../Contexts/MapContext";
 
 const BackgroundMap = ({
-  selected,
-  selectedLayer,
   width,
   height,
   mapSize,
   tileSize,
   visibleLayers,
   tool,
-  setLastTile,
 }) => {
   const { theme } = React.useContext(ThemesContext);
   const { map, setMap } = React.useContext(MapContext);
-  const [click, setClick] = React.useState(false);
 
   React.useEffect(() => {
     const newTiles = [];
@@ -38,8 +34,9 @@ const BackgroundMap = ({
     setMap({ ...map, tiles: newTiles });
   }, [width, height]);
 
-  const handleClick = (tile) => {
-    tool({ tile, setMap, map, selectedLayer, selectedImage: selected });
+  const handleEvent = (event, mapIndex) => {
+    const type = event._reactName;
+    tool?.[type]?.(mapIndex, event);
   };
   return (
     <div
@@ -49,7 +46,7 @@ const BackgroundMap = ({
         border: `solid ${theme.MAP_BORDER} 3px`,
       }}
     >
-      <div className="mapCanvas" onMouseLeave={() => setClick(false)}>
+      <div className="mapCanvas">
         <div
           className="backgroundMap"
           style={{
@@ -63,53 +60,14 @@ const BackgroundMap = ({
           }}
         >
           {map?.tiles?.map((tile, i) => {
-            const isFunctionTool = typeof tool === "function";
             return (
               <Tile
                 {...tile}
                 key={`tile_${tile.x}_${tile.y}`}
-                mapIndex={i}
-                onMouseDown={
-                  isFunctionTool
-                    ? () => {
-                        handleClick(tile);
-                        setClick(true);
-                      }
-                    : () => {
-                        tool.down(i);
-                        console.log("down", tile.x);
-                      }
-                }
-                onMouseEnter={
-                  isFunctionTool
-                    ? () => {
-                        if (click) handleClick(tile);
-                      }
-                    : isFunctionTool
-                    ? () => setClick(false)
-                    : () => {
-                        setLastTile(tile);
-                        tool.up(i);
-                        console.log("enter", tile.x);
-                      }
-                }
-                onMouseUp={
-                  isFunctionTool
-                    ? () => setClick(false)
-                    : () => {
-                        tool.down(tile);
-                        tool.up(tile);
-                      }
-                }
-                onDrop={
-                  isFunctionTool
-                    ? () => setClick(false)
-                    : () => {
-                        tool.down(tile);
-                        tool.up(tile);
-                      }
-                }
-                draggable={!isFunctionTool}
+                onMouseDown={(e) => handleEvent(e, i)}
+                onMouseEnter={(e) => handleEvent(e, i)}
+                onMouseUp={(e) => handleEvent(e, i)}
+                draggable={tool?.draggable}
                 visibleLayers={visibleLayers}
               />
             );
