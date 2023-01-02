@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 import MapSection from "./MapSection";
 import ToolsSection from "./ToolsSection";
 import HandleTheme from "./HandleTheme";
 
 import CursorsContext from "../Contexts/CursorsContext";
+import MapContext from "../Contexts/MapContext";
 
 import "../Styles/sectionContainer.css";
 
@@ -13,92 +14,108 @@ const SectionContainer = () => {
   const [selectedLayer, setSelectedLayer] = React.useState(0);
   const [visibleLayers, setVisibleLayers] = React.useState([true]);
 
+  const { map, setMap } = React.useContext(MapContext);
   const { setCursor } = React.useContext(CursorsContext);
 
-  const paintTile = ({ map, setMap, tile: currentTile, image }) => {
-    setMap?.({
-      ...map,
-      tiles: map?.tiles?.map((tile) => {
-        const newTile = { ...tile };
-        if (tile.x === currentTile.x && tile.y === currentTile.y) {
-          newTile.layers[selectedLayer] = image;
-        }
-        return newTile;
-      }),
-    });
-  };
-  const eraserLayer = ({ map, setMap, tile: currentTile, image }) => {
-    setMap?.({
-      ...map,
-      tiles: map?.tiles?.map((tile) => {
-        const newTile = { ...tile };
-        newTile.layers[selectedLayer] = image;
-        return newTile;
-      }),
-    });
-  };
-  const paintLayer = ({ map, setMap, tile: currentTile, image }) => {
-    const actualCurrentTile = currentTile.layers[selectedLayer];
-    setMap?.({
-      ...map,
-      tiles: map?.tiles?.map((tile) => {
-        const newTile = { ...tile };
-        if (tile.layers[selectedLayer] === actualCurrentTile) {
-          newTile.layers[selectedLayer] = image;
-        }
-        return newTile;
-      }),
-    });
-  };
-  const [firstTile, setFirstTile] = React.useState("");
-  const [lastTile, setLastTile] = React.useState("");
+  const [beforeTool, setBeforeTool] = React.useState("pen");
 
-  const move = ({ map, setMap, tile: currentTile, image }) => {
+  const paintTile = (mapIndex) => {
+    const newTiles = [...map.tiles];
+    newTiles[mapIndex].layers[selectedLayer] = selectedImage;
+    setMap?.({
+      ...map,
+      tiles: newTiles,
+    });
+  };
+  const eraseTile = (mapIndex) => {
+    const newTiles = [...map.tiles];
+    newTiles[mapIndex].layers[selectedLayer] = "";
+    setMap?.({
+      ...map,
+      tiles: newTiles,
+    });
+  };
+  const eraserLayer = () => {
     setMap?.({
       ...map,
       tiles: map?.tiles?.map((tile) => {
         const newTile = { ...tile };
-        currentTile.layers[selectedLayer] = image;
+        newTile.layers[selectedLayer] = "";
         return newTile;
       }),
     });
+  };
+  const paintLayer = (mapIndex) => {
+    const currentImage = map?.tiles?.[mapIndex]?.layers?.[selectedLayer];
+    setMap?.({
+      ...map,
+      tiles: map?.tiles?.map((tile) => {
+        const newTile = { ...tile };
+        if (tile.layers[selectedLayer] === currentImage) {
+          newTile.layers[selectedLayer] = selectedImage;
+        }
+        return newTile;
+      }),
+    });
+  };
+
+  const [dragging, setDragging] = React.useState(false);
+  const [firstTile, setFirstTile] = React.useState();
+
+  const move = (lastTile) => {
+    const firstImage = map?.tiles?.[firstTile]?.layers?.[selectedLayer] || "";
+    const lastImage = map?.tiles?.[lastTile]?.layers?.[selectedLayer] || "";
+    const newMap = { ...map };
+    if (
+      newMap?.tiles?.[firstTile]?.layers?.[selectedLayer] &&
+      newMap?.tiles?.[lastTile]?.layers?.[selectedLayer]
+    ) {
+      newMap.tiles[firstTile].layers[selectedLayer] = lastImage;
+      newMap.tiles[lastTile].layers[selectedLayer] = firstImage;
+    } else {
+      newMap.tiles[firstTile].layers[selectedLayer] = "";
+      newMap.tiles[lastTile].layers[selectedLayer] = firstImage;
+    }
+    setMap?.(newMap);
+    setDragging(false);
   };
 
   const tools = {
-    pen: ({ map, setMap, tile: currentTile }) => {
-      paintTile({ map, setMap, tile: currentTile, image: selectedImage });
+    pen: {
+      onMouseDown: (mapIndex) => paintTile(mapIndex),
+      onMouseEnter: (mapIndex, e) => e.buttons === 1 && paintTile(mapIndex),
     },
-    eraser: ({ map, setMap, tile: currentTile }) => {
-      paintTile({ map, setMap, tile: currentTile, image: "" });
+    paintBucket: {
+      onMouseDown: (mapIndex) => {
+        paintLayer(mapIndex);
+      },
     },
-    eyedropper: ({ tile }) => {
-      setSelectedImage(tile?.layers?.[selectedLayer]);
-      handleToolChange("pen");
-    },
-    paintBucket: ({ map, setMap, tile: currentTile }) => {
-      paintLayer({ map, setMap, tile: currentTile, image: selectedImage });
-    },
-    eraserLayer: ({ map, setMap, tile: currentTile }) => {
-      eraserLayer({ map, setMap, tile: currentTile, image: "" });
+    eyedropper: {
+      onMouseDown: (mapIndex) => {
+        const image = map?.tiles?.[mapIndex]?.layers?.[selectedLayer];
+        setSelectedImage(image);
+        handleToolChange(beforeTool);
+      },
     },
     move: {
-      down: ({ i }) => {
-        move({ i });
+      onMouseDown: (mapIndex) => {
+        setFirstTile(mapIndex);
+        setDragging(true);
       },
-      up: ({ map, setMap, tile: currentTile }) => {
-        move({ map, setMap, tile: currentTile, image: "lastTile" });
-      },
+      onMouseEnter: (mapIndex, e) => dragging && move(mapIndex),
+      draggable: true,
+    },
+    eraser: {
+      onMouseDown: (mapIndex) => eraseTile(mapIndex),
+      onMouseEnter: (mapIndex, e) => e.buttons === 1 && eraseTile(mapIndex),
+    },
+    eraserLayer: {
+      onMouseDown: () => eraserLayer(),
     },
   };
   const toolsList = Object.keys(tools);
 
   const [tool, setTool] = React.useState("pen");
-
-  const selectedTool = React.useCallback(tools[tool], [
-    tool,
-    selectedImage,
-    selectedLayer,
-  ]);
 
   React.useEffect(() => {
     return setCursor(tool);
@@ -106,22 +123,22 @@ const SectionContainer = () => {
 
   const handleToolChange = (tool) => {
     setTool(tool);
+    tool === "pen"
+      ? setBeforeTool(tool)
+      : tool === "paintBucket" && setBeforeTool("paintBucket");
   };
-
   return (
     <div className="container">
       <MapSection
         selected={selectedImage}
         selectedLayer={selectedLayer}
         setSelectedLayer={setSelectedLayer}
-        tool={selectedTool}
+        tool={tools[tool]}
         visibleLayers={visibleLayers}
         setVisibleLayers={setVisibleLayers}
         move={move}
         firstTile={firstTile}
         setFirstTile={setFirstTile}
-        lastTile={lastTile}
-        setLastTile={setLastTile}
       />
       <HandleTheme />
       <ToolsSection
