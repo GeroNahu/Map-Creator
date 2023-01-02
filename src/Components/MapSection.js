@@ -16,9 +16,14 @@ const MapSection = ({
   tool,
   visibleLayers,
   setVisibleLayers,
+  move,
+  firstTile,
+  setFirstTile,
+  lastTile,
+  setLastTile,
 }) => {
-  const [width, setWidth] = React.useState(1);
-  const [height, setHeight] = React.useState(1);
+  const [width, setWidth] = React.useState(10);
+  const [height, setHeight] = React.useState(10);
   const [mapSize, setMapSize] = React.useState(100);
   const { theme } = React.useContext(ThemesContext);
 
@@ -76,6 +81,11 @@ const MapSection = ({
         tileSize={100}
         visibleLayers={visibleLayers}
         tool={tool}
+        move={move}
+        firstTile={firstTile}
+        setFirstTile={setFirstTile}
+        lastTile={lastTile}
+        setLastTile={setLastTile}
       />
     </section>
   );
