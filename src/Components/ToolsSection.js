@@ -7,6 +7,7 @@ import Drawer from "./Drawer";
 import ThemeContext from "../Contexts/ThemesContext";
 import MapContext from "../Contexts/MapContext";
 import ToolsContainer from "./ToolsContainer";
+import CommonSelect from "./CommonSelect";
 
 import "../Styles/toolsSection.css";
 import "../Styles/globalStyles.css";
@@ -26,7 +27,7 @@ const ToolsSection = ({
 }) => {
   const ref = React.useRef(null);
 
-  const [images, setImages] = React.useState(tilesThemes.medieval || []);
+  const [images, setImages] = React.useState(tilesThemes.Exile || []);
   const [visibility, setVisibility] = React.useState(false);
   const [drawerPosition, setDrawerPosition] = React.useState(0);
   const { theme } = React.useContext(ThemeContext);
@@ -78,6 +79,7 @@ const ToolsSection = ({
     setMap({ ...map, layers: currentLayers, tiles: newTiles });
     setVisibleLayers([...visibleLayers, true]);
   };
+
   return (
     <section
       className={`divToolsSection  ${showHideClass}`}
@@ -129,33 +131,13 @@ const ToolsSection = ({
           outline: `solid ${theme.LAYER_SELECTOR_BORDER} 3px`,
         }}
       >
-        <select
-          onChange={(e) => {
-            onLayerSelect(e.target.value);
-          }}
-          defaultValue={1}
-          className="form"
-          id="form"
-          style={{
-            backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
-            outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
-            color: theme.TEXT_PRIMARY,
-          }}
-        >
-          {map?.layers?.map((layer, index) => {
-            return (
-              <option
-                className="formInputTitle"
-                key={`layer ${index}`}
-                value={index}
-                style={{ color: theme.TEXT_PRIMARY }}
-              >
-                {layer || `layer ${index}`}
-              </option>
-            );
-          })}
-          ;
-        </select>
+        <CommonSelect
+          onChange={onLayerSelect}
+          items={map?.layers?.map((layer, index) => ({
+            value: index,
+            label: layer,
+          }))}
+        />
         <form className="handleLayers" onSubmit={(e) => handleName(e)}>
           <button
             type="button"
