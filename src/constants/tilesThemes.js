@@ -1,5 +1,10 @@
+const exile = [];
+for (let i = 1; i <= 250; i++) {
+  exile.push(`url(${require(`../Images/Exile/tile (${i}).png`)})`);
+}
 export const tilesThemes = {
-  medieval: [
+  Exile: exile,
+  Medieval: [
     `url(${require(`../Images/Medievales/0.jpg`)})`,
     `url(${require(`../Images/Medievales/1.jpg`)})`,
     `url(${require(`../Images/Medievales/2.jpg`)})`,
@@ -38,12 +43,12 @@ export const tilesThemes = {
     `url(${require(`../Images/Medievales/3.png`)})`,
     `url(${require(`../Images/Medievales/4.png`)})`,
   ],
-  futurist: [
+  Futurist: [
     `url(${require(`../Images/Futuristas/0.jpg`)})`,
     `url(${require(`../Images/Futuristas/1.jpg`)})`,
     `url(${require(`../Images/Futuristas/2.jpg`)})`,
   ],
-  contemporany: [
+  Contemporany: [
     `url(${require(`../Images/Contemporaneo/Playa0.jpg`)})`,
     `url(${require(`../Images/Contemporaneo/mar2.jpg`)})`,
     `url(${require(`../Images/Contemporaneo/mar0.jpg`)})`,
