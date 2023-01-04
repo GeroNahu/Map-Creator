@@ -14,7 +14,7 @@
     "tools selectedTile"
     "layers layers"
     "tilesContainer tilesContainer";
-  grid-template-rows: 170px 65px minmax(10px, 1fr);
+  grid-template-rows: 170px 65px minmax(0, 1fr);
   box-sizing: border-box;
   max-height: calc(100vh - 115px);
 }
