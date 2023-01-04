@@ -1,21 +1,30 @@
 import React from "react";
-import CategoryButton from "./CategoryButton";
+
+import ThemesContext from "../Contexts/ThemesContext";
 
 import "../Styles/categoryButton.css";
+import CommonSelect from "./CommonSelect";
 
 const CategoryButtons = ({ themes, setImages }) => {
-  const [selectedCategory, setSelectedCategory] = React.useState("medieval");
+  const { theme } = React.useContext(ThemesContext);
 
-  const buttons = themes.map((theme) => (
-    <CategoryButton
-      buttonLabel={theme}
-      setImages={setImages}
-      key={`theme_${theme}`}
-      setSelectedCategory={setSelectedCategory}
-      selectedCategory={theme === selectedCategory}
-    />
-  ));
-  return <div className="categoryTilesButtonsContainer">{buttons}</div>;
+  return (
+    <div
+      className="tilesCategory"
+      style={{
+        backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
+        outline: `solid ${theme.LAYER_SELECTOR_BORDER} 3px`,
+      }}
+    >
+      <CommonSelect
+        onChange={setImages}
+        items={themes.map((theme) => ({
+          value: `${theme}`,
+          label: `${theme}`,
+        }))}
+      />
+    </div>
+  );
 };
 
 export default CategoryButtons;
