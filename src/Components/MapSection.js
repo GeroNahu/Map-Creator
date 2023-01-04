@@ -5,6 +5,7 @@ import ZoomSelector from "./ZoomSelector";
 import GridSizeSelector from "./GridSizeSelector";
 import VisibilityLayers from "./VisibilityLayers";
 
+import MapContext from "../Contexts/MapContext";
 import ThemesContext from "../Contexts/ThemesContext";
 
 import "../Styles/globalStyles.css";
@@ -25,6 +26,9 @@ const MapSection = ({
   const [height, setHeight] = React.useState(14);
   const [mapSize, setMapSize] = React.useState(100);
 
+  const [inputSize, setInputSize] = React.useState(20);
+
+  const { map, setMap } = React.useContext(MapContext);
   const { theme } = React.useContext(ThemesContext);
 
   const handleSetVisibleLayers = (layer, value) => {
@@ -47,7 +51,27 @@ const MapSection = ({
               color: theme.TITLES,
             }}
           >
-            Map
+            <form
+              onSubmit={(e) => {
+                setMap({ ...map, title: e.target.title.value });
+                e.preventDefault();
+                console.log(map.title);
+              }}
+            >
+              <input
+                onChange={(e) => {
+                  setInputSize(e.target.value.length);
+                }}
+                size={inputSize ? inputSize : 1}
+                className="titleInput"
+                defaultValue={map.title || "Map Without Title"}
+                name="title"
+                style={{
+                  backgroundColor: theme.MAP_TITLE_BACKGROUND,
+                  border: `solid ${theme.MAP_TITLE_BORDER} 3px`,
+                }}
+              ></input>
+            </form>
           </h2>
         </div>
         <div
