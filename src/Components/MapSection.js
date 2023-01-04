@@ -3,11 +3,12 @@ import React from "react";
 import BackgroundMap from "./BackgroundMap";
 import ZoomSelector from "./ZoomSelector";
 import GridSizeSelector from "./GridSizeSelector";
+import VisibilityLayers from "./VisibilityLayers";
+
 import ThemesContext from "../Contexts/ThemesContext";
 
 import "../Styles/globalStyles.css";
 import "../Styles/mapSection.css";
-import VisibilityLayers from "./VisibilityLayers";
 
 const MapSection = ({
   selected,
@@ -20,9 +21,10 @@ const MapSection = ({
   firstTile,
   setFirstTile,
 }) => {
-  const [width, setWidth] = React.useState(10);
-  const [height, setHeight] = React.useState(10);
+  const [width, setWidth] = React.useState(15);
+  const [height, setHeight] = React.useState(14);
   const [mapSize, setMapSize] = React.useState(100);
+
   const { theme } = React.useContext(ThemesContext);
 
   const handleSetVisibleLayers = (layer, value) => {
