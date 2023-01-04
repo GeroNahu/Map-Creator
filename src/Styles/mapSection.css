@@ -1,10 +1,19 @@
+.mapHeader {
+  display: grid;
+  padding: 16px;
+}
 .titleContainer {
   display: flex;
   justify-content: center;
 }
-.mapHeader {
-  display: grid;
-  padding: 16px;
+.titleInput {
+  display: flex;
+  font-size: 60px;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  min-width: min-content;
+  text-align: center;
 }
 .mapSelectorsContainer {
   align-items: center;
