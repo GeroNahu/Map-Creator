@@ -10,12 +10,14 @@ import MapContext from "../Contexts/MapContext";
 import "../Styles/sectionContainer.css";
 
 const SectionContainer = () => {
-  const [selectedImage, setSelectedImage] = React.useState("");
-  const [selectedLayer, setSelectedLayer] = React.useState(0);
-  const [visibleLayers, setVisibleLayers] = React.useState([true]);
-
   const { map, setMap } = React.useContext(MapContext);
   const { setCursor } = React.useContext(CursorsContext);
+
+  const [selectedImage, setSelectedImage] = React.useState("");
+  const [selectedLayer, setSelectedLayer] = React.useState(0);
+  const [visibleLayers, setVisibleLayers] = React.useState(
+    Array(map?.layers?.length || 1).fill(true)
+  );
 
   const [beforeTool, setBeforeTool] = React.useState("pen");
 
