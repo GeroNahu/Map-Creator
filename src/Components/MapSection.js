@@ -26,7 +26,7 @@ const MapSection = ({
   const [height, setHeight] = React.useState(14);
   const [mapSize, setMapSize] = React.useState(100);
 
-  const [inputSize, setInputSize] = React.useState(20);
+  const [inputSize, setInputSize] = React.useState(8);
 
   const { map, setMap } = React.useContext(MapContext);
   const { theme } = React.useContext(ThemesContext);
@@ -55,7 +55,6 @@ const MapSection = ({
               onSubmit={(e) => {
                 setMap({ ...map, title: e.target.title.value });
                 e.preventDefault();
-                console.log(map.title);
               }}
             >
               <input
@@ -64,7 +63,7 @@ const MapSection = ({
                 }}
                 size={inputSize ? inputSize : 1}
                 className="titleInput"
-                defaultValue={map.title || "Map Without Title"}
+                defaultValue={map.title || "Untitled"}
                 name="title"
                 style={{
                   backgroundColor: theme.MAP_TITLE_BACKGROUND,
