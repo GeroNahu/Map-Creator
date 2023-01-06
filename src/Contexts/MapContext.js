@@ -6,7 +6,7 @@
 //   const defaultTile = { x: 0, y: 0, layers: [""] };
 //   const [map, setMap] = React.useState({
 //     title: "",
-//     layers: ["Layer 1"],
+//     layers: [{name: "Layer 1", visible: true}],
 //     tiles: [defaultTile],
 //     metaData: {},
 //   });
@@ -27,7 +27,11 @@ const MapContext = React.createContext();
 const MapProvider = ({ children }) => {
   const [map, setMap] = React.useState({
     title: "",
-    layers: ["Layer 1", "Layer 2", "Layer 3"],
+    layers: [
+      { name: "Layer 1", visible: true },
+      { name: "Layer 2", visible: true },
+      { name: "Layer 3", visible: true },
+    ],
     tiles: [
       {
         x: 1,
