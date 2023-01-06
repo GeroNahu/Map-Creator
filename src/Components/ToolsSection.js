@@ -67,7 +67,7 @@ const ToolsSection = ({
 
   const handleName = (e) => {
     const newLayers = [...map.layers];
-    newLayers[selectedLayer] = e.target.layerName.value;
+    newLayers[selectedLayer].name = e.target.layerName.value;
     setMap({ ...map, layers: newLayers });
     e.preventDefault();
   };
@@ -135,7 +135,7 @@ const ToolsSection = ({
           onChange={onLayerSelect}
           items={map?.layers?.map((layer, index) => ({
             value: index,
-            label: layer,
+            label: layer?.name,
           }))}
         />
         <form className="handleLayers" onSubmit={(e) => handleName(e)}>
@@ -162,8 +162,8 @@ const ToolsSection = ({
             +
           </button>
           <input
-            defaultValue={map?.layers?.[selectedLayer]}
-            key={map?.layers?.[selectedLayer]}
+            defaultValue={map?.layers?.name?.[selectedLayer]}
+            key={map?.layers?.name?.[selectedLayer]}
             type="text"
             className="inputRenameLayer"
             name="layerName"
