@@ -29,7 +29,7 @@ const VisibilityLayers = ({ visibleLayers, handleSetVisibleLayers }) => {
               }}
             />
             <label htmlFor="layer1" className="visibleLayerLabel">
-              {`${layer}`}
+              {`${layer?.name}`}
             </label>
           </div>
         );
