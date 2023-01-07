@@ -3,6 +3,7 @@ import React from "react";
 import LanguageContext from "../Contexts/LanguageContext";
 import ThemesContext from "../Contexts/ThemesContext";
 import LittleSelect from "./LittleSelect";
+import HandleTheme from "./HandleTheme";
 
 const Header = () => {
   const { language, allLanguages, setLanguage } =
@@ -27,6 +28,7 @@ const Header = () => {
         fontFamily: theme.HEADER_FONT_FAMILY,
       }}
     >
+      <HandleTheme />
       <LittleSelect
         onChange={handleLanguage}
         items={languages?.map((language, index) => ({
