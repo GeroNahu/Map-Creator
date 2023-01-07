@@ -1,9 +1,21 @@
 import React from "react";
 
+import LanguageContext from "../Contexts/LanguageContext";
 import ThemesContext from "../Contexts/ThemesContext";
+import LittleSelect from "./LittleSelect";
 
 const Header = () => {
+  const { language, allLanguages, setLanguage } =
+    React.useContext(LanguageContext);
   const { theme } = React.useContext(ThemesContext);
+
+  const languages = Object.keys(allLanguages);
+  console.log(allLanguages, language, "lalalalal", setLanguage);
+  console.log("SUPUESTO ARRAY", languages);
+
+  const handleLanguage = (value) => {
+    setLanguage(languages[value]);
+  };
 
   return (
     <header
@@ -15,7 +27,14 @@ const Header = () => {
         fontFamily: theme.HEADER_FONT_FAMILY,
       }}
     >
-      <h1 className="h1">Map Creator</h1>
+      <LittleSelect
+        onChange={handleLanguage}
+        items={languages?.map((language, index) => ({
+          value: index,
+          label: language,
+        }))}
+      />
+      <h1 className="h1">{language.APP_HEADER_TITLE}</h1>
     </header>
   );
 };
