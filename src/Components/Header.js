@@ -11,8 +11,6 @@ const Header = () => {
   const { theme } = React.useContext(ThemesContext);
 
   const languages = Object.keys(allLanguages);
-  console.log(allLanguages, language, "lalalalal", setLanguage);
-  console.log("SUPUESTO ARRAY", languages);
 
   const handleLanguage = (value) => {
     setLanguage(languages[value]);

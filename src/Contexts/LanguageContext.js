@@ -9,7 +9,6 @@ const LanguageProvider = ({ children }) => {
 
   const handleLanguage = (language) => {
     setLanguage(languages[language]);
-    console.log("lo que vemos", language, languages.english);
   };
 
   const data = { language, allLanguages, setLanguage: handleLanguage };

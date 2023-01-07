@@ -5,7 +5,6 @@ import "../Styles/commonSelect.css";
 import ThemesContext from "../Contexts/ThemesContext";
 
 const CommonSelect = ({ onChange, items }) => {
-  console.log(items);
   const { theme } = React.useContext(ThemesContext);
   return (
     <select
