@@ -45,12 +45,7 @@ const MapSection = ({
     >
       <div className="mapHeader">
         <div className="titleContainer">
-          <h2
-            className="h2"
-            style={{
-              color: theme.TITLES,
-            }}
-          >
+          <h2 className="h2">
             <form
               onSubmit={(e) => {
                 setMap({ ...map, title: e.target.title.value });
@@ -68,6 +63,7 @@ const MapSection = ({
                 style={{
                   backgroundColor: theme.MAP_TITLE_BACKGROUND,
                   border: `solid ${theme.MAP_TITLE_BORDER} 3px`,
+                  color: theme.TITLES,
                 }}
               ></input>
             </form>
