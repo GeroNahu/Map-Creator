@@ -16,8 +16,8 @@ const CommonSelect = ({ onChange, items }) => {
       className="commonSelect"
       id="commonSelect"
       style={{
-        backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
-        outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
+        backgroundColor: theme.COMMON_SELECTORS_BACKGROUND,
+        outline: `solid ${theme.COMMON_SELECTORS_BORDER} 2px`,
         color: theme.TEXT_PRIMARY,
       }}
     >

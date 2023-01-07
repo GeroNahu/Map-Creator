@@ -16,8 +16,8 @@ const LittleSelect = ({ onChange, items }) => {
       className="littleSelect"
       id="littleSelect"
       style={{
-        backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
-        outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
+        backgroundColor: theme.LITTLE_SELECTORS_BACKGROUND,
+        outline: `solid ${theme.LITTLE_SELECTORS_BORDER} 2px`,
         color: theme.TEXT_PRIMARY,
       }}
     >

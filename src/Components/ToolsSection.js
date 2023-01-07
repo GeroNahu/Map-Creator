@@ -127,8 +127,8 @@ const ToolsSection = ({
       <div
         className="selectedLayerContainer"
         style={{
-          backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
-          outline: `solid ${theme.LAYER_SELECTOR_BORDER} 3px`,
+          backgroundColor: theme.COMMON_SELECTORS_BACKGROUND,
+          outline: `solid ${theme.COMMON_SELECTORS_BORDER} 3px`,
         }}
       >
         <CommonSelect
