@@ -1,10 +1,11 @@
 import React from "react";
 
-import "../Styles/toolsSection.css";
+import "../Styles/commonSelect.css";
 
 import ThemesContext from "../Contexts/ThemesContext";
 
 const CommonSelect = ({ onChange, items }) => {
+  console.log(items);
   const { theme } = React.useContext(ThemesContext);
   return (
     <select
@@ -12,8 +13,8 @@ const CommonSelect = ({ onChange, items }) => {
         onChange(e.target.value);
       }}
       defaultValue={0}
-      className="form"
-      id="form"
+      className="commonSelect"
+      id="commonSelect"
       style={{
         backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
         outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
@@ -23,7 +24,7 @@ const CommonSelect = ({ onChange, items }) => {
       {items.map((item, index) => {
         return (
           <option
-            className="formInputTitle"
+            className="commonSelectLabels"
             key={`option_${item.value}_${index}`}
             value={item.value}
             style={{ color: theme.TEXT_PRIMARY }}
