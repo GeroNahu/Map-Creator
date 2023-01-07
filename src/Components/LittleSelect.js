@@ -17,7 +17,7 @@ const LittleSelect = ({ onChange, items }) => {
       id="littleSelect"
       style={{
         backgroundColor: theme.LITTLE_SELECTORS_BACKGROUND,
-        outline: `solid ${theme.LITTLE_SELECTORS_BORDER} 2px`,
+        outline: `solid ${theme.LITTLE_SELECTORS_BORDER} 1px`,
         color: theme.TEXT_PRIMARY,
       }}
     >
