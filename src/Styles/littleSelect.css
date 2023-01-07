@@ -3,11 +3,12 @@
   font-family: cursive;
   font-size: 18px;
   font-weight: 600;
-  padding: 1px;
+  padding: 2px;
   position: absolute;
   right: 16px;
   top: 16px;
   user-select: none;
+  border: none;
 }
 .littleSelectLabals {
   font-family: cursive;
