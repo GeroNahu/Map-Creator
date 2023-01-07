@@ -2,7 +2,6 @@ import React from "react";
 
 import MapSection from "./MapSection";
 import ToolsSection from "./ToolsSection";
-import HandleTheme from "./HandleTheme";
 
 import CursorsContext from "../Contexts/CursorsContext";
 import MapContext from "../Contexts/MapContext";
@@ -142,7 +141,6 @@ const SectionContainer = () => {
         firstTile={firstTile}
         setFirstTile={setFirstTile}
       />
-      <HandleTheme />
       <ToolsSection
         onImageSelect={setSelectedImage}
         selectedImage={selectedImage}
