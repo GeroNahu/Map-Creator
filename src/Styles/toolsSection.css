@@ -41,21 +41,6 @@
   grid-area: layers;
   width: 320px;
 }
-.form {
-  width: 320px;
-  padding: 1px;
-  font-family: cursive;
-  font-size: 18px;
-  font-weight: 600;
-  user-select: none;
-}
-.formInput {
-  margin: 2px 2px 3px 2px;
-}
-.formInputTitle {
-  font-family: cursive;
-  padding: 2px 2px 5px 2px;
-}
 .handleLayers {
   display: flex;
   width: 317px;
