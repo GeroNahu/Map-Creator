@@ -5,18 +5,21 @@ import Header from "./Components/Header";
 import { ThemesProvider } from "./Contexts/ThemesContext";
 import { CursorsProvider } from "./Contexts/CursorsContext";
 import { MapProvider } from "./Contexts/MapContext";
+import { LanguageProvider } from "./Contexts/LanguageContext";
 
 function App() {
   return (
     <div className="App">
-      <ThemesProvider>
-        <MapProvider>
-          <CursorsProvider>
-            <Header />
-            <SectionContainer />
-          </CursorsProvider>
-        </MapProvider>
-      </ThemesProvider>
+      <LanguageProvider>
+        <ThemesProvider>
+          <MapProvider>
+            <CursorsProvider>
+              <Header />
+              <SectionContainer />
+            </CursorsProvider>
+          </MapProvider>
+        </ThemesProvider>
+      </LanguageProvider>
     </div>
   );
 }
