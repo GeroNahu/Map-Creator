@@ -193,7 +193,7 @@ const ToolsSection = ({
           />
           <button
             className={`layersSubmitButton ${
-              plusClickOn ? "layersSubmitButtonOn" : ""
+              submitClickOn ? "layersSubmitButtonOn" : ""
             }`}
             type="submit"
             style={{
