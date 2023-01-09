@@ -1,4 +1,5 @@
 import React from "react";
+import LanguageContext from "../Contexts/LanguageContext";
 
 import ThemesContext from "../Contexts/ThemesContext";
 
@@ -6,6 +7,7 @@ import "../Styles/gridSizaSelector.css";
 
 const GridSizeSelector = ({ setWidth, setHeight }) => {
   const { theme } = React.useContext(ThemesContext);
+  const { language } = React.useContext(LanguageContext);
 
   return (
     <div className="formContainer">
@@ -25,7 +27,7 @@ const GridSizeSelector = ({ setWidth, setHeight }) => {
             color: theme.TEXT_PRIMARY,
           }}
         >
-          Columns
+          {language.GRID_SELECTOR_COLUMNS_LABEL}
         </label>
         <input
           className="girdSizaSelectorInput"
@@ -42,7 +44,7 @@ const GridSizeSelector = ({ setWidth, setHeight }) => {
             color: theme.TEXT_PRIMARY,
           }}
         >
-          Rows
+          {language.GRID_SELECTOR_ROWS_LABEL}
         </label>
       </form>
     </div>
