@@ -7,6 +7,7 @@ import VisibilityLayers from "./VisibilityLayers";
 
 import MapContext from "../Contexts/MapContext";
 import ThemesContext from "../Contexts/ThemesContext";
+import LanguageContext from "../Contexts/LanguageContext";
 
 import "../Styles/globalStyles.css";
 import "../Styles/mapSection.css";
@@ -22,19 +23,27 @@ const MapSection = ({
   firstTile,
   setFirstTile,
 }) => {
-  const [width, setWidth] = React.useState(15);
-  const [height, setHeight] = React.useState(14);
+  const [width, setWidth] = React.useState(1);
+  const [height, setHeight] = React.useState(1);
   const [mapSize, setMapSize] = React.useState(100);
 
   const [inputSize, setInputSize] = React.useState(8);
 
   const { map, setMap } = React.useContext(MapContext);
   const { theme } = React.useContext(ThemesContext);
+  const { language } = React.useContext(LanguageContext);
 
   const handleSetVisibleLayers = (layer, value) => {
     const newState = [...visibleLayers];
     newState[layer] = value;
+    const newLayers = [...map.layers]
+    newLayers[layer].visible = value
+    const newMap = {
+      ...map,
+      layers: newLayers
+    }
     setVisibleLayers(newState);
+    setMap(newMap)
   };
   return (
     <section
@@ -58,7 +67,7 @@ const MapSection = ({
                 }}
                 size={inputSize ? inputSize : 1}
                 className="titleInput"
-                defaultValue={map.title || "Untitled"}
+                defaultValue={map.title || language.DEFAULT_MAP_TITLE}
                 name="title"
                 style={{
                   backgroundColor: theme.MAP_TITLE_BACKGROUND,
