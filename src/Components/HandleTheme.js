@@ -1,10 +1,13 @@
 import React from "react";
+
+import LanguageContext from "../Contexts/LanguageContext";
 import ThemesContext from "../Contexts/ThemesContext";
 
 import "../Styles/globalStyles.css";
 import "../Styles/HandleTheme.css";
 
 const HandleTheme = () => {
+  const { language } = React.useContext(LanguageContext);
   const { theme, setTheme } = React.useContext(ThemesContext);
   const [onOff, setOnOff] = React.useState(false);
 
@@ -31,7 +34,7 @@ const HandleTheme = () => {
         />
       </div>
       <h5 className="h5" style={{ color: theme.TEXT_PRIMARY }}>
-        Nocturne Mode
+        {language.HANDLE_THEME_LABEL}
       </h5>
     </div>
   );
