@@ -76,6 +76,9 @@
   width: 65px;
   user-select: none;
 }
+.layersSubmitButtonOn{
+  box-shadow: -3px -3px;
+}
 .buttosAndTiles {
   align-items: center;
   display: grid;
