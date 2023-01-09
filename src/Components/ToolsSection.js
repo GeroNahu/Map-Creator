@@ -4,10 +4,12 @@ import { tilesThemes } from "../constants/tilesThemes";
 import CategoryButtons from "./CategoryButtons";
 import NavButton from "./NavButton";
 import Drawer from "./Drawer";
-import ThemeContext from "../Contexts/ThemesContext";
-import MapContext from "../Contexts/MapContext";
 import ToolsContainer from "./ToolsContainer";
 import CommonSelect from "./CommonSelect";
+
+import LanguageContext from "../Contexts/LanguageContext";
+import ThemeContext from "../Contexts/ThemesContext";
+import MapContext from "../Contexts/MapContext";
 
 import "../Styles/toolsSection.css";
 import "../Styles/globalStyles.css";
@@ -30,6 +32,8 @@ const ToolsSection = ({
   const [images, setImages] = React.useState(tilesThemes.Exile || []);
   const [visibility, setVisibility] = React.useState(false);
   const [drawerPosition, setDrawerPosition] = React.useState(0);
+
+  const { language } = React.useContext(LanguageContext);
   const { theme } = React.useContext(ThemeContext);
   const { map, setMap } = React.useContext(MapContext);
 
@@ -72,14 +76,18 @@ const ToolsSection = ({
     e.preventDefault();
   };
   const handlelayersNumber = () => {
-    const currentLayers = [...map.layers, `Layer ${map.layers.length + 1}`];
-    const newTiles = map.tiles?.map((tile) => {
+    const currentLayers = [
+      ...map.layers,{
+        name: map.layers.name= `${language.LAYER_DEFAULT_NAME} ${map.layers.length + 1}`,
+        visible: true
+      }
+    ];
+    const newTiles = map?.tiles?.map((tile) => {
       return { ...tile, layers: [...tile.layers, ""] };
     });
     setMap({ ...map, layers: currentLayers, tiles: newTiles });
     setVisibleLayers([...visibleLayers, true]);
   };
-
   return (
     <section
       className={`divToolsSection  ${showHideClass}`}
@@ -89,7 +97,7 @@ const ToolsSection = ({
         backgroundColor: theme.TOOLS_SECTION_BACKGROUND,
         border: `solid ${theme.TOOLS_SECTION_BORDER} 3px`,
         left: platform === "Android" ? transitionPosition : `${null}`,
-        transition: transition ? "400ms linear" : "none",
+        transition: transition ? "right 400ms linear" : "none",
       }}
     >
       <NavButton
@@ -145,8 +153,8 @@ const ToolsSection = ({
               plusClickOn ? "layersNumberButtonOn" : ""
             }`}
             onClick={(e) => {
-              e.preventDefault();
               handlelayersNumber();
+              e.preventDefault();
             }}
             onMouseDown={() => setPlusClickOn(true)}
             onMouseUp={() => setPlusClickOn(false)}
@@ -199,7 +207,7 @@ const ToolsSection = ({
             onMouseUp={() => setSubmitClickOn(false)}
             onMouseLeave={() => setSubmitClickOn(false)}
           >
-            Submit
+            {language.RENAME_LAYERS_SUBMIT_BUTTON}
           </button>
         </form>
       </div>
