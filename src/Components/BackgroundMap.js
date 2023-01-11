@@ -6,16 +6,11 @@ import "../Styles/backgroundMap.css";
 import ThemesContext from "../Contexts/ThemesContext";
 import MapContext from "../Contexts/MapContext";
 
-const BackgroundMap = ({
-  width,
-  height,
-  mapSize,
-  tileSize,
-  visibleLayers,
-  tool,
-}) => {
+const BackgroundMap = ({ mapSize, tileSize, tool }) => {
   const { theme } = React.useContext(ThemesContext);
   const { map, setMap } = React.useContext(MapContext);
+  const width = map.columns;
+  const height = map.rows;
 
   React.useEffect(() => {
     const newTiles = [];
@@ -68,7 +63,6 @@ const BackgroundMap = ({
                 onMouseEnter={(e) => handleEvent(e, i)}
                 onMouseUp={(e) => handleEvent(e, i)}
                 draggable={tool?.draggable}
-                visibleLayers={visibleLayers}
               />
             );
           })}
