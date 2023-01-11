@@ -24,8 +24,6 @@ const ToolsSection = ({
   handleToolChange,
   toolsList,
   selectedTool,
-  visibleLayers,
-  setVisibleLayers,
 }) => {
   const ref = React.useRef(null);
 
@@ -40,7 +38,10 @@ const ToolsSection = ({
   const divToolsSectionWidth = ref.current?.clientWidth;
   const [transition, setTransition] = React.useState(true);
   const [plusClickOn, setPlusClickOn] = React.useState(false);
-  const [submitClickOn, setSubmitClickOn] = React.useState(false);
+  const [minusClickOn, setMinusClickOn] = React.useState(false);
+  const [renameClickOn, setRenameClickOn] = React.useState(false);
+
+  const [layersFunction, setLayersFunction] = React.useState("");
 
   const handleSelect = (theme) => {
     setImages(tilesThemes[theme]);
@@ -75,19 +76,49 @@ const ToolsSection = ({
     setMap({ ...map, layers: newLayers });
     e.preventDefault();
   };
-  const handlelayersNumber = () => {
-    const currentLayers = [
-      ...map.layers,{
-        name: map.layers.name= `${language.LAYER_DEFAULT_NAME} ${map.layers.length + 1}`,
-        visible: true
-      }
-    ];
-    const newTiles = map?.tiles?.map((tile) => {
-      return { ...tile, layers: [...tile.layers, ""] };
-    });
-    setMap({ ...map, layers: currentLayers, tiles: newTiles });
-    setVisibleLayers([...visibleLayers, true]);
-  };
+
+  const handlelayersNumber =
+    layersFunction === "pushLayer"
+      ? () => {
+          const currentLayers = [
+            ...map.layers,
+            {
+              name: (map.layers.name = `${language.LAYER_DEFAULT_NAME} ${
+                map.layers.length + 1
+              }`),
+              visible: true,
+            },
+          ];
+          const newTiles = map?.tiles?.map((tile) => {
+            return { ...tile, layers: [...tile.layers, ""] };
+          });
+          setMap({ ...map, layers: currentLayers, tiles: newTiles });
+          setLayersFunction("");
+        }
+      : layersFunction === "deleteLayer"
+      ? () => {
+          const newMapLayers = [...map.layers];
+          newMapLayers.splice(selectedLayer, 1);
+          const newTiles = [...map.tiles];
+          newTiles.map((tile) => {
+            const tileLayers = [...tile.layers];
+            tileLayers.splice(selectedLayer, 1);
+            return setMap({
+              ...map,
+              layers: newMapLayers,
+              tiles: map.tiles.map((tile) => {
+                return { ...tile, layers: tileLayers };
+              }),
+            });
+          });
+          setLayersFunction("");
+          const checkedIndex = Math.min(
+            selectedLayer,
+            Math.max(0, map.layers.length - 2)
+          );
+          if (checkedIndex !== selectedLayer) onLayerSelect(checkedIndex);
+        }
+      : () => console.log("ninguna funcion");
   return (
     <section
       className={`divToolsSection  ${showHideClass}`}
@@ -145,70 +176,106 @@ const ToolsSection = ({
             value: index,
             label: layer?.name,
           }))}
+          selectedLayer={selectedLayer}
         />
         <form className="handleLayers" onSubmit={(e) => handleName(e)}>
-          <button
-            type="button"
-            className={`layersNumberButton ${
-              plusClickOn ? "layersNumberButtonOn" : ""
-            }`}
-            onClick={(e) => {
-              handlelayersNumber();
-              e.preventDefault();
-            }}
-            onMouseDown={() => setPlusClickOn(true)}
-            onMouseUp={() => setPlusClickOn(false)}
-            onMouseLeave={() => setPlusClickOn(false)}
-            style={{
-              background: plusClickOn
-                ? theme.CATEGORY_BUTTONS_BACKGROUND_ON
-                : theme.CATEGORY_BUTTONS_BACKGROUND,
-              outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
-              color: theme.TEXT_PRIMARY,
-            }}
-          >
-            +
-          </button>
+          <div className="layersHandlerButtonsWrapper">
+            <div className="plusMinusButtonsWrapper">
+              <button
+                type="button"
+                className={`layersNumberButton ${
+                  plusClickOn ? "layersNumberButtonOn" : ""
+                }`}
+                onClick={(e) => {
+                  handlelayersNumber();
+                  e.preventDefault();
+                }}
+                onMouseDown={() => {
+                  setLayersFunction("pushLayer");
+                  setPlusClickOn(true);
+                }}
+                onMouseUp={() => {
+                  setPlusClickOn(false);
+                }}
+                onMouseLeave={() => setPlusClickOn(false)}
+                style={{
+                  background: plusClickOn
+                    ? theme.CATEGORY_BUTTONS_BACKGROUND_ON
+                    : theme.CATEGORY_BUTTONS_BACKGROUND,
+                  outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
+                  color: theme.TEXT_PRIMARY,
+                }}
+              >
+                +
+              </button>
+              <button
+                type="button"
+                className={`layersNumberButton ${
+                  minusClickOn ? "layersNumberButtonOn" : ""
+                }`}
+                onClick={(e) => {
+                  handlelayersNumber();
+                  e.preventDefault();
+                }}
+                onMouseDown={() => {
+                  setLayersFunction("deleteLayer");
+                  setMinusClickOn(true);
+                }}
+                onMouseUp={() => setMinusClickOn(false)}
+                onMouseLeave={() => setMinusClickOn(false)}
+                style={{
+                  background: minusClickOn
+                    ? theme.CATEGORY_BUTTONS_BACKGROUND_ON
+                    : theme.CATEGORY_BUTTONS_BACKGROUND,
+                  outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
+                  color: theme.TEXT_PRIMARY,
+                }}
+              >
+                -
+              </button>
+            </div>
+
+            <button
+              className={`layersRenameButton ${
+                renameClickOn ? "layersSubmitButtonOn" : ""
+              }`}
+              type="submit"
+              style={{
+                background: renameClickOn
+                  ? theme.CATEGORY_BUTTONS_BACKGROUND_ON
+                  : theme.CATEGORY_BUTTONS_BACKGROUND,
+                outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
+                color: theme.TEXT_PRIMARY,
+              }}
+              onMouseDown={() => setRenameClickOn(true)}
+              onMouseUp={() => setRenameClickOn(false)}
+              onMouseLeave={() => setRenameClickOn(false)}
+            >
+              {language.RENAME_LAYERS_SUBMIT_BUTTON}
+            </button>
+          </div>
           <input
+            className="inputRenameLayer"
             defaultValue={map?.layers?.[selectedLayer]?.name}
             key={map?.layers?.name?.[selectedLayer]}
             type="text"
-            className="inputRenameLayer"
             name="layerName"
             style={{
-              backgroundColor: theme.LAYER_SELECTOR_BACKGROUND,
-              outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
+              backgroundColor: theme.LAYERS_RENAME_INPUT_BACKGROUND,
+              outline: `solid ${theme.LAYERS_RENAME_INPUT_BORDER} 2px`,
               color: theme.TEXT_PRIMARY,
             }}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                setSubmitClickOn(true);
+                setRenameClickOn(true);
               }
             }}
             onKeyUp={(e) => {
               if (e.key === "Enter") {
-                setSubmitClickOn(false);
+                setRenameClickOn(false);
               }
             }}
           />
-          <button
-            className={`layersSubmitButton ${
-              submitClickOn ? "layersSubmitButtonOn" : ""
-            }`}
-            type="submit"
-            style={{
-              background: submitClickOn
-                ? theme.CATEGORY_BUTTONS_BACKGROUND_ON
-                : theme.CATEGORY_BUTTONS_BACKGROUND,
-              outline: `solid ${theme.LAYER_SELECTOR_BORDER} 2px`,
-              color: theme.TEXT_PRIMARY,
-            }}
-            onMouseDown={() => setSubmitClickOn(true)}
-            onMouseUp={() => setSubmitClickOn(false)}
-            onMouseLeave={() => setSubmitClickOn(false)}
-          >
-            {language.RENAME_LAYERS_SUBMIT_BUTTON}
-          </button>
         </form>
       </div>
       <div className="buttosAndTiles">
