@@ -135,8 +135,6 @@ const SectionContainer = () => {
         selectedLayer={selectedLayer}
         setSelectedLayer={setSelectedLayer}
         tool={tools[tool]}
-        visibleLayers={visibleLayers}
-        setVisibleLayers={setVisibleLayers}
         move={move}
         firstTile={firstTile}
         setFirstTile={setFirstTile}
