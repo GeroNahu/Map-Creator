@@ -11,20 +11,19 @@ import LanguageContext from "../Contexts/LanguageContext";
 
 import "../Styles/globalStyles.css";
 import "../Styles/mapSection.css";
+import ExportMap from "./ExportMap";
+import ImportMap from "./ImportMap";
+import NewMap from "./NewMap";
 
 const MapSection = ({
   selected,
   selectedLayer,
   setSelectedLayer,
   tool,
-  visibleLayers,
-  setVisibleLayers,
   move,
   firstTile,
   setFirstTile,
 }) => {
-  const [width, setWidth] = React.useState(1);
-  const [height, setHeight] = React.useState(1);
   const [mapSize, setMapSize] = React.useState(100);
 
   const [inputSize, setInputSize] = React.useState(8);
@@ -34,17 +33,18 @@ const MapSection = ({
   const { language } = React.useContext(LanguageContext);
 
   const handleSetVisibleLayers = (layer, value) => {
-    const newState = [...visibleLayers];
-    newState[layer] = value;
-    const newLayers = [...map.layers]
-    newLayers[layer].visible = value
+    const newLayers = [...map.layers];
+    newLayers[layer].visible = value;
     const newMap = {
       ...map,
-      layers: newLayers
-    }
-    setVisibleLayers(newState);
-    setMap(newMap)
+      layers: newLayers,
+    };
+    setMap(newMap);
   };
+  React.useEffect(() => {
+    if (map.title.length !== 0) setInputSize(map.title.length);
+  }, [map.title.length]);
+
   return (
     <section
       className="divBackgorundMapContainer"
@@ -60,14 +60,19 @@ const MapSection = ({
                 setMap({ ...map, title: e.target.title.value });
                 e.preventDefault();
               }}
+              onBlur={(e) => {
+                const title = e.target.value;
+                setMap({ ...map, title: title });
+              }}
             >
               <input
                 onChange={(e) => {
                   setInputSize(e.target.value.length);
                 }}
-                size={inputSize ? inputSize : 1}
+                size={inputSize || 1}
                 className="titleInput"
-                defaultValue={map.title || language.DEFAULT_MAP_TITLE}
+                defaultValue={map.title}
+                placeholder={language.DEFAULT_MAP_TITLE}
                 name="title"
                 style={{
                   backgroundColor: theme.MAP_TITLE_BACKGROUND,
@@ -85,15 +90,14 @@ const MapSection = ({
             border: `solid ${theme.MAP_SELECTORS_CONTAINER_BORDER} 3px`,
           }}
         >
-          <GridSizeSelector
-            width={width}
-            height={height}
-            setWidth={setWidth}
-            setHeight={setHeight}
-          />
+          <div className="importExportContainer">
+            <NewMap />
+            <ExportMap />
+            <ImportMap />
+          </div>
+          <GridSizeSelector />
           <ZoomSelector setMapSize={setMapSize} />
           <VisibilityLayers
-            visibleLayers={visibleLayers}
             handleSetVisibleLayers={handleSetVisibleLayers}
             selectedLayer={selectedLayer}
           />
@@ -103,11 +107,8 @@ const MapSection = ({
         selected={selected}
         setSelectedLayer={setSelectedLayer}
         selectedLayer={selectedLayer}
-        width={width}
-        height={height}
         mapSize={mapSize}
         tileSize={100}
-        visibleLayers={visibleLayers}
         tool={tool}
         move={move}
         firstTile={firstTile}
