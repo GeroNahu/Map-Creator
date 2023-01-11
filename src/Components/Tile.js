@@ -1,8 +1,10 @@
 import React from "react";
 import ThemesContext from "../Contexts/ThemesContext";
 import CursorsContext from "../Contexts/CursorsContext";
+import MapContext from "../Contexts/MapContext";
 
-const Tile = ({ x, y, layers = [], visibleLayers, ...rest }) => {
+const Tile = ({ x, y, layers = [], ...rest }) => {
+  const { map } = React.useContext(MapContext);
   const { theme } = React.useContext(ThemesContext);
   const { cursor } = React.useContext(CursorsContext);
   return (
@@ -16,8 +18,7 @@ const Tile = ({ x, y, layers = [], visibleLayers, ...rest }) => {
       }}
     >
       {layers?.map((layer, index) => {
-        const visibile = visibleLayers[index];
-        return visibile ? (
+        return map?.layers?.[index]?.visible ? (
           <div
             className="layer"
             key={`tile_${x}_${y}_layer_${index}`}
