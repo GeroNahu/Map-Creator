@@ -4,14 +4,15 @@ import "../Styles/commonSelect.css";
 
 import ThemesContext from "../Contexts/ThemesContext";
 
-const CommonSelect = ({ onChange, items }) => {
+const CommonSelect = ({ onChange, items, selectedLayer }) => {
   const { theme } = React.useContext(ThemesContext);
   return (
     <select
       onChange={(e) => {
         onChange(e.target.value);
       }}
-      defaultValue={0}
+      key={`selectLayer_${selectedLayer}`}
+      defaultValue={selectedLayer}
       className="commonSelect"
       id="commonSelect"
       style={{
