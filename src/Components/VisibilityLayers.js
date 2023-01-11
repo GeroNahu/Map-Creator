@@ -5,7 +5,7 @@ import MapContext from "../Contexts/MapContext";
 
 import "../Styles/visibilityLayers.css";
 
-const VisibilityLayers = ({ visibleLayers, handleSetVisibleLayers }) => {
+const VisibilityLayers = ({ handleSetVisibleLayers }) => {
   const { theme } = React.useContext(ThemesContext);
   const { map } = React.useContext(MapContext);
 
@@ -22,8 +22,7 @@ const VisibilityLayers = ({ visibleLayers, handleSetVisibleLayers }) => {
               id={`layer ${index}`}
               name={`layer ${index}`}
               className="checkBoxLayer"
-              value="true"
-              defaultChecked={`${visibleLayers[index]}`}
+              checked={map.layers[index].visible}
               onChange={(e) => {
                 return handleSetVisibleLayers(index, e.target.checked);
               }}
