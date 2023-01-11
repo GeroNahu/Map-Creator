@@ -1,14 +1,16 @@
 import React from "react";
 import LanguageContext from "../Contexts/LanguageContext";
+import MapContext from "../Contexts/MapContext";
 
 import ThemesContext from "../Contexts/ThemesContext";
 
 import "../Styles/gridSizaSelector.css";
 
-const GridSizeSelector = ({ setWidth, setHeight }) => {
+const GridSizeSelector = () => {
+  const { map, setMap } = React.useContext(MapContext);
+
   const { theme } = React.useContext(ThemesContext);
   const { language } = React.useContext(LanguageContext);
-
   return (
     <div className="formContainer">
       <form className="gridSizaForm">
@@ -17,8 +19,16 @@ const GridSizeSelector = ({ setWidth, setHeight }) => {
           name="gridSizeInput"
           id="gridSizeInputWidth"
           type="number"
-          defaultValue={1}
-          onChange={(e) => setWidth(e.target.value)}
+          defaultValue={map.columns || 1}
+          key={`columns_input_${map.columns}`}
+          onBlur={(e) => {
+            setMap({ ...map, columns: e.target.value });
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              setMap({ ...map, columns: e.target.value });
+            }
+          }}
         ></input>
         <label
           className="gridSizaFormInputTitle"
@@ -34,8 +44,16 @@ const GridSizeSelector = ({ setWidth, setHeight }) => {
           name="gridSizeInput"
           id="gridSizeInputHeight"
           type="number"
-          defaultValue={1}
-          onChange={(e) => setHeight(e.target.value)}
+          defaultValue={map.rows || 1}
+          key={`rows_input_${map.rows}`}
+          onBlur={(e) => {
+            setMap({ ...map, rows: e.target.value });
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              setMap({ ...map, rows: e.target.value });
+            }
+          }}
         ></input>
         <label
           className="gridSizaFormInputTitle"
