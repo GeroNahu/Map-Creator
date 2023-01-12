@@ -28,7 +28,7 @@ const ExportMap = () => {
   const { theme } = React.useContext(ThemeContext);
   const { map } = React.useContext(MapContext);
 
-  const mapJason = JSON.stringify(map);
+  const mapJson = JSON.stringify(map);
   const mapTitle = map.title;
   return (
     <button
@@ -44,7 +44,7 @@ const ExportMap = () => {
       onMouseDown={() => setExportClickOn(true)}
       onMouseUp={() => {
         setExportClickOn(false);
-        downloadObjectAsJson(mapJason, mapTitle);
+        downloadObjectAsJson(mapJson, mapTitle);
       }}
       onMouseLeave={() => setExportClickOn(false)}
     >
