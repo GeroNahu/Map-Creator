@@ -6,7 +6,7 @@ import ThemeContext from "../Contexts/ThemesContext";
 import LanguageContext from "../Contexts/LanguageContext";
 import MapContext from "../Contexts/MapContext";
 
-const NewMap = () => {
+const NewMap = ({ setSelectedLayer }) => {
   const [newMapClickOn, setNewMapClickOn] = React.useState(false);
 
   const { theme } = React.useContext(ThemeContext);
@@ -28,6 +28,7 @@ const NewMap = () => {
       onMouseUp={() => {
         setNewMapClickOn(false);
         setMap(defaultMap);
+        setSelectedLayer(0);
       }}
       onMouseLeave={() => setNewMapClickOn(false)}
     >
