@@ -9,7 +9,7 @@ const CommonSelect = ({ onChange, items, selectedLayer }) => {
   return (
     <select
       onChange={(e) => {
-        onChange(e.target.value);
+        onChange(parseInt(e.target.value));
       }}
       key={`selectLayer_${selectedLayer}`}
       defaultValue={selectedLayer}
