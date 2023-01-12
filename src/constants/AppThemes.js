@@ -17,9 +17,22 @@ const defaultThemes = {
     SELECTED_TOOL_BACKGROUND: "#EAC1C1",
     COMMON_SELECTORS_BACKGROUND: "#EAC1C1",
     LITTLE_SELECTORS_BACKGROUND: "#B87E7E",
+    LAYERS_RENAME_INPUT_BACKGROUND: "#EAC1C1",
     CATEGORY_BUTTONS_BACKGROUND:
       "linear-gradient(155deg, #ffffff, #8e8e8e, #8e8e8e, #8c8c8c, #9c9c9c, #8c8c8c, #8c8c8c)",
     CATEGORY_BUTTONS_BACKGROUND_ON:
+      "linear-gradient(165deg, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5e5e5e, #9c9c9c, #cccccc)",
+    EXPORT_BUTTONS_BACKGROUND:
+      "linear-gradient(155deg, #ffffff, #8e8e8e, #8e8e8e, #8c8c8c, #9c9c9c, #8c8c8c, #8c8c8c)",
+    EXPORT_BUTTONS_BACKGROUND_ON:
+      "linear-gradient(165deg, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5e5e5e, #9c9c9c, #cccccc)",
+    NEW_MAP_BUTTONS_BACKGROUND:
+      "linear-gradient(155deg, #ffffff, #8e8e8e, #8e8e8e, #8c8c8c, #9c9c9c, #8c8c8c, #8c8c8c)",
+    NEW_MAP_BUTTONS_BACKGROUND_ON:
+      "linear-gradient(165deg, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5e5e5e, #9c9c9c, #cccccc)",
+    IMPORT_BUTTONS_BACKGROUND:
+      "linear-gradient(155deg, #ffffff, #8e8e8e, #8e8e8e, #8c8c8c, #9c9c9c, #8c8c8c, #8c8c8c)",
+    IMPORT_BUTTONS_BACKGROUND_ON:
       "linear-gradient(165deg, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5e5e5e, #9c9c9c, #cccccc)",
     TOOLS_CONTAINER_BACKGROUND: "#EAC1C1",
     HEADER_BORDER: "#000000",
@@ -31,8 +44,12 @@ const defaultThemes = {
     SELECTED_TOOL_BORDER: "#000000",
     COMMON_SELECTORS_BORDER: "#000000",
     LITTLE_SELECTORS_BORDER: "#000000",
+    LAYERS_RENAME_INPUT_BORDER: "#000000",
     TOOLS_CONTAINER_BORDER: "#000000",
     CATEGORY_BUTTONS_BORDER: "#000000",
+    IMPORT_BUTTON_BORDER: "#000000",
+    EXPORT_BUTTON_BORDER: "#000000",
+    NEW_MAP_BUTTON_BORDER: "#000000",
     TILE_GRID_COLOR: "#000000",
     TOOLS_GRID_COLOR: "#000000",
   },
@@ -54,9 +71,22 @@ const defaultThemes = {
     SELECTED_TOOL_BACKGROUND: "#555555",
     COMMON_SELECTORS_BACKGROUND: "#555555",
     LITTLE_SELECTORS_BACKGROUND: "#323232",
+    LAYERS_RENAME_INPUT_BACKGROUND: "#555555",
     CATEGORY_BUTTONS_BACKGROUND:
       "linear-gradient(155deg, #ffffff, #8e8e8e, #8e8e8e, #8c8c8c, #9c9c9c, #8c8c8c, #8c8c8c)",
     CATEGORY_BUTTONS_BACKGROUND_ON:
+      "linear-gradient(165deg, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5e5e5e, #9c9c9c, #cccccc)",
+    EXPORT_BUTTONS_BACKGROUND:
+      "linear-gradient(155deg, #ffffff, #8e8e8e, #8e8e8e, #8c8c8c, #9c9c9c, #8c8c8c, #8c8c8c)",
+    EXPORT_BUTTONS_BACKGROUND_ON:
+      "linear-gradient(165deg, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5e5e5e, #9c9c9c, #cccccc)",
+    NEW_MAP_BUTTONS_BACKGROUND:
+      "linear-gradient(155deg, #ffffff, #8e8e8e, #8e8e8e, #8c8c8c, #9c9c9c, #8c8c8c, #8c8c8c)",
+    NEW_MAP_BUTTONS_BACKGROUND_ON:
+      "linear-gradient(165deg, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5e5e5e, #9c9c9c, #cccccc)",
+    IMPORT_BUTTONS_BACKGROUND:
+      "linear-gradient(155deg, #ffffff, #8e8e8e, #8e8e8e, #8c8c8c, #9c9c9c, #8c8c8c, #8c8c8c)",
+    IMPORT_BUTTONS_BACKGROUND_ON:
       "linear-gradient(165deg, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5c5c5c, #5e5e5e, #9c9c9c, #cccccc)",
     TOOLS_CONTAINER_BACKGROUND: "#555555",
     HEADER_BORDER: "#ffffff",
@@ -68,8 +98,12 @@ const defaultThemes = {
     SELECTED_TOOL_BORDER: "#ffffff",
     COMMON_SELECTORS_BORDER: "#ffffff",
     LITTLE_SELECTORS_BORDER: "#ffffff",
+    LAYERS_RENAME_INPUT_BORDER: "#ffffff",
     TOOLS_CONTAINER_BORDER: "#ffffff",
-    CATEGORY_BUTTONS_BORDER: "#000000",
+    CATEGORY_BUTTONS_BORDER: "#ffffff",
+    IMPORT_BUTTON_BORDER: "#ffffff",
+    EXPORT_BUTTON_BORDER: "#ffffff",
+    NEW_MAP_BUTTON_BORDER: "#ffffff",
     TILE_GRID_COLOR: "#ffffff",
     TOOLS_GRID_COLOR: "#ffffff",
   },
