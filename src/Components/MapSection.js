@@ -91,7 +91,7 @@ const MapSection = ({
           }}
         >
           <div className="importExportContainer">
-            <NewMap />
+            <NewMap setSelectedLayer={setSelectedLayer} />
             <ExportMap />
             <ImportMap />
           </div>
