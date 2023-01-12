@@ -1,0 +1,15 @@
+.exportMapButton {
+  align-items: center;
+  box-shadow: 3px 3px;
+  display: flex;
+  font-size: 16px;
+  font-weight: 600;
+  height: 26px;
+  justify-content: center;
+  margin: 6px 9px;
+  width: max-content;
+  user-select: none;
+}
+.exportMapButtonOn {
+  box-shadow: -3px -3px;
+}
