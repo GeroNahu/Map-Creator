@@ -15,10 +15,13 @@
   min-width: min-content;
   text-align: center;
 }
+.titleInput::placeholder {
+  color: rgb(0, 0, 0);
+}
 .mapSelectorsContainer {
   align-items: center;
   border: solid 3px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr) ;
+  grid-template-columns: repeat(4, 1fr);
   padding: 5px;
 }
