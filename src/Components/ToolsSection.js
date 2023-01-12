@@ -41,8 +41,6 @@ const ToolsSection = ({
   const [minusClickOn, setMinusClickOn] = React.useState(false);
   const [renameClickOn, setRenameClickOn] = React.useState(false);
 
-  const [layersFunction, setLayersFunction] = React.useState("");
-
   const handleSelect = (theme) => {
     setImages(tilesThemes[theme]);
   };
@@ -77,48 +75,38 @@ const ToolsSection = ({
     e.preventDefault();
   };
 
-  const handlelayersNumber =
-    layersFunction === "pushLayer"
-      ? () => {
-          const currentLayers = [
-            ...map.layers,
-            {
-              name: (map.layers.name = `${language.LAYER_DEFAULT_NAME} ${
-                map.layers.length + 1
-              }`),
-              visible: true,
-            },
-          ];
-          const newTiles = map?.tiles?.map((tile) => {
-            return { ...tile, layers: [...tile.layers, ""] };
-          });
-          setMap({ ...map, layers: currentLayers, tiles: newTiles });
-          setLayersFunction("");
-        }
-      : layersFunction === "deleteLayer"
-      ? () => {
-          const newMapLayers = [...map.layers];
-          newMapLayers.splice(selectedLayer, 1);
-          const newTiles = [...map.tiles];
-          newTiles.map((tile) => {
-            const tileLayers = [...tile.layers];
-            tileLayers.splice(selectedLayer, 1);
-            return setMap({
-              ...map,
-              layers: newMapLayers,
-              tiles: map.tiles.map((tile) => {
-                return { ...tile, layers: tileLayers };
-              }),
-            });
-          });
-          setLayersFunction("");
-          const checkedIndex = Math.min(
-            selectedLayer,
-            Math.max(0, map.layers.length - 2)
-          );
-          if (checkedIndex !== selectedLayer) onLayerSelect(checkedIndex);
-        }
-      : () => console.log("ninguna funcion");
+  const addNewLayer = () => {
+    const currentLayers = [
+      ...map.layers,
+      {
+        name: `${language.LAYER_DEFAULT_NAME} ${map.layers.length + 1}`,
+        visible: true,
+      },
+    ];
+    const newTiles = map?.tiles?.map((tile) => {
+      return { ...tile, layers: [...tile.layers, ""] };
+    });
+    setMap({ ...map, layers: currentLayers, tiles: newTiles });
+  };
+  const removeLayer = () => {
+    const newMapLayers = [...map.layers];
+    newMapLayers.splice(selectedLayer, 1);
+    const newTiles = map.tiles.map((tile) => {
+      const newTileLayers = [...tile.layers];
+      newTileLayers.splice(selectedLayer, 1);
+      return { ...tile, layers: newTileLayers };
+    });
+    setMap({
+      ...map,
+      layers: newMapLayers,
+      tiles: newTiles,
+    });
+    const checkedIndex = Math.min(
+      selectedLayer,
+      Math.max(0, map.layers.length - 2)
+    );
+    if (checkedIndex !== selectedLayer) onLayerSelect(checkedIndex);
+  };
   return (
     <section
       className={`divToolsSection  ${showHideClass}`}
@@ -187,11 +175,10 @@ const ToolsSection = ({
                   plusClickOn ? "layersNumberButtonOn" : ""
                 }`}
                 onClick={(e) => {
-                  handlelayersNumber();
+                  addNewLayer();
                   e.preventDefault();
                 }}
                 onMouseDown={() => {
-                  setLayersFunction("pushLayer");
                   setPlusClickOn(true);
                 }}
                 onMouseUp={() => {
@@ -214,11 +201,10 @@ const ToolsSection = ({
                   minusClickOn ? "layersNumberButtonOn" : ""
                 }`}
                 onClick={(e) => {
-                  handlelayersNumber();
+                  removeLayer();
                   e.preventDefault();
                 }}
                 onMouseDown={() => {
-                  setLayersFunction("deleteLayer");
                   setMinusClickOn(true);
                 }}
                 onMouseUp={() => setMinusClickOn(false)}
@@ -257,7 +243,7 @@ const ToolsSection = ({
           <input
             className="inputRenameLayer"
             defaultValue={map?.layers?.[selectedLayer]?.name}
-            key={map?.layers?.name?.[selectedLayer]}
+            key={map?.layers?.[selectedLayer]?.name}
             type="text"
             name="layerName"
             style={{
