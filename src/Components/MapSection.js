@@ -26,8 +26,6 @@ const MapSection = ({
 }) => {
   const [mapSize, setMapSize] = React.useState(100);
 
-  const [inputSize, setInputSize] = React.useState(8);
-
   const { map, setMap } = React.useContext(MapContext);
   const { theme } = React.useContext(ThemesContext);
   const { language } = React.useContext(LanguageContext);
@@ -41,9 +39,6 @@ const MapSection = ({
     };
     setMap(newMap);
   };
-  React.useEffect(() => {
-    if (map.title.length !== 0) setInputSize(map.title.length);
-  }, [map.title.length]);
 
   return (
     <section
@@ -54,33 +49,30 @@ const MapSection = ({
     >
       <div className="mapHeader">
         <div className="titleContainer">
-          <h2 className="h2">
-            <form
-              onSubmit={(e) => {
-                setMap({ ...map, title: e.target.title.value });
-                e.preventDefault();
-              }}
-              onBlur={(e) => {
+          <h2
+            className="h2"
+            style={{
+              backgroundColor: theme.MAP_TITLE_BACKGROUND,
+              outline: `solid ${theme.MAP_TITLE_BORDER} 3px`,
+            }}
+          >
+            {map.title}
+            <input
+              onChange={(e) => {
                 const title = e.target.value;
                 setMap({ ...map, title: title });
               }}
-            >
-              <input
-                onChange={(e) => {
-                  setInputSize(e.target.value.length);
-                }}
-                size={inputSize || 1}
-                className="titleInput"
-                defaultValue={map.title}
-                placeholder={language.DEFAULT_MAP_TITLE}
-                name="title"
-                style={{
-                  backgroundColor: theme.MAP_TITLE_BACKGROUND,
-                  border: `solid ${theme.MAP_TITLE_BORDER} 3px`,
-                  color: theme.TITLES,
-                }}
-              ></input>
-            </form>
+              className="titleInput"
+              placeholder={language.DEFAULT_MAP_TITLE}
+              name="title"
+              spellCheck="false"
+              style={{
+                backgroundColor: "transparent",
+                outline: `solid ${theme.MAP_TITLE_BORDER} 3px`,
+                color: theme.TITLES,
+              }}
+              value={map.title}
+            />
           </h2>
         </div>
         <div
