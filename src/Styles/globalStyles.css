@@ -8,12 +8,17 @@
 }
 
 .h2 {
+  color: transparent;
   font-weight: bolder;
-  font-size: 30px;
+  font-size: 45px;
   font-family: "Arial Narrow Bold", sans-serif;
   justify-self: right;
   margin: 15px 0;
+  max-height: 54.67px;
+  max-width: calc(100vw - 457px);
+  overflow: hidden;
   user-select: none;
+  width: min-content;
 }
 .h5 {
   font-size: 16px;
