@@ -52,12 +52,12 @@ const ToolsSection = ({
       key={`tool_${index}`}
       className="tiles"
       style={{
-        backgroundImage: image,
+        backgroundImage: `url(${image})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         outline: `solid ${theme.TOOLS_GRID_COLOR} 1px`,
       }}
-      onClick={() => onImageSelect(image)}
+      onClick={() => onImageSelect(`url(${image})`)}
     />
   ));
 
