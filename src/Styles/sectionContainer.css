@@ -20,7 +20,7 @@
 }
 .divBackgorundMapContainer {
   display: grid;
-  grid-template-rows: 210px 1fr;
+  grid-template-rows: 245px 1fr;
   box-sizing: border-box;
   max-height: calc(100vh - 115px);
 }
