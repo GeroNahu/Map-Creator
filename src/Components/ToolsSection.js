@@ -57,7 +57,7 @@ const ToolsSection = ({
         backgroundPosition: "center",
         outline: `solid ${theme.TOOLS_GRID_COLOR} 1px`,
       }}
-      onClick={() => onImageSelect(`url(${image})`)}
+      onClick={() => onImageSelect(image)}
     />
   ));
 
@@ -144,7 +144,7 @@ const ToolsSection = ({
           className="selectedTool"
           style={{
             backgroundColor: theme.SELECTED_TOOL_BACKGROUND,
-            backgroundImage: selectedImage,
+            backgroundImage: `url(${selectedImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             border: `solid ${theme.SELECTED_TOOL_BORDER} 3px`,
