@@ -10,6 +10,7 @@ const languages = {
     EXPORT_MAP_BUTTON: "Export",
     IMPORT_MAP_BUTTON: "Import",
     NEW_MAP_BUTTON: "New Map",
+    ExportPNG_MAP_BUTTON: "Download",
   },
   español: {
     APP_HEADER_TITLE: "Creador de Mapa",
@@ -22,6 +23,7 @@ const languages = {
     EXPORT_MAP_BUTTON: "Exportar",
     IMPORT_MAP_BUTTON: "Importar",
     NEW_MAP_BUTTON: "Nuevo Mapa",
+    ExportPNG_MAP_BUTTON: "Descargar",
   },
   Italiano: {
     APP_HEADER_TITLE: "Creatore di Mappe",
@@ -34,6 +36,7 @@ const languages = {
     EXPORT_MAP_BUTTON: "Exportare",
     IMPORT_MAP_BUTTON: "Importare",
     NEW_MAP_BUTTON: "Nuova Mappa",
+    ExportPNG_MAP_BUTTON: "Scaricamento",
   },
   Deutsch: {
     APP_HEADER_TITLE: "Kartenersteller",
@@ -46,6 +49,7 @@ const languages = {
     EXPORT_MAP_BUTTON: "Export",
     IMPORT_MAP_BUTTON: "Importieren",
     NEW_MAP_BUTTON: "Neue Karte",
+    ExportPNG_MAP_BUTTON: "Herunterladen",
   },
   Esperanto: {
     APP_HEADER_TITLE: "Map Kreinto",
@@ -58,6 +62,7 @@ const languages = {
     EXPORT_MAP_BUTTON: "Eksporti",
     IMPORT_MAP_BUTTON: "Importi",
     NEW_MAP_BUTTON: "Nova Mapo",
+    ExportPNG_MAP_BUTTON: "Elŝutu",
   },
 };
 
