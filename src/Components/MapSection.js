@@ -14,6 +14,7 @@ import "../Styles/mapSection.css";
 import ExportMap from "./ExportMap";
 import ImportMap from "./ImportMap";
 import NewMap from "./NewMap";
+import ExportPNGButton from "./ExportPNGButton";
 
 const MapSection = ({
   selected,
@@ -86,6 +87,7 @@ const MapSection = ({
             <NewMap setSelectedLayer={setSelectedLayer} />
             <ExportMap />
             <ImportMap />
+            <ExportPNGButton />
           </div>
           <GridSizeSelector />
           <ZoomSelector setMapSize={setMapSize} />
