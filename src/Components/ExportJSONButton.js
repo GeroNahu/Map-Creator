@@ -1,12 +1,12 @@
 import React from "react";
 
-import "../Styles/exportMap.css";
+import "../Styles/ExportJSONButton.css";
 
 import ThemeContext from "../Contexts/ThemesContext";
 import LanguageContext from "../Contexts/LanguageContext";
 import MapContext from "../Contexts/MapContext";
 
-const ExportMap = () => {
+const ExportJSONButton = () => {
   const { language } = React.useContext(LanguageContext);
   const downloadObjectAsJson = (exportObj, exportName) => {
     var dataStr =
@@ -32,7 +32,9 @@ const ExportMap = () => {
   const mapTitle = map.title;
   return (
     <button
-      className={`exportMapButton ${exportClickOn ? "exportMapButtonOn" : ""}`}
+      className={`ExportJSONButton ${
+        exportClickOn ? "ExportJSONButtonOn" : ""
+      }`}
       type="submit"
       style={{
         background: exportClickOn
@@ -53,4 +55,4 @@ const ExportMap = () => {
   );
 };
 
-export default ExportMap;
+export default ExportJSONButton;
