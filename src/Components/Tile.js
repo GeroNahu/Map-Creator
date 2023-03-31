@@ -1,36 +1,35 @@
 import React from "react";
+import ThemesContext from "../Contexts/ThemesContext";
+import CursorsContext from "../Contexts/CursorsContext";
+import MapContext from "../Contexts/MapContext";
 
-const Tile = ({ selected, layerNumber = 1 }) => {
-  const [images, setImages] = React.useState({
-    layer1: "",
-    layer2: "",
-    layer3: "",
-  });
-  const handleClick = () => {
-    const updated = { ...images };
-    const layer = "layer" + layerNumber;
-    updated[layer] = selected;
-    console.log(updated);
-    setImages(updated);
-  };
-
+const Tile = ({ x, y, layers = [], ...rest }) => {
+  const { map } = React.useContext(MapContext);
+  const { theme } = React.useContext(ThemesContext);
+  const { cursor } = React.useContext(CursorsContext);
   return (
-    <div className="tile" onClick={handleClick}>
-      <div
-        className="layer"
-        style={{
-          backgroundImage: images.layer1,
-          backgroundSize: "contain",
-        }}
-      />
-      <div
-        className="layer"
-        style={{ backgroundImage: images.layer2, backgroundSize: "contain" }}
-      />
-      <div
-        className="layer"
-        style={{ backgroundImage: images.layer3, backgroundSize: "contain" }}
-      />
+    <div
+      className="tile"
+      {...rest}
+      style={{
+        outline: `solid ${theme.TILE_GRID_COLOR} 1px`,
+        cursor: `${cursor}`,
+        cursosrSize: "10px",
+      }}
+    >
+      {layers?.map((layer, index) => {
+        return map?.layers?.[index]?.visible ? (
+          <div
+            className="layer"
+            key={`tile_${x}_${y}_layer_${index}`}
+            style={{
+              backgroundImage: layer,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+        ) : null;
+      })}
     </div>
   );
 };

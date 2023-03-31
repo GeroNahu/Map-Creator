@@ -1,0 +1,46 @@
+.drawer {
+  align-items: center;
+  background-color: rgb(150, 150, 150);
+  border: solid black 2px;
+  border-radius: 50% 0 0 50%;
+  display: none;
+  flex-direction: column;
+  height: min-content;
+  justify-content: center;
+  height: 150px;
+  padding: 5px;
+  position: fixed;
+  top: calc(50% - 75px);
+  width: min-content;
+  z-index: 10;
+}
+.drawerIcon1 {
+  background-color: black;
+  border-radius: 20%;
+  display: none;
+  flex-direction: column;
+  height: 4px;
+  margin: 2.5px;
+  rotate: 315deg;
+  width: 15px;
+}
+.drawerIcon2 {
+  background-color: black;
+  border-radius: 20%;
+  display: none;
+  flex-direction: column;
+  height: 4px;
+  margin: 2.5px;
+  rotate: 45deg;
+  width: 15px;
+}
+@media only screen and (max-width: 1200px) {
+  .drawerIcon1,
+  .drawerIcon2 {
+    display: flex;
+    flex-direction: column;
+  }
+  .drawer {
+    display: flex;
+  }
+}

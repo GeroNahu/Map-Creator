@@ -1,11 +1,35 @@
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 420px;
   flex-direction: row;
-  margin: 5px;
+  width: 100vw;
+  height: calc(100vh - 115px);
+  max-height: calc(100vh - 115px);
+  box-sizing: border-box;
+  overflow: hidden;
 }
-.divToolsContainer {
-  margin: 30px;
+.divToolsSection {
+  display: grid;
+  grid-template-areas:
+    "tools selectedTile"
+    "layers layers"
+    "tilesContainer tilesContainer";
+  grid-template-rows: 170px 100px minmax(0, 1fr);
+  box-sizing: border-box;
+  max-height: calc(100vh - 115px);
 }
 .divBackgorundMapContainer {
-  margin: 30px;
+  display: grid;
+  grid-template-rows: 210px 1fr;
+  box-sizing: border-box;
+  max-height: calc(100vh - 115px);
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .divToolsSection {
+    width: max-content;
+  }
 }

@@ -1,0 +1,31 @@
+.navButton {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  height: min-content;
+  justify-content: center;
+  margin: 2px;
+  padding: 5px;
+  position: fixed;
+  right: 0px;
+  width: min-content;
+}
+.burguerMenuIcon {
+  background-color: black;
+  border-radius: 20%;
+  display: none;
+  flex-direction: column;
+  height: 4px;
+  margin: 2px;
+  width: 20px;
+}
+@media only screen and (max-width: 1200px) {
+  .burguerMenuIcon {
+    display: flex;
+    flex-direction: column;
+  }
+  .navButton:hover {
+    background-color: rgb(117, 117, 117);
+    border-radius: 15%;
+  }
+}

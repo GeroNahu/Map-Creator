@@ -1,0 +1,22 @@
+.importMapButton {
+  align-items: center;
+  box-shadow: 3px 3px;
+  display: flex;
+  font-size: 16px;
+  font-weight: 600;
+  height: 26px;
+  justify-content: center;
+  margin: 5px 9px;
+  user-select: none;
+  width: max-content;
+}
+.importMapButtonOn {
+  box-shadow: -3px -3px;
+}
+.importFileInput {
+  display: none;
+  max-width: 0;
+  height: 26px;
+  background: transparent;
+  color: transparent;
+}

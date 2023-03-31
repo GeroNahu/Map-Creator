@@ -1,0 +1,18 @@
+.littleSelect {
+  width: 120px;
+  font-family: cursive;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 2px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  user-select: none;
+  border: none;
+  text-transform: capitalize;
+}
+
+.littleSelectLabals {
+  font-family: cursive;
+  padding: 2px 2px 5px 2px;
+}

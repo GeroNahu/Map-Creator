@@ -1,0 +1,32 @@
+.toggle {
+  display: flex;
+  flex-direction: column;
+  font-family: cursive;
+  padding: 7px;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  min-width: 35px;
+}
+.toggleCircle {
+  border-radius: 50%;
+  height: 18px;
+  margin-left: -3px;
+  width: 18px;
+}
+.toggleCircle.on {
+  margin-right: -3px;
+}
+.toggleBar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: center;
+  height: 10px;
+  border-radius: 25%;
+  width: 35px;
+}
+.toggleBar.on {
+  justify-content: flex-end;
+  border-radius: 25%;
+}

@@ -1,0 +1,28 @@
+.h1 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 60px;
+  font-weight: bolder;
+  margin: 0 0 15px 0;
+  padding: 15px;
+  user-select: none;
+}
+
+.h2 {
+  color: transparent;
+  font-weight: bolder;
+  font-size: 45px;
+  font-family: "Arial Narrow Bold", sans-serif;
+  justify-self: right;
+  margin: 15px 0;
+  max-height: 54.67px;
+  max-width: calc(100vw - 457px);
+  overflow: hidden;
+  user-select: none;
+  width: min-content;
+}
+.h5 {
+  font-size: 16px;
+  padding: 4px;
+  margin: 0;
+  user-select: none;
+}
