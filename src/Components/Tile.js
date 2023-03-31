@@ -23,7 +23,7 @@ const Tile = ({ x, y, layers = [], ...rest }) => {
             className="layer"
             key={`tile_${x}_${y}_layer_${index}`}
             style={{
-              backgroundImage: layer,
+              backgroundImage: `url(${layer})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

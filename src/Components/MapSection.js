@@ -11,9 +11,10 @@ import LanguageContext from "../Contexts/LanguageContext";
 
 import "../Styles/globalStyles.css";
 import "../Styles/mapSection.css";
-import ExportMap from "./ExportMap";
+import ExportJSONButton from "./ExportJSONButton";
 import ImportMap from "./ImportMap";
 import NewMap from "./NewMap";
+import ExportPNGButton from "./ExportPNGButton";
 
 const MapSection = ({
   selected,
@@ -84,8 +85,9 @@ const MapSection = ({
         >
           <div className="importExportContainer">
             <NewMap setSelectedLayer={setSelectedLayer} />
-            <ExportMap />
+            <ExportJSONButton />
             <ImportMap />
+            <ExportPNGButton />
           </div>
           <GridSizeSelector />
           <ZoomSelector setMapSize={setMapSize} />

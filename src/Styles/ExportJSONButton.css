@@ -1,4 +1,4 @@
-.exportMapButton {
+.ExportJSONButton {
   align-items: center;
   box-shadow: 3px 3px;
   display: flex;
@@ -10,6 +10,6 @@
   width: max-content;
   user-select: none;
 }
-.exportMapButtonOn {
+.ExportJSONButtonOn {
   box-shadow: -3px -3px;
 }
