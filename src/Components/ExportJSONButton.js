@@ -7,7 +7,11 @@ import LanguageContext from "../Contexts/LanguageContext";
 import MapContext from "../Contexts/MapContext";
 
 const ExportJSONButton = () => {
+  const { theme } = React.useContext(ThemeContext);
+  const { title, columns, rows, layers, metadata } =
+    React.useContext(MapContext);
   const { language } = React.useContext(LanguageContext);
+
   const downloadObjectAsJson = (exportObj, exportName) => {
     var dataStr =
       "data:text/json;charset=utf-8," +
@@ -25,11 +29,17 @@ const ExportJSONButton = () => {
 
   const [exportClickOn, setExportClickOn] = React.useState(false);
 
-  const { theme } = React.useContext(ThemeContext);
-  const { map } = React.useContext(MapContext);
+  const mapObject = {
+    title: title,
+    columns: columns,
+    rows: rows,
+    layers: layers,
+    metadata: metadata,
+  };
 
-  const mapJson = JSON.stringify(map);
-  const mapTitle = map.title;
+  const mapJson = JSON.stringify(mapObject);
+  const mapTitle = title;
+
   return (
     <button
       className={`ExportJSONButton ${
