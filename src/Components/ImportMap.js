@@ -11,7 +11,8 @@ const ImportMap = () => {
 
   const { theme } = React.useContext(ThemeContext);
   const { language } = React.useContext(LanguageContext);
-  const { setMap } = React.useContext(MapContext);
+  const { setTitle, setColumns, setRows, setLayers, setMetadata } =
+    React.useContext(MapContext);
   const inputRef = React.useRef(null);
 
   const reader = new FileReader();
@@ -19,7 +20,11 @@ const ImportMap = () => {
     const result = a.currentTarget.result;
     const decodedResult = decodeURIComponent(result);
     const parsedResult = JSON.parse(JSON.parse(decodedResult));
-    setMap(parsedResult);
+    setTitle(parsedResult.title);
+    setColumns(parsedResult.columns);
+    setRows(parsedResult.rows);
+    setLayers(parsedResult.layers);
+    setMetadata(parsedResult.metadata);
   });
   return (
     <button
