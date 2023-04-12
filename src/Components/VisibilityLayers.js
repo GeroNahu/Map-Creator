@@ -7,14 +7,14 @@ import "../Styles/visibilityLayers.css";
 
 const VisibilityLayers = ({ handleSetVisibleLayers }) => {
   const { theme } = React.useContext(ThemesContext);
-  const { map } = React.useContext(MapContext);
+  const { layers } = React.useContext(MapContext);
 
   return (
     <div
       className="visibleHiddenLayersContain"
       style={{ color: theme.TEXT_PRIMARY }}
     >
-      {map?.layers?.map((layer, index) => {
+      {layers?.map((layer, index) => {
         return (
           <div className="visibleHiddenLayer" key={`layer ${index}`}>
             <input
@@ -22,7 +22,7 @@ const VisibilityLayers = ({ handleSetVisibleLayers }) => {
               id={`layer ${index}`}
               name={`layer ${index}`}
               className="checkBoxLayer"
-              checked={map.layers[index].visible}
+              checked={layers[index].visible}
               onChange={(e) => {
                 return handleSetVisibleLayers(index, e.target.checked);
               }}
