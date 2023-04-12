@@ -3,17 +3,34 @@ import React from "react";
 const MapContext = React.createContext();
 
 const MapProvider = ({ children }) => {
-  const defaultTile = { x: 1, y: 1, layers: [""] };
-  const defaultMap = {
-    title: "",
-    columns: 1,
-    rows: 1,
-    layers: [{ name: "Layer 1", visible: true }],
-    tiles: [defaultTile],
-    metaData: {},
+  const defaultTitle = "";
+  const defaultTile = { x: 1, y: 1, image: "" };
+  const defaultColumns = 1;
+  const defaultRows = 1;
+  const defaultLayer = { name: "Layer 1", visible: true, tiles: [defaultTile] };
+  const defaultLayers = [defaultLayer];
+  const defaultMetaData = {};
+
+  const [title, setTitle] = React.useState(defaultTitle);
+  const [columns, setColumns] = React.useState(defaultColumns);
+  const [rows, setRows] = React.useState(defaultRows);
+  const [layers, setLayers] = React.useState(defaultLayers);
+  const [metadata, setMetadata] = React.useState(defaultMetaData);
+  const data = {
+    defaultTile,
+    defaultLayer,
+    defaultLayers,
+    title,
+    setTitle,
+    columns,
+    setColumns,
+    rows,
+    setRows,
+    layers,
+    setLayers,
+    metadata,
+    setMetadata,
   };
-  const [map, setMap] = React.useState(defaultMap);
-  const data = { map, setMap, defaultMap };
 
   return <MapContext.Provider value={data}>{children}</MapContext.Provider>;
 };
