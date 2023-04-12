@@ -3,30 +3,35 @@ import React from "react";
 import Tile from "./Tile";
 
 import "../Styles/backgroundMap.css";
-import ThemesContext from "../Contexts/ThemesContext";
 import MapContext from "../Contexts/MapContext";
 
-const BackgroundMap = ({ mapSize, tileSize, tool }) => {
-  const { theme } = React.useContext(ThemesContext);
-  const { map, setMap } = React.useContext(MapContext);
-  const width = map.columns;
-  const height = map.rows;
+const BackgroundMap = ({ mapSize, tileSize, tool, tiles, layerIndex }) => {
+  const { columns, rows, layers, setLayers } = React.useContext(MapContext);
+  const width = columns;
+  const height = rows;
 
   React.useEffect(() => {
     const newTiles = [];
     for (let i = 0; i < width * height; i++) {
       const x = i + 1 - Math.floor(i / width) * width;
       const y = Math.ceil((i + 1) / width);
-      const layers = map?.tiles?.find((tile) => {
-        return tile.x === x && tile.y === y;
-      })?.layers;
+
+      const image =
+        layers?.[layerIndex]?.tiles?.find((tile) => {
+          return tile.x === x && tile.y === y;
+        })?.image || "";
       newTiles.push({
         x,
         y,
-        layers: layers || map?.layers?.map(() => ""),
+        image,
       });
     }
-    setMap({ ...map, tiles: newTiles });
+
+    if (layerIndex === 2) console.log(newTiles);
+
+    const newLayers = [...layers];
+    newLayers[layerIndex] = { ...layers[layerIndex], tiles: newTiles };
+    setLayers(newLayers);
   }, [width, height]);
 
   const handleEvent = (event, mapIndex) => {
@@ -34,39 +39,31 @@ const BackgroundMap = ({ mapSize, tileSize, tool }) => {
     tool?.[type]?.(mapIndex, event);
   };
   return (
-    <div
-      className="backgroundMapContainer"
-      style={{
-        backgroundColor: theme.MAP_BACKGROUND,
-        border: `solid ${theme.MAP_BORDER} 3px`,
-      }}
-    >
-      <div className="mapCanvas">
-        <div
-          className="backgroundMap"
-          style={{
-            gridTemplateColumns: `repeat(${width}, ${
-              (mapSize / 100) * tileSize + 2
-            }px`,
-            gridTemplateRows: `repeat(${height}, ${
-              (mapSize / 100) * tileSize + 2
-            }px`,
-            gridAutoRows: `${(mapSize / 100) * tileSize + 2}px`,
-          }}
-        >
-          {map?.tiles?.map((tile, i) => {
-            return (
-              <Tile
-                {...tile}
-                key={`tile_${tile.x}_${tile.y}`}
-                onMouseDown={(e) => handleEvent(e, i)}
-                onMouseEnter={(e) => handleEvent(e, i)}
-                onMouseUp={(e) => handleEvent(e, i)}
-                draggable={tool?.draggable}
-              />
-            );
-          })}
-        </div>
+    <div className="mapCanvas">
+      <div
+        className="backgroundMap"
+        style={{
+          gridTemplateColumns: `repeat(${width}, ${
+            (mapSize / 100) * tileSize + 2
+          }px`,
+          gridTemplateRows: `repeat(${height}, ${
+            (mapSize / 100) * tileSize + 2
+          }px`,
+          gridAutoRows: `${(mapSize / 100) * tileSize + 2}px`,
+        }}
+      >
+        {tiles?.map((tile, i) => {
+          return (
+            <Tile
+              {...tile}
+              key={`tile_${tile.x}_${tile.y}`}
+              onMouseDown={(e) => handleEvent(e, i)}
+              onMouseEnter={(e) => handleEvent(e, i)}
+              onMouseUp={(e) => handleEvent(e, i)}
+              draggable={tool?.draggable}
+            />
+          );
+        })}
       </div>
     </div>
   );
