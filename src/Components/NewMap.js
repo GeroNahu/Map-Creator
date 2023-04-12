@@ -11,7 +11,18 @@ const NewMap = ({ setSelectedLayer }) => {
 
   const { theme } = React.useContext(ThemeContext);
   const { language } = React.useContext(LanguageContext);
-  const { setLayers, defaultLayers } = React.useContext(MapContext);
+  const {
+    setTitle,
+    defaultTitle,
+    setColumns,
+    defaultColumns,
+    setRows,
+    defaultRows,
+    setLayers,
+    defaultLayers,
+    setMetadata,
+    defaultMetaData,
+  } = React.useContext(MapContext);
 
   return (
     <button
@@ -27,7 +38,11 @@ const NewMap = ({ setSelectedLayer }) => {
       onMouseDown={() => setNewMapClickOn(true)}
       onMouseUp={() => {
         setNewMapClickOn(false);
+        setTitle(defaultTitle);
+        setColumns(defaultColumns);
+        setRows(defaultRows);
         setLayers(defaultLayers);
+        setMetadata(defaultMetaData);
         setSelectedLayer(0);
       }}
       onMouseLeave={() => setNewMapClickOn(false)}
