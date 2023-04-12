@@ -18,8 +18,11 @@ const MapProvider = ({ children }) => {
   const [metadata, setMetadata] = React.useState(defaultMetaData);
   const data = {
     defaultTile,
+    defaultColumns,
+    defaultRows,
     defaultLayer,
     defaultLayers,
+    defaultMetaData,
     title,
     setTitle,
     columns,
