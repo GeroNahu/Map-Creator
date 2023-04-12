@@ -2,9 +2,15 @@
   overflow-y: auto;
   overflow-x: auto;
   margin: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
 }
-
 .mapCanvas {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
   position: relative;
   height: 100%;
   box-sizing: border-box;
@@ -17,16 +23,9 @@
   display: flex;
   grid-area: auto;
   box-sizing: border-box;
-  position: relative;
 }
 
 .tile:hover {
   opacity: 45%;
   transition: 300ms;
-}
-.layer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
 }
