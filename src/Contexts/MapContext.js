@@ -17,6 +17,7 @@ const MapProvider = ({ children }) => {
   const [layers, setLayers] = React.useState(defaultLayers);
   const [metadata, setMetadata] = React.useState(defaultMetaData);
   const data = {
+    defaultTitle,
     defaultTile,
     defaultColumns,
     defaultRows,
