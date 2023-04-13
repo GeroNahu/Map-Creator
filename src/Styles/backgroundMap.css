@@ -6,7 +6,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
 }
-.mapCanvas {
+.layer {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
@@ -15,7 +15,7 @@
   height: 100%;
   box-sizing: border-box;
 }
-.layer {
+.tileContainer {
   display: grid;
   width: fit-content;
 }

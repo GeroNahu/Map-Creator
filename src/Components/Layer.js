@@ -5,7 +5,7 @@ import Tile from "./Tile";
 import "../Styles/backgroundMap.css";
 import MapContext from "../Contexts/MapContext";
 
-const Layers = ({ mapSize, tileSize, tool, tiles, layerIndex }) => {
+const Layer = ({ mapSize, tileSize, tool, tiles, layerIndex }) => {
   const { columns, rows, layers, setLayers } = React.useContext(MapContext);
   const width = columns;
   const height = rows;
@@ -27,8 +27,6 @@ const Layers = ({ mapSize, tileSize, tool, tiles, layerIndex }) => {
       });
     }
 
-    if (layerIndex === 2) console.log(newTiles);
-
     const newLayers = [...layers];
     newLayers[layerIndex] = { ...layers[layerIndex], tiles: newTiles };
     setLayers(newLayers);
@@ -39,9 +37,9 @@ const Layers = ({ mapSize, tileSize, tool, tiles, layerIndex }) => {
     tool?.[type]?.(mapIndex, event);
   };
   return (
-    <div className="mapCanvas">
+    <div className="layer">
       <div
-        className="layer"
+        className="tileContainer"
         style={{
           gridTemplateColumns: `repeat(${width}, ${
             (mapSize / 100) * tileSize + 2
@@ -69,4 +67,4 @@ const Layers = ({ mapSize, tileSize, tool, tiles, layerIndex }) => {
   );
 };
 
-export default Layers;
+export default Layer;
