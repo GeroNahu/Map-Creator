@@ -17,7 +17,7 @@ const Tile = ({ x, y, image, ...rest }) => {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-    ></div>
+    />
   );
 };
 export default Tile;
