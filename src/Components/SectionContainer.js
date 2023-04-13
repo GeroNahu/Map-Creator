@@ -62,19 +62,8 @@ const SectionContainer = () => {
   const [firstTile, setFirstTile] = React.useState();
 
   const move = (lastTile) => {
-    console.log(
-      "%c%s",
-      "color: #0088cc",
-      firstTile,
-      lastTile,
-      layers?.[selectedLayer]?.tiles?.[firstTile]?.image,
-      "hfjgfjhf",
-      layers?.[selectedLayer]?.tiles?.[lastTile]?.image
-    );
     const firstImage = layers?.[selectedLayer]?.tiles?.[firstTile]?.image || "";
-    console.log("%c%s", "color: #917399", firstImage);
     const lastImage = layers?.[selectedLayer]?.tiles?.[lastTile]?.image || "";
-    console.log("%c%s", "color: #d90000", lastImage);
     const newLayers = [...layers];
     if (
       newLayers?.[selectedLayer]?.tiles?.[firstTile]?.image &&
