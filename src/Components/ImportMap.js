@@ -19,7 +19,7 @@ const ImportMap = () => {
   reader.addEventListener("loadend", (a) => {
     const result = a.currentTarget.result;
     const decodedResult = decodeURIComponent(result);
-    const parsedResult = JSON.parse(JSON.parse(decodedResult));
+    const parsedResult = JSON.parse(decodedResult);
     setTitle(parsedResult.title);
     setColumns(parsedResult.columns);
     setRows(parsedResult.rows);
