@@ -1,27 +1,27 @@
 .container {
+  box-sizing: border-box;
   display: grid;
-  grid-template-columns: 1fr 420px;
   flex-direction: row;
-  width: 100vw;
+  grid-template-columns: 1fr 420px;
   height: calc(100vh - 115px);
   max-height: calc(100vh - 115px);
-  box-sizing: border-box;
   overflow: hidden;
+  width: 100vw;
 }
 .divToolsSection {
+  box-sizing: border-box;
   display: grid;
   grid-template-areas:
     "tools selectedTile"
     "layers layers"
     "tilesContainer tilesContainer";
   grid-template-rows: 170px 100px minmax(0, 1fr);
-  box-sizing: border-box;
   max-height: calc(100vh - 115px);
 }
-.divBackgorundMapContainer {
+.MapContainer {
+  box-sizing: border-box;
   display: grid;
   grid-template-rows: 245px 1fr;
-  box-sizing: border-box;
   max-height: calc(100vh - 115px);
 }
 

@@ -33,7 +33,7 @@ const ToolsSection = ({
 
   const { language } = React.useContext(LanguageContext);
   const { theme } = React.useContext(ThemeContext);
-  const { map, setMap } = React.useContext(MapContext);
+  const { layers, setLayers, defaultLayer } = React.useContext(MapContext);
 
   const divToolsSectionWidth = ref.current?.clientWidth;
   const [transition, setTransition] = React.useState(true);
@@ -69,41 +69,28 @@ const ToolsSection = ({
   const transitionPosition = `calc(100% - ${drawerPosition}px)`;
 
   const handleName = (e) => {
-    const newLayers = [...map.layers];
+    const newLayers = [...layers];
     newLayers[selectedLayer].name = e.target.layerName.value;
-    setMap({ ...map, layers: newLayers });
+    setLayers(newLayers);
     e.preventDefault();
   };
-
   const addNewLayer = () => {
-    const currentLayers = [
-      ...map.layers,
+    const newLayers = [
+      ...layers,
       {
-        name: `${language.LAYER_DEFAULT_NAME} ${map.layers.length + 1}`,
-        visible: true,
+        ...defaultLayer,
+        name: `${language.LAYER_DEFAULT_NAME} ${layers.length + 1}`,
       },
     ];
-    const newTiles = map?.tiles?.map((tile) => {
-      return { ...tile, layers: [...tile.layers, ""] };
-    });
-    setMap({ ...map, layers: currentLayers, tiles: newTiles });
+    setLayers(newLayers);
   };
   const removeLayer = () => {
-    const newMapLayers = [...map.layers];
-    newMapLayers.splice(selectedLayer, 1);
-    const newTiles = map.tiles.map((tile) => {
-      const newTileLayers = [...tile.layers];
-      newTileLayers.splice(selectedLayer, 1);
-      return { ...tile, layers: newTileLayers };
-    });
-    setMap({
-      ...map,
-      layers: newMapLayers,
-      tiles: newTiles,
-    });
+    const newLayers = [...layers];
+    newLayers.splice(selectedLayer, 1);
+    setLayers(newLayers);
     const checkedIndex = Math.min(
       selectedLayer,
-      Math.max(0, map.layers.length - 2)
+      Math.max(0, layers.length - 2)
     );
     if (checkedIndex !== selectedLayer) onLayerSelect(checkedIndex);
   };
@@ -160,7 +147,7 @@ const ToolsSection = ({
       >
         <CommonSelect
           onChange={onLayerSelect}
-          items={map?.layers?.map((layer, index) => ({
+          items={layers?.map((layer, index) => ({
             value: index,
             label: layer?.name,
           }))}
@@ -220,7 +207,6 @@ const ToolsSection = ({
                 -
               </button>
             </div>
-
             <button
               className={`layersRenameButton ${
                 renameClickOn ? "layersSubmitButtonOn" : ""
@@ -242,8 +228,8 @@ const ToolsSection = ({
           </div>
           <input
             className="inputRenameLayer"
-            defaultValue={map?.layers?.[selectedLayer]?.name}
-            key={map?.layers?.[selectedLayer]?.name}
+            defaultValue={layers?.[selectedLayer]?.name}
+            key={layers?.[selectedLayer]?.name}
             type="text"
             name="layerName"
             style={{

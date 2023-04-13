@@ -14,9 +14,9 @@
   box-shadow: -3px -3px;
 }
 .importFileInput {
-  display: none;
-  max-width: 0;
-  height: 26px;
   background: transparent;
   color: transparent;
+  display: none;
+  height: 26px;
+  max-width: 0;
 }

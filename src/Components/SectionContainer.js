@@ -9,75 +9,73 @@ import MapContext from "../Contexts/MapContext";
 import "../Styles/sectionContainer.css";
 
 const SectionContainer = () => {
-  const { map, setMap } = React.useContext(MapContext);
+  const { layers, setLayers } = React.useContext(MapContext);
   const { setCursor } = React.useContext(CursorsContext);
 
   const [selectedImage, setSelectedImage] = React.useState("");
   const [selectedLayer, setSelectedLayer] = React.useState(0);
   const [visibleLayers, setVisibleLayers] = React.useState(
-    Array(map?.layers?.length || 1).fill(true)
+    Array(layers?.length || 1).fill(true)
   );
 
   const [beforeTool, setBeforeTool] = React.useState("pen");
 
   const paintTile = (mapIndex) => {
-    const newTiles = [...map.tiles];
-    newTiles[mapIndex].layers[selectedLayer] = selectedImage;
-    setMap?.({
-      ...map,
-      tiles: newTiles,
-    });
+    const newLayers = [...layers];
+    const newTiles = [...layers[selectedLayer].tiles];
+    newTiles[mapIndex].image = selectedImage;
+    newLayers[selectedLayer] = { ...newLayers[selectedLayer], tiles: newTiles };
+    setLayers(newLayers);
   };
   const eraseTile = (mapIndex) => {
-    const newTiles = [...map.tiles];
-    newTiles[mapIndex].layers[selectedLayer] = "";
-    setMap?.({
-      ...map,
-      tiles: newTiles,
-    });
+    const newLayers = [...layers];
+    const newTiles = [...layers[selectedLayer].tiles];
+    newTiles[mapIndex].image = "";
+    newLayers[selectedLayer] = { ...newLayers[selectedLayer], tiles: newTiles };
+    setLayers(newLayers);
   };
   const eraserLayer = () => {
-    setMap?.({
-      ...map,
-      tiles: map?.tiles?.map((tile) => {
-        const newTile = { ...tile };
-        newTile.layers[selectedLayer] = "";
-        return newTile;
-      }),
+    const newLayers = [...layers];
+    const newTiles = layers?.[selectedLayer]?.tiles?.map((tile) => {
+      const newTiles = { ...tile };
+      newTiles.image = "";
+      return newTiles;
     });
+    newLayers[selectedLayer] = { ...newLayers[selectedLayer], tiles: newTiles };
+    setLayers(newLayers);
   };
   const paintLayer = (mapIndex) => {
-    const currentImage = map?.tiles?.[mapIndex]?.layers?.[selectedLayer];
-    setMap?.({
-      ...map,
-      tiles: map?.tiles?.map((tile) => {
-        const newTile = { ...tile };
-        if (tile.layers[selectedLayer] === currentImage) {
-          newTile.layers[selectedLayer] = selectedImage;
-        }
-        return newTile;
-      }),
+    const currentImage = layers?.[selectedLayer]?.tiles?.[mapIndex].image;
+    const newLayers = [...layers];
+    const newTiles = layers?.[selectedLayer]?.tiles?.map((tile) => {
+      const newTile = { ...tile };
+      if (newTile.image === currentImage) {
+        newTile.image = selectedImage;
+      }
+      return newTile;
     });
+    newLayers[selectedLayer] = { ...newLayers[selectedLayer], tiles: newTiles };
+    setLayers(newLayers);
   };
 
   const [dragging, setDragging] = React.useState(false);
   const [firstTile, setFirstTile] = React.useState();
 
   const move = (lastTile) => {
-    const firstImage = map?.tiles?.[firstTile]?.layers?.[selectedLayer] || "";
-    const lastImage = map?.tiles?.[lastTile]?.layers?.[selectedLayer] || "";
-    const newMap = { ...map };
+    const firstImage = layers?.[selectedLayer]?.tiles?.[firstTile]?.image || "";
+    const lastImage = layers?.[selectedLayer]?.tiles?.[lastTile]?.image || "";
+    const newLayers = [...layers];
     if (
-      newMap?.tiles?.[firstTile]?.layers?.[selectedLayer] &&
-      newMap?.tiles?.[lastTile]?.layers?.[selectedLayer]
+      newLayers?.[selectedLayer]?.tiles?.[firstTile]?.image &&
+      newLayers?.[selectedLayer]?.tiles?.[lastTile]?.image
     ) {
-      newMap.tiles[firstTile].layers[selectedLayer] = lastImage;
-      newMap.tiles[lastTile].layers[selectedLayer] = firstImage;
+      newLayers[selectedLayer].tiles[firstTile].image = lastImage;
+      newLayers[selectedLayer].tiles[lastTile].image = firstImage;
     } else {
-      newMap.tiles[firstTile].layers[selectedLayer] = "";
-      newMap.tiles[lastTile].layers[selectedLayer] = firstImage;
+      newLayers[selectedLayer].tiles[firstTile].image = "";
+      newLayers[selectedLayer].tiles[lastTile].image = firstImage;
     }
-    setMap?.(newMap);
+    setLayers(newLayers);
     setDragging(false);
   };
 
@@ -93,7 +91,7 @@ const SectionContainer = () => {
     },
     eyedropper: {
       onMouseDown: (mapIndex) => {
-        const image = map?.tiles?.[mapIndex]?.layers?.[selectedLayer];
+        const image = layers?.[selectedLayer]?.tiles?.[mapIndex].image;
         setSelectedImage(image);
         handleToolChange(beforeTool);
       },

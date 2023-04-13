@@ -1,6 +1,6 @@
 import React from "react";
 
-import BackgroundMap from "./BackgroundMap";
+import Layer from "./Layer";
 import ZoomSelector from "./ZoomSelector";
 import GridSizeSelector from "./GridSizeSelector";
 import VisibilityLayers from "./VisibilityLayers";
@@ -27,23 +27,19 @@ const MapSection = ({
 }) => {
   const [mapSize, setMapSize] = React.useState(100);
 
-  const { map, setMap } = React.useContext(MapContext);
+  const { title, setTitle, layers, setLayers } = React.useContext(MapContext);
   const { theme } = React.useContext(ThemesContext);
   const { language } = React.useContext(LanguageContext);
 
   const handleSetVisibleLayers = (layer, value) => {
-    const newLayers = [...map.layers];
+    const newLayers = [...layers];
     newLayers[layer].visible = value;
-    const newMap = {
-      ...map,
-      layers: newLayers,
-    };
-    setMap(newMap);
+    setLayers(newLayers);
   };
 
   return (
     <section
-      className="divBackgorundMapContainer"
+      className="MapContainer"
       style={{
         backgroundColor: theme.MAP_SECTION_BACKGROUND,
       }}
@@ -57,23 +53,23 @@ const MapSection = ({
               outline: `solid ${theme.MAP_TITLE_BORDER} 3px`,
             }}
           >
-            {map.title}
             <input
-              onChange={(e) => {
-                const title = e.target.value;
-                setMap({ ...map, title: title });
-              }}
               className="titleInput"
-              placeholder={language.DEFAULT_MAP_TITLE}
               name="title"
+              onChange={(e) => {
+                const newTitle = e.target.value;
+                setTitle(newTitle);
+              }}
+              placeholder={language.DEFAULT_MAP_TITLE}
               spellCheck="false"
               style={{
                 backgroundColor: "transparent",
                 outline: `solid ${theme.MAP_TITLE_BORDER} 3px`,
                 color: theme.TITLES,
               }}
-              value={map.title}
+              value={title}
             />
+            {title}
           </h2>
         </div>
         <div
@@ -97,17 +93,32 @@ const MapSection = ({
           />
         </div>
       </div>
-      <BackgroundMap
-        selected={selected}
-        setSelectedLayer={setSelectedLayer}
-        selectedLayer={selectedLayer}
-        mapSize={mapSize}
-        tileSize={100}
-        tool={tool}
-        move={move}
-        firstTile={firstTile}
-        setFirstTile={setFirstTile}
-      />
+      <div
+        className="layersContainer"
+        style={{
+          backgroundColor: theme.MAP_BACKGROUND,
+          border: `solid ${theme.MAP_BORDER} 3px`,
+        }}
+      >
+        {layers.map((layer, index) => {
+          return layer?.visible ? (
+            <Layer
+              key={`map_layer_${index}`}
+              selected={selected}
+              setSelectedLayer={setSelectedLayer}
+              selectedLayer={selectedLayer}
+              mapSize={mapSize}
+              tileSize={100}
+              tool={tool}
+              move={move}
+              firstTile={firstTile}
+              setFirstTile={setFirstTile}
+              tiles={layer.tiles}
+              layerIndex={index}
+            />
+          ) : null;
+        })}
+      </div>
     </section>
   );
 };

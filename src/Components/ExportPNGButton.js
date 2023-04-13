@@ -8,15 +8,15 @@ import ThemesContext from "../Contexts/ThemesContext";
 import LanguageContext from "../Contexts/LanguageContext";
 
 const ExportPNGButton = () => {
-  const { map } = React.useContext(MapContext);
+  const { title, columns, rows, layers } = React.useContext(MapContext);
   const { theme } = React.useContext(ThemesContext);
   const { language } = React.useContext(LanguageContext);
 
   const [exportPNGButtonClickOn, setExportPNGButtonClickOn] =
     React.useState(false);
 
-  const width = map.columns;
-  const height = map.rows;
+  const width = columns;
+  const height = rows;
 
   const canvas = document.querySelector("#canvas");
   let ctx = canvas?.getContext("2d");
@@ -35,22 +35,22 @@ const ExportPNGButton = () => {
         }`}
         onClick={() => {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-          const completeMap = { ...map };
+          const allLayers = [...layers];
           const usedImages = [];
-          completeMap?.tiles.forEach((tile) => {
-            tile?.layers?.forEach((layer, layersIndex) => {
-              if (completeMap?.layers?.[layersIndex]?.visible) {
-                let tempIndex = 0;
+          allLayers?.forEach((layer, layersIndex) => {
+            if (layer?.visible) {
+              let tempIndex = 0;
+              layer?.tiles.forEach((tile) => {
                 if (
                   !usedImages.some((usedImage, usedImagesIndex) => {
                     tempIndex = usedImagesIndex;
-                    return usedImage.src === layer;
+                    return usedImage.src === tile.image;
                   })
                 ) {
-                  usedImages.push({ image: new Image(), src: layer });
+                  usedImages.push({ image: new Image(), src: tile.image });
                   const lastImageIndex = usedImages.length - 1;
-                  usedImages[lastImageIndex].image.src = layer;
-                  usedImages[lastImageIndex].src = layer;
+                  usedImages[lastImageIndex].image.src = tile.image;
+                  usedImages[lastImageIndex].src = tile.image;
                   tempIndex = lastImageIndex;
                 }
                 const x1 = tile.x;
@@ -62,15 +62,15 @@ const ExportPNGButton = () => {
                   100,
                   100
                 );
-              }
-            });
+              });
+            }
           });
 
           const canvasBASE64 = document
             .querySelector("#canvas")
             .toDataURL("image/jpg");
           const toDownload = document.createElement("a");
-          toDownload.download = map.title;
+          toDownload.download = title;
           toDownload.href = canvasBASE64;
           toDownload.click();
         }}

@@ -1,16 +1,16 @@
 .toolsContainer {
+  align-items: center;
   display: flex;
   flex-direction: column;
   grid-area: tools;
-  align-items: center;
   justify-content: center;
 }
 .buttonsContainer {
+  align-items: center;
   display: grid;
-  grid-template-rows: 1fr 1fr;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
-  align-items: center;
+  grid-template-rows: 1fr 1fr;
   justify-items: center;
 }
 .backgroundButton {

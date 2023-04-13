@@ -1,10 +1,10 @@
 .commonSelect {
-  width: 320px;
-  padding: 1px;
   font-family: cursive;
   font-size: 18px;
   font-weight: 600;
+  padding: 1px;
   user-select: none;
+  width: 320px;
 }
 .commonSelectLabels {
   font-family: cursive;

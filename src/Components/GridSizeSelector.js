@@ -7,7 +7,7 @@ import ThemesContext from "../Contexts/ThemesContext";
 import "../Styles/gridSizaSelector.css";
 
 const GridSizeSelector = () => {
-  const { map, setMap } = React.useContext(MapContext);
+  const { columns, setColumns, rows, setRows } = React.useContext(MapContext);
 
   const { theme } = React.useContext(ThemesContext);
   const { language } = React.useContext(LanguageContext);
@@ -19,14 +19,14 @@ const GridSizeSelector = () => {
           name="gridSizeInput"
           id="gridSizeInputWidth"
           type="number"
-          defaultValue={map.columns || 1}
-          key={`columns_input_${map.columns}`}
+          defaultValue={columns || 1}
+          key={`columns_input_${columns}`}
           onBlur={(e) => {
-            setMap({ ...map, columns: e.target.value });
+            setColumns(e.target.value);
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              setMap({ ...map, columns: e.target.value });
+              setColumns(e.target.value);
             }
           }}
         ></input>
@@ -44,14 +44,14 @@ const GridSizeSelector = () => {
           name="gridSizeInput"
           id="gridSizeInputHeight"
           type="number"
-          defaultValue={map.rows || 1}
-          key={`rows_input_${map.rows}`}
+          defaultValue={rows || 1}
+          key={`rows_input_${rows}`}
           onBlur={(e) => {
-            setMap({ ...map, rows: e.target.value });
+            setRows(e.target.value);
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              setMap({ ...map, rows: e.target.value });
+              setRows(e.target.value);
             }
           }}
         ></input>
