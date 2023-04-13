@@ -53,15 +53,14 @@ const MapSection = ({
               outline: `solid ${theme.MAP_TITLE_BORDER} 3px`,
             }}
           >
-            {title}
             <input
+              className="titleInput"
+              name="title"
               onChange={(e) => {
                 const newTitle = e.target.value;
                 setTitle(newTitle);
               }}
-              className="titleInput"
               placeholder={language.DEFAULT_MAP_TITLE}
-              name="title"
               spellCheck="false"
               style={{
                 backgroundColor: "transparent",
@@ -70,6 +69,7 @@ const MapSection = ({
               }}
               value={title}
             />
+            {title}
           </h2>
         </div>
         <div
