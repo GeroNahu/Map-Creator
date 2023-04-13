@@ -5,7 +5,7 @@ import Tile from "./Tile";
 import "../Styles/backgroundMap.css";
 import MapContext from "../Contexts/MapContext";
 
-const BackgroundMap = ({ mapSize, tileSize, tool, tiles, layerIndex }) => {
+const Layers = ({ mapSize, tileSize, tool, tiles, layerIndex }) => {
   const { columns, rows, layers, setLayers } = React.useContext(MapContext);
   const width = columns;
   const height = rows;
@@ -41,7 +41,7 @@ const BackgroundMap = ({ mapSize, tileSize, tool, tiles, layerIndex }) => {
   return (
     <div className="mapCanvas">
       <div
-        className="backgroundMap"
+        className="layer"
         style={{
           gridTemplateColumns: `repeat(${width}, ${
             (mapSize / 100) * tileSize + 2
@@ -69,4 +69,4 @@ const BackgroundMap = ({ mapSize, tileSize, tool, tiles, layerIndex }) => {
   );
 };
 
-export default BackgroundMap;
+export default Layers;

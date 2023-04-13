@@ -1,6 +1,6 @@
 import React from "react";
 
-import BackgroundMap from "./BackgroundMap";
+import Layer from "./Layer";
 import ZoomSelector from "./ZoomSelector";
 import GridSizeSelector from "./GridSizeSelector";
 import VisibilityLayers from "./VisibilityLayers";
@@ -39,7 +39,7 @@ const MapSection = ({
 
   return (
     <section
-      className="divBackgorundMapContainer"
+      className="MapContainer"
       style={{
         backgroundColor: theme.MAP_SECTION_BACKGROUND,
       }}
@@ -94,7 +94,7 @@ const MapSection = ({
         </div>
       </div>
       <div
-        className="backgroundMapContainer"
+        className="layersContainer"
         style={{
           backgroundColor: theme.MAP_BACKGROUND,
           border: `solid ${theme.MAP_BORDER} 3px`,
@@ -102,7 +102,7 @@ const MapSection = ({
       >
         {layers.map((layer, index) => {
           return layer?.visible ? (
-            <BackgroundMap
+            <Layer
               key={`map_layer_${index}`}
               selected={selected}
               setSelectedLayer={setSelectedLayer}

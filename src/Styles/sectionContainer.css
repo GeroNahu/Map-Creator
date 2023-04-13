@@ -18,7 +18,7 @@
   box-sizing: border-box;
   max-height: calc(100vh - 115px);
 }
-.divBackgorundMapContainer {
+.MapContainer {
   display: grid;
   grid-template-rows: 245px 1fr;
   box-sizing: border-box;
