@@ -10,12 +10,12 @@
   display: flex;
   font-size: 45px;
   height: 100%;
-  padding-top: 2px;
   margin: 0;
   min-width: 250px;
-  width: 100%;
+  padding-top: 2px;
   text-align: center;
   transform: translate(-2px, -2px);
+  width: 100%;
 }
 .titleInput::placeholder {
   color: rgb(0, 0, 0);

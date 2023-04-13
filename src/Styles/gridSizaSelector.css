@@ -11,9 +11,9 @@
 }
 .girdSizaSelectorInput:focus {
   background-color: rgb(127, 154, 154);
+  border-radius: none;
   margin: 5px;
   width: 30px;
-  border-radius: none;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -27,7 +27,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .gridSizaFormInputTitle {
   font-family: cursive;
-  margin: 2px 2px 5px 10px;
   justify-self: left;
+  margin: 2px 2px 5px 10px;
   user-select: none;
 }

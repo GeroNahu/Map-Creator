@@ -1,15 +1,15 @@
 .littleSelect {
-  width: 120px;
+  border: none;
   font-family: cursive;
   font-size: 18px;
   font-weight: 600;
   padding: 2px;
   position: absolute;
   right: 16px;
+  text-transform: capitalize;
   top: 16px;
   user-select: none;
-  border: none;
-  text-transform: capitalize;
+  width: 120px;
 }
 
 .littleSelectLabals {

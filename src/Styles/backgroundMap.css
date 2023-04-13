@@ -1,28 +1,28 @@
 .layersContainer {
-  overflow-y: auto;
-  overflow-x: auto;
-  margin: 16px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
+  margin: 16px;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 .layer {
+  box-sizing: border-box;
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 2;
-  position: relative;
   height: 100%;
-  box-sizing: border-box;
+  position: relative;
 }
 .tileContainer {
   display: grid;
   width: fit-content;
 }
 .tile {
+  box-sizing: border-box;
   display: flex;
   grid-area: auto;
-  box-sizing: border-box;
 }
 
 .tile:hover {
