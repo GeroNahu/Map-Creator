@@ -37,7 +37,6 @@ const ExportJSONButton = () => {
     metadata: metadata,
   };
 
-  const mapJson = JSON.stringify(mapObject);
   const mapTitle = title;
 
   return (
@@ -56,7 +55,7 @@ const ExportJSONButton = () => {
       onMouseDown={() => setExportClickOn(true)}
       onMouseUp={() => {
         setExportClickOn(false);
-        downloadObjectAsJson(mapJson, mapTitle);
+        downloadObjectAsJson(mapObject, mapTitle);
       }}
       onMouseLeave={() => setExportClickOn(false)}
     >
