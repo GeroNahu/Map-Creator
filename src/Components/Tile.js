@@ -2,7 +2,7 @@ import React from "react";
 import ThemesContext from "../Contexts/ThemesContext";
 import CursorsContext from "../Contexts/CursorsContext";
 
-const Tile = ({ x, y, layers = [], image, ...rest }) => {
+const Tile = ({ x, y, image, ...rest }) => {
   const { theme } = React.useContext(ThemesContext);
   const { cursor } = React.useContext(CursorsContext);
   return (
