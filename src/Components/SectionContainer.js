@@ -57,19 +57,6 @@ const SectionContainer = () => {
     newLayers[selectedLayer] = { ...newLayers[selectedLayer], tiles: newTiles };
     setLayers(newLayers);
   };
-  // setLayers?.({
-  //   ...layers,
-  //   tiles: map?.tiles?.map((tile) => {
-  //     const newTile = { ...tile };
-  //     if (tile.layers[selectedLayer] === currentImage) {
-  //       newTile.layers[selectedLayer] = selectedImage;
-  //     }
-  //     return newTile;
-  //   }),
-  // });
-  //   newLayers[selectedLayer] = { ...newLayers[selectedLayer], tiles: newTiles };
-  //   setLayers(newLayers);
-  // };
 
   const [dragging, setDragging] = React.useState(false);
   const [firstTile, setFirstTile] = React.useState();
