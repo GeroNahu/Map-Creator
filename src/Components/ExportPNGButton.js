@@ -38,11 +38,9 @@ const ExportPNGButton = () => {
           const allLayers = [...layers];
           const usedImages = [];
           allLayers?.forEach((layer, layersIndex) => {
-            console.log("%c", "color: #007300", layer, layersIndex);
             if (layer?.visible) {
               let tempIndex = 0;
               layer?.tiles.forEach((tile) => {
-                console.log("%c%s", "color: #807160", tile.image);
                 if (
                   !usedImages.some((usedImage, usedImagesIndex) => {
                     tempIndex = usedImagesIndex;
